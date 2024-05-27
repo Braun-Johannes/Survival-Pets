@@ -19,11 +19,19 @@ export default createGlobalStyle`
   .petList {
     display: flex;
     justify-content: space-around;
-
     list-style: none;
     padding: 0;
+    align-items: center;
     margin: 0;
-
+    height: 50vh;
   }
+  
+  .petListItem {
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+
 
 `;

@@ -6,13 +6,17 @@ export default function HomePage() {
       <div>
         <h1>Select a Survival Pet</h1>
       </div>
-      <section>
+      <div>
         <ul className="petList">
           {pets.map((pet) => {
-            return <li key={pet.id}>{pet.name}</li>;
+            return (
+              <li className="petListItem" key={pet.id}>
+                {pet.name}
+              </li>
+            );
           })}
         </ul>
-      </section>
+      </div>
     </>
   );
 }
