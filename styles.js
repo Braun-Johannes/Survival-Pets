@@ -11,4 +11,19 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
   }
+
+  h1 {
+    text-align: center;
+  }
+
+  .petList {
+    display: flex;
+    justify-content: space-around;
+
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+  }
+
 `;
