@@ -1,13 +1,19 @@
 import pets from "@/lib/pets";
 import { StyledList, StyledListItem, ListButton } from "@/styles";
+import { useState } from "react";
 
-export default function PetList({ onSelectPet }) {
+export default function PetList({ onSelectPet, selectedPet }) {
+  const [highlightedPet, setHighlightedPet] = useState(false);
+
   return (
     <>
       <StyledList>
         {pets.map((pet) => {
           return (
-            <StyledListItem key={pet.id}>
+            <StyledListItem
+              style={{ border: selectedPet === pet ? "2px solid orange" : "" }}
+              key={pet.id}
+            >
               <ListButton
                 onClick={() => {
                   onSelectPet(pet);

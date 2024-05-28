@@ -58,5 +58,6 @@ export const StyledNameInput = styled.input`
   width: 50%;
   padding: 5px;
   margin-bottom: 15px;
+  margin-top: 10px;
   font-size: 18px;
 `;

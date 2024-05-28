@@ -13,7 +13,7 @@ export default function HomePage() {
   return (
     <>
       <StyledHeading>Select a Survival Pet</StyledHeading>
-      <PetList onSelectPet={handleSelectPet} />
+      <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
       <PetForm selectedPet={selectedPet} />
     </>
   );
