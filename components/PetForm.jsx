@@ -1,8 +1,8 @@
 import { StyledSelectForm, StyledNameInput } from "@/styles";
 
-export default function PetForm({ selectedPet }) {
+export default function PetForm({ selectedPet, onHandleSubmit }) {
   return (
-    <StyledSelectForm onSubmit={""}>
+    <StyledSelectForm onSubmit={onHandleSubmit}>
       <label htmlFor="nameInput">Choose a name</label>
       <StyledNameInput
         id="nameInput"

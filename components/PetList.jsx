@@ -3,8 +3,6 @@ import { StyledList, StyledListItem, ListButton } from "@/styles";
 import { useState } from "react";
 
 export default function PetList({ onSelectPet, selectedPet }) {
-  const [highlightedPet, setHighlightedPet] = useState(false);
-
   return (
     <>
       <StyledList>
