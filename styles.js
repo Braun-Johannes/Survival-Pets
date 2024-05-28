@@ -20,7 +20,7 @@ export const StyledList = styled.ul`
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 50vh;
+  height: 45vh;
 `;
 
 export const StyledListItem = styled.li`
@@ -49,6 +49,7 @@ export const StyledSelectForm = styled.form`
   height: 33vh;
   margin: 14px;
   padding: 10px;
+  margin-top: 30px;
 `;
 
 export const StyledNameInput = styled.input`
@@ -60,4 +61,29 @@ export const StyledNameInput = styled.input`
   margin-bottom: 15px;
   margin-top: 10px;
   font-size: 18px;
+`;
+
+export const StyledStatsContainer = styled.ul`
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: black solid 2px;
+  border-radius: 5px;
+  height: 37vh;
+  margin: 14px;
+  padding: 10px;
+  list-style: none;
+`;
+
+export const StyledStatsListItems = styled.li`
+  padding: 8px;
+  width: 70px;
+`;
+
+export const StyledStatKey = styled.span`
+  font-weight: bold;
+  border-bottom: solid 1px black;
+  padding: 2px;
 `;

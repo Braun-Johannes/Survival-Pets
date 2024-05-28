@@ -10,6 +10,7 @@ export default function PetForm({ selectedPet, onHandleSubmit }) {
         type="text"
         defaultValue={selectedPet ? selectedPet.name : ""}
         placeholder="name"
+        required
       />
       <button type="submit">Select</button>
     </StyledSelectForm>

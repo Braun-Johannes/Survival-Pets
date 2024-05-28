@@ -3,6 +3,7 @@ import { StyledHeading } from "@/styles";
 import PetForm from "@/components/PetForm";
 import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
+import CurrentPetStats from "@/components/CurrentPetStats";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();
@@ -23,7 +24,7 @@ export default function HomePage() {
   }
 
   return (
-    <>
+    <div>
       {mode === "select" && (
         <>
           <StyledHeading>Select a Survival Pet</StyledHeading>
@@ -36,8 +37,9 @@ export default function HomePage() {
         <>
           <StyledHeading>Living Room</StyledHeading>
           <CurrentPet currentPet={currentPet} />
+          <CurrentPetStats currentPet={currentPet} />
         </>
       )}
-    </>
+    </div>
   );
 }
