@@ -1,4 +1,4 @@
-import pets from "@/pets";
+import pets from "@/lib/pets";
 import styled from "styled-components";
 
 const StyledList = styled.ul`
@@ -15,7 +15,6 @@ const StyledListItem = styled.li`
   border: 2px black solid;
   border-radius: 5px;
   padding: 5px;
-  cursor: pointer;
 `;
 
 const StyledHeading = styled.h1`
