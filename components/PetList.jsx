@@ -1,6 +1,5 @@
 import pets from "@/lib/pets";
 import { StyledList, StyledListItem, ListButton } from "@/styles";
-import { useState } from "react";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (

@@ -35,6 +35,7 @@ export default function HomePage() {
       {mode === "livingroom" && (
         <>
           <StyledHeading>Living Room</StyledHeading>
+          <CurrentPet currentPet={currentPet} />
         </>
       )}
     </>
