@@ -1,5 +1,5 @@
 import pets from "@/lib/pets";
-import { StyledList, StyledListItem, ListButton } from "@/styles";
+import { StyledList, StyledListItem, StyledListButton } from "@/styles";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
@@ -11,13 +11,13 @@ export default function PetList({ onSelectPet, selectedPet }) {
               style={{ border: selectedPet === pet ? "2px solid orange" : "" }}
               key={pet.id}
             >
-              <ListButton
+              <StyledListButton
                 onClick={() => {
                   onSelectPet(pet);
                 }}
               >
                 {pet.name}
-              </ListButton>
+              </StyledListButton>
             </StyledListItem>
           );
         })}

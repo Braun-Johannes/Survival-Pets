@@ -13,6 +13,8 @@ export default createGlobalStyle`
     font-family: system-ui;
   }`;
 
+// ______________SELECT MODE____________________
+
 export const StyledList = styled.ul`
   display: flex;
   justify-content: space-around;
@@ -29,11 +31,7 @@ export const StyledListItem = styled.li`
   padding: 5px;
 `;
 
-export const StyledHeading = styled.h1`
-  text-align: center;
-`;
-
-export const ListButton = styled.button`
+export const StyledListButton = styled.button`
   all: unset;
   cursor: pointer;
   display: inline-block;
@@ -63,6 +61,8 @@ export const StyledNameInput = styled.input`
   font-size: 18px;
 `;
 
+// ___________________LIVING ROOM___________________
+
 export const StyledStatsContainer = styled.ul`
   display: flex;
   justify-content: center;
@@ -86,4 +86,10 @@ export const StyledStatKey = styled.span`
   font-weight: bold;
   border-bottom: solid 1px black;
   padding: 2px;
+`;
+
+// _________________GENERAL___________________
+
+export const StyledHeading = styled.h1`
+  text-align: center;
 `;
