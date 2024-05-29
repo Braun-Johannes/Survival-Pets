@@ -17,7 +17,7 @@ export default function EditForm({selectedPet, onHandleMode, onSubmit}) {
         required
       />
       <StyledButton type="submit" >Update</StyledButton>
-      <StyledButton onClick={() => onHandleMode("livingroom")}>Cancel</StyledButton>
+      <StyledButton type="button" onClick={() => onHandleMode("livingroom")}>Cancel</StyledButton>
     </StyledForm>
     </>)
 }
