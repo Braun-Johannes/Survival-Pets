@@ -2,9 +2,10 @@ import StyledStatKey from "./Styles/StyledStatKey";
 import StyledStatsContainer from "./Styles/StyledStatsContainer";
 import StyledListItem from "./Styles/StyledListItem";
 import StyledButton from "./Styles/StyledButton";
+import styled from "styled-components";
 
 export default function CurrentPetStats({ selectedPet, onHandleMode }) {
-  return (<>
+  return (<StyledDiv>
     <StyledStatsContainer>
       <StyledListItem $variant="livingroom">
         <StyledStatKey>Name</StyledStatKey>
@@ -35,9 +36,16 @@ export default function CurrentPetStats({ selectedPet, onHandleMode }) {
         {selectedPet.energy}/100
       </StyledListItem>
       <StyledListItem>
-      <StyledButton $variant="edit" onClick={() => onHandleMode("edit")} >Edit</StyledButton>
       </StyledListItem>
     </StyledStatsContainer>
-    </>
+      <StyledButton $variant="edit" onClick={() => onHandleMode("edit")} >Edit</StyledButton>
+    </StyledDiv>
   );
 }
+
+const StyledDiv = styled.div`
+display: grid;
+grid-template-columns: 75% 25% ;
+border: solid black;
+border-radius: 5px;
+margin: 10px;`

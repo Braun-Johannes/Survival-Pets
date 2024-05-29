@@ -16,7 +16,7 @@ export default function EditForm({selectedPet, onHandleMode, onSubmit}) {
         $variant="name"
         required
       />
-      <StyledButton $variant="edit" type="submit" >Update</StyledButton>
+      <StyledButton $variant="updateEdit" type="submit" >Update</StyledButton>
       <StyledButton $variant="cancelEdit" type="button" onClick={() => onHandleMode("livingroom")}>Cancel</StyledButton>
     </StyledForm>
     </>)

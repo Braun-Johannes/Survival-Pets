@@ -11,10 +11,16 @@ const StyledButton = styled.button`
   ${(props) =>
     props.$variant === "edit" &&
     `
+    width: 50px;
+    height: 30px;
+    padding: 5px;
+    top: 50px;
+    left: 10px;
     border-radius: 7px;
     font-size: 20px;
   cursor: pointer;
-  display: inline-block;`}
+  display: flex;
+  position: relative;`}
 
   ${(props) =>
     props.$variant === "cancelEdit" &&
