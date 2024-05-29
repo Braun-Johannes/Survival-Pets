@@ -1,35 +1,47 @@
-import pets from "@/lib/pets";
-import styled from "styled-components";
-
-const StyledList = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  padding: 0;
-  align-items: center;
-  margin: 0;
-  height: 50vh;
-`;
-
-const StyledListItem = styled.li`
-  border: 2px black solid;
-  border-radius: 5px;
-  padding: 5px;
-`;
-
-const StyledHeading = styled.h1`
-  text-align: center;
-`;
+import PetList from "@/components/PetList";
+import StyledHeading from "@/components/Styles/StyledHeading";
+import PetForm from "@/components/PetForm";
+import { useState } from "react";
+import CurrentPet from "@/components/CurrentPet";
+import CurrentPetStats from "@/components/CurrentPetStats";
 
 export default function HomePage() {
+  const [selectedPet, setSelectedPet] = useState();
+
+  const [mode, setMode] = useState("select");
+
+  function handleSelectPet(selectedPetData) {
+    setSelectedPet(selectedPetData);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    const updatedPet = { ...selectedPet, name: data.nameInput };
+    setSelectedPet(updatedPet);
+
+    setMode("livingroom");
+  }
+
   return (
-    <>
-      <StyledHeading>Select a Survival Pet</StyledHeading>
-      <StyledList>
-        {pets.map((pet) => {
-          return <StyledListItem key={pet.id}>{pet.name}</StyledListItem>;
-        })}
-      </StyledList>
-    </>
+    <div>
+      {mode === "select" && (
+        <>
+          <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
+          <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
+          <PetForm selectedPet={selectedPet} onHandleSubmit={handleSubmit} />
+        </>
+      )}
+
+      {mode === "livingroom" && (
+        <>
+          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+          <CurrentPet selectedPet={selectedPet} />
+          <CurrentPetStats selectedPet={selectedPet} />
+        </>
+      )}
+    </div>
   );
 }
