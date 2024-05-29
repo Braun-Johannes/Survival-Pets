@@ -16,6 +16,7 @@ export default function HomePage() {
 
   function handleSubmit(event) {
     event.preventDefault();
+  
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 

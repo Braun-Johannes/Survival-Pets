@@ -15,7 +15,7 @@ export default function PetForm({ selectedPet, onHandleSubmit }) {
         $variant="name"
         required
       />
-      <StyledButton  type="submit">Select</StyledButton>
+      <StyledButton disabled={!selectedPet} type="submit">Select</StyledButton>
     </StyledForm>
   );
 }
