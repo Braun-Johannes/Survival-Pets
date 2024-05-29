@@ -20,7 +20,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
                 }}
                 $variant="select"
               >
-                {pet.name}
+                {pet.type}
               </StyledButton>
             </StyledListItem>
           );
