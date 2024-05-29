@@ -3,22 +3,23 @@ import StyledButton from "./Styles/StyledButton";
 import StyledList from "./Styles/StyledList";
 import StyledListItem from "./Styles/StyledListItem";
 
+
 export default function PetList({ onSelectPet, selectedPet }) {
+
   return (
     <>
       <StyledList>
         {pets.map((pet) => {
           return (
             <StyledListItem
-              style={{ border: selectedPet === pet ? "2px solid orange" : "" }}
+              $selected={selectedPet === pet}
               key={pet.id}
               $variant="select"
             >
-              <StyledButton
+              <StyledButton $variant="select"
                 onClick={() => {
                   onSelectPet(pet);
                 }}
-                $variant="select"
               >
                 {pet.type}
               </StyledButton>

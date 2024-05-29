@@ -1,5 +1,6 @@
 import StyledInput from "./Styles/StyleInput";
 import StyledForm from "./Styles/StyledForm";
+import StyledButton from "./Styles/StyledButton";
 
 export default function PetForm({ selectedPet, onHandleSubmit }) {
   return (
@@ -14,7 +15,7 @@ export default function PetForm({ selectedPet, onHandleSubmit }) {
         $variant="name"
         required
       />
-      <button type="submit">Select</button>
+      <StyledButton  type="submit">Select</StyledButton>
     </StyledForm>
   );
 }

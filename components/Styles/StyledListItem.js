@@ -16,6 +16,9 @@ border: 2px black solid;
   box-sizing: border-box;
   height: 23%;
   `}
+  ${(props) =>
+    props.$selected === true &&`
+    border: 2px orange solid;`}
 `;
 
 export default StyledListItem;
