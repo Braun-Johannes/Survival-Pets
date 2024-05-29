@@ -4,36 +4,36 @@ import {
   StyledStatKey,
 } from "@/styles";
 
-export default function CurrentPetStats({ currentPet }) {
+export default function CurrentPetStats({ selectedPet }) {
   return (
     <StyledStatsContainer>
       <StyledStatsListItems>
         <StyledStatKey>Name</StyledStatKey>
         <br />
-        {currentPet.name}
+        {selectedPet.name}
       </StyledStatsListItems>
       <StyledStatsListItems>
         <StyledStatKey>Type</StyledStatKey>
-        <br /> {currentPet.type}
+        <br /> {selectedPet.type}
       </StyledStatsListItems>
       <StyledStatsListItems>
         <StyledStatKey>Health</StyledStatKey>
-        <br /> {currentPet.health}/100
+        <br /> {selectedPet.health}/100
       </StyledStatsListItems>
       <StyledStatsListItems>
         <StyledStatKey>Happiness</StyledStatKey>
         <br />
-        {currentPet.happiness}/100
+        {selectedPet.happiness}/100
       </StyledStatsListItems>
       <StyledStatsListItems>
         <StyledStatKey>Satiety</StyledStatKey>
         <br />
-        {currentPet.satiety}/100
+        {selectedPet.satiety}/100
       </StyledStatsListItems>
       <StyledStatsListItems>
         <StyledStatKey>Energy</StyledStatKey>
         <br />
-        {currentPet.energy}/100
+        {selectedPet.energy}/100
       </StyledStatsListItems>
     </StyledStatsContainer>
   );

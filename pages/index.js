@@ -7,7 +7,7 @@ import CurrentPetStats from "@/components/CurrentPetStats";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();
-  const [currentPet, setCurrentPet] = useState();
+
   const [mode, setMode] = useState("select");
 
   function handleSelectPet(selectedPetData) {
@@ -18,8 +18,10 @@ export default function HomePage() {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    setSelectedPet({ ...selectedPet, name: data.nameInput });
-    setCurrentPet(selectedPet);
+
+    const updatedPet = { ...selectedPet, name: data.nameInput };
+    setSelectedPet(updatedPet);
+
     setMode("livingroom");
   }
 
@@ -36,8 +38,8 @@ export default function HomePage() {
       {mode === "livingroom" && (
         <>
           <StyledHeading>Living Room</StyledHeading>
-          <CurrentPet currentPet={currentPet} />
-          <CurrentPetStats currentPet={currentPet} />
+          <CurrentPet selectedPet={selectedPet} />
+          <CurrentPetStats selectedPet={selectedPet} />
         </>
       )}
     </div>
