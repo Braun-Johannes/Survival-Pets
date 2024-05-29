@@ -4,10 +4,10 @@ import PetForm from "@/components/PetForm";
 import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
+import EditForm from "@/components/EditForm";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();
-
   const [mode, setMode] = useState("select");
 
   function handleSelectPet(selectedPetData) {
@@ -24,6 +24,10 @@ export default function HomePage() {
 
     setMode("livingroom");
   }
+  function handleMode(mode) {
+    setMode(mode)
+  }
+
 
   return (
     <div>
@@ -39,7 +43,14 @@ export default function HomePage() {
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <CurrentPetStats selectedPet={selectedPet} />
+          <CurrentPetStats selectedPet={selectedPet} onHandleMode={handleMode}/>
+        </>
+      )}
+      {mode === "edit" && (
+        <>
+          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+          <CurrentPet selectedPet={selectedPet} />
+          <EditForm/>
         </>
       )}
     </div>

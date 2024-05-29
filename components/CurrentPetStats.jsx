@@ -1,8 +1,9 @@
 import StyledStatKey from "./Styles/StyledStatKey";
 import StyledStatsContainer from "./Styles/StyledStatsContainer";
 import StyledListItem from "./Styles/StyledListItem";
+import StyledButton from "./Styles/StyledButton";
 
-export default function CurrentPetStats({ selectedPet }) {
+export default function CurrentPetStats({ selectedPet, onHandleMode }) {
   return (
     <StyledStatsContainer>
       <StyledListItem $variant="livingroom">
@@ -32,6 +33,9 @@ export default function CurrentPetStats({ selectedPet }) {
         <StyledStatKey>Energy</StyledStatKey>
         <br />
         {selectedPet.energy}/100
+      </StyledListItem>
+      <StyledListItem>
+      <StyledButton $variant="edit">Edit</StyledButton>
       </StyledListItem>
     </StyledStatsContainer>
   );
