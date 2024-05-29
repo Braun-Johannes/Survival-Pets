@@ -2,7 +2,7 @@ import PetList from "@/components/PetList";
 import { StyledHeading } from "@/styles";
 import PetForm from "@/components/PetForm";
 import { useState } from "react";
-import CurrentPet from "@/components/CurrentPet/CurrentPet";
+import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 
 export default function HomePage() {
@@ -29,7 +29,7 @@ export default function HomePage() {
     <div>
       {mode === "select" && (
         <>
-          <StyledHeading>Select a Survival Pet</StyledHeading>
+          <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
           <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
           <PetForm selectedPet={selectedPet} onHandleSubmit={handleSubmit} />
         </>
@@ -37,7 +37,7 @@ export default function HomePage() {
 
       {mode === "livingroom" && (
         <>
-          <StyledHeading>Living Room</StyledHeading>
+          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
           <CurrentPetStats selectedPet={selectedPet} />
         </>

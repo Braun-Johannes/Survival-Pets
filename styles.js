@@ -17,9 +17,3 @@ export default createGlobalStyle`
    
   }
   }`;
-
-//_____________________General_____________________
-
-export const StyledHeading = styled.h1`
-  text-align: center;
-`;
