@@ -13,12 +13,6 @@ export default createGlobalStyle`
     font-family: system-ui;
   }`;
 
-export const StyledStatKey = styled.span`
-  font-weight: bold;
-  border-bottom: solid 1px black;
-  padding: 2px;
-`;
-
 //_____________________General_____________________
 
 export const StyledHeading = styled.h1`

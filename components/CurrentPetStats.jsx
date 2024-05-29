@@ -1,4 +1,4 @@
-import { StyledStatKey } from "@/styles";
+import StyledStatKey from "./Styles/StyledStatKey";
 import StyledStatsContainer from "./Styles/StyledStatsContainer";
 import StyledListItem from "./Styles/StyledListItem";
 

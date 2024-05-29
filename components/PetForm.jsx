@@ -1,19 +1,20 @@
-import StyledNameInput from "./Styles/StyleNameInput";
-import StyledSelectForm from "./Styles/StyledSelectForm";
+import StyledInput from "./Styles/StyleInput";
+import StyledForm from "./Styles/StyledForm";
 
 export default function PetForm({ selectedPet, onHandleSubmit }) {
   return (
-    <StyledSelectForm onSubmit={onHandleSubmit}>
+    <StyledForm onSubmit={onHandleSubmit} $variant="select">
       <label htmlFor="nameInput">Choose a name</label>
-      <StyledNameInput
+      <StyledInput
         id="nameInput"
         name="nameInput"
         type="text"
         defaultValue={selectedPet ? selectedPet.name : ""}
         placeholder="name"
+        $variant="name"
         required
       />
       <button type="submit">Select</button>
-    </StyledSelectForm>
+    </StyledForm>
   );
 }

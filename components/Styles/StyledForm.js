@@ -1,7 +1,9 @@
 import styled from "styled-components";
 
-const StyledSelectForm = styled.form`
-  display: flex;
+const StyledForm = styled.form`
+  ${(props) =>
+    props.$variant === "select" &&
+    `  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -10,7 +12,7 @@ const StyledSelectForm = styled.form`
   height: 33vh;
   margin: 14px;
   padding: 10px;
-  margin-top: 30px;
+  margin-top: 30px;`}
 `;
 
-export default StyledSelectForm;
+export default StyledForm;
