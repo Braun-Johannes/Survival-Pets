@@ -9,8 +9,18 @@ const StyledButton = styled.button`
   display: inline-block;`}
 
   ${(props) =>
+    props.$variant === "updateEdit" &&
+    `
+    border-radius: 7px;
+    font-size: 20px;
+  cursor: pointer;
+  display: inline-block;`}
+
+  ${(props) =>
     props.$variant === "edit" &&
     `
+    display: flex;
+    position: relative;
     width: 50px;
     height: 30px;
     padding: 5px;
@@ -18,17 +28,20 @@ const StyledButton = styled.button`
     left: 10px;
     border-radius: 7px;
     font-size: 20px;
-  cursor: pointer;
-  display: flex;
-  position: relative;`}
+  cursor: pointer;`}
 
   ${(props) =>
     props.$variant === "cancelEdit" &&
     `
+    display: flex;
+    position: relative;
+    width: 80px;
+    height: 30px;
+    top: 40px;
+    right: 10px;
     border-radius: 7px;
     font-size: 20px;
-  cursor: pointer;
-  display: inline-block;`}
+  cursor: pointer;`}
 `;
 
 

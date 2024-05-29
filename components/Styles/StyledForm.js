@@ -4,11 +4,11 @@ const StyledForm = styled.form`
   ${(props) =>
     props.$variant === "select" &&
     `  display: flex;
+    position: relative;
+    left: 50px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: black solid 2px;
-  border-radius: 5px;
   height: 33vh;
   margin: 14px;
   padding: 10px;
