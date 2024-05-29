@@ -50,7 +50,7 @@ export default function HomePage() {
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <EditForm/>
+          <EditForm selectedPet={selectedPet} onSubmit={handleSubmit} onHandleMode={handleMode}/>
         </>
       )}
     </div>

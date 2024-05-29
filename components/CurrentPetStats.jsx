@@ -35,7 +35,7 @@ export default function CurrentPetStats({ selectedPet, onHandleMode }) {
         {selectedPet.energy}/100
       </StyledListItem>
       <StyledListItem>
-      <StyledButton $variant="edit">Edit</StyledButton>
+      <StyledButton onClick={() => onHandleMode("edit")} $variant="edit">Edit</StyledButton>
       </StyledListItem>
     </StyledStatsContainer>
   );

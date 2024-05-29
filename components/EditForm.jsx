@@ -1,20 +1,23 @@
 import StyledForm from "./Styles/StyledForm"
 import StyledInput from "./Styles/StyleInput"
+import StyledButton from "./Styles/StyledButton"
 
 
 
-export default function EditForm() {
+export default function EditForm({selectedPet, onHandleMode, onSubmit}) {
 
     return (<>
-    <StyledForm>
+    <StyledForm $variant="select" onSubmit={onSubmit}>
     <StyledInput
         id="nameInput"
         name="nameInput"
         type="text"
-        defaultValue={selectedPet ? selectedPet.name : ""}
+        defaultValue={selectedPet.name}
         $variant="name"
         required
       />
+      <StyledButton type="submit" >Update</StyledButton>
+      <StyledButton onClick={() => onHandleMode("livingroom")}>Cancel</StyledButton>
     </StyledForm>
     </>)
 }
