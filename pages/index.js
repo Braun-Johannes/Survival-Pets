@@ -1,5 +1,5 @@
 import PetList from "@/components/PetList";
-import { StyledHeading } from "@/styles";
+import StyledHeading from "@/components/Styles/StyledHeading";
 import PetForm from "@/components/PetForm";
 import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
