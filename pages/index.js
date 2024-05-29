@@ -2,7 +2,7 @@ import PetList from "@/components/PetList";
 import { StyledHeading } from "@/styles";
 import PetForm from "@/components/PetForm";
 import { useState } from "react";
-import CurrentPet from "@/components/CurrentPet";
+import CurrentPet from "@/components/CurrentPet/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 
 export default function HomePage() {

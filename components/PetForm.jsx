@@ -1,4 +1,5 @@
-import { StyledSelectForm, StyledNameInput } from "@/styles";
+import StyledNameInput from "./Styles/StyleNameInput";
+import StyledSelectForm from "./Styles/StyledSelectForm";
 
 export default function PetForm({ selectedPet, onHandleSubmit }) {
   return (

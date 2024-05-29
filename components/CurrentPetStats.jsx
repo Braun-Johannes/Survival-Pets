@@ -1,40 +1,38 @@
-import {
-  StyledStatsContainer,
-  StyledStatsListItems,
-  StyledStatKey,
-} from "@/styles";
+import { StyledStatKey } from "@/styles";
+import StyledStatsContainer from "./Styles/StyledStatsContainer";
+import StyledListItem from "./Styles/StyledListItem";
 
 export default function CurrentPetStats({ selectedPet }) {
   return (
     <StyledStatsContainer>
-      <StyledStatsListItems>
+      <StyledListItem $variant="livingroom">
         <StyledStatKey>Name</StyledStatKey>
         <br />
         {selectedPet.name}
-      </StyledStatsListItems>
-      <StyledStatsListItems>
+      </StyledListItem>
+      <StyledListItem $variant="livingroom">
         <StyledStatKey>Type</StyledStatKey>
         <br /> {selectedPet.type}
-      </StyledStatsListItems>
-      <StyledStatsListItems>
+      </StyledListItem>
+      <StyledListItem $variant="livingroom">
         <StyledStatKey>Health</StyledStatKey>
         <br /> {selectedPet.health}/100
-      </StyledStatsListItems>
-      <StyledStatsListItems>
+      </StyledListItem>
+      <StyledListItem $variant="livingroom">
         <StyledStatKey>Happiness</StyledStatKey>
         <br />
         {selectedPet.happiness}/100
-      </StyledStatsListItems>
-      <StyledStatsListItems>
+      </StyledListItem>
+      <StyledListItem $variant="livingroom">
         <StyledStatKey>Satiety</StyledStatKey>
         <br />
         {selectedPet.satiety}/100
-      </StyledStatsListItems>
-      <StyledStatsListItems>
+      </StyledListItem>
+      <StyledListItem $variant="livingroom">
         <StyledStatKey>Energy</StyledStatKey>
         <br />
         {selectedPet.energy}/100
-      </StyledStatsListItems>
+      </StyledListItem>
     </StyledStatsContainer>
   );
 }
