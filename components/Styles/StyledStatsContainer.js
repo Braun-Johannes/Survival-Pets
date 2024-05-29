@@ -10,6 +10,10 @@ const StyledStatsContainer = styled.ul`
   height: 37vh;
   margin: 1rem;
   list-style: none;
+  @media (min-width: 800px) {
+    width: 350px;
+    height: 300px;
+  }
 `;
 
 export default StyledStatsContainer;

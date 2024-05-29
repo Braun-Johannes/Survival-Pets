@@ -11,6 +11,11 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
+    @media (min-width: 800px) {
+      display:flex;
+      justify-content: center;
+   
+  }
   }`;
 
 //_____________________General_____________________
