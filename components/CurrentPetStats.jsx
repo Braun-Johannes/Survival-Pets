@@ -6,7 +6,7 @@ import StyledDiv from "./Styles/StyledDiv";
 
 export default function CurrentPetStats({ selectedPet, handleMode }) {
   return (
-    <StyledDiv $variant="livingroom">
+    <StyledDiv>
       <StyledStatsContainer>
         <StyledListItem $variant="livingroom">
           <StyledStatKey>Name</StyledStatKey>

@@ -6,8 +6,8 @@ const StyledList = styled.ul`
   align-items: center;
   list-style: none;
   padding: 0;
-  margin: 0;
-  height: 45vh;
+  margin-top: 25%;
+  margin-bottom: 25%;
 `;
 
 export default StyledList;

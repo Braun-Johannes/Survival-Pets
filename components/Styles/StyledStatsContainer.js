@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 const StyledStatsContainer = styled.ul`
-display: grid;
-grid-template-columns: 50% 50% ;
-grid-template-rows: 33% 33% 33%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding-inline-start: 0;
   list-style: none;
-  margin: 20px;
-
+  width: 100%;
+  margin: 50px 30px 50px 30px;
 `;
 
 export default StyledStatsContainer;

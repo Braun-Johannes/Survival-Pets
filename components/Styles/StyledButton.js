@@ -1,49 +1,33 @@
 import styled from "styled-components";
 
 const StyledButton = styled.button`
-  ${(props) =>
-    props.$variant === "select" &&
-    `
-    all: unset;
   cursor: pointer;
-  display: inline-block;`}
+  font-size: 20px;
 
   ${(props) =>
-    props.$variant === "updateEdit" &&
+    props.$variant === "highlight" &&
     `
-    border-radius: 7px;
-    font-size: 20px;
-  cursor: pointer;
-  display: inline-block;`}
+    background: none;
+    border: none;
+  `}
 
   ${(props) =>
     props.$variant === "edit" &&
     `
-    display: flex;
-    position: relative;
-    width: 50px;
-    height: 30px;
-    padding: 5px;
-    top: 50px;
-    left: 10px;
-    border-radius: 7px;
-    font-size: 20px;
-  cursor: pointer;`}
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    `}
+  
 
   ${(props) =>
     props.$variant === "cancelEdit" &&
     `
-    display: flex;
-    position: relative;
-    width: 80px;
-    height: 30px;
-    top: 40px;
+    position: absolute;
     right: 10px;
-    border-radius: 7px;
-    font-size: 20px;
-  cursor: pointer;`}
+    top: 10px;
+    
+    `}
 `;
-
-
 
 export default StyledButton;

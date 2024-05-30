@@ -1,30 +1,28 @@
 import styled from "styled-components";
 
 const StyledForm = styled.form`
+  border-radius: 5px;
+  height: 20rem;
+  padding: 10px;
+  margin: 30px 15px 5px 15px;
+
   ${(props) =>
     props.$variant === "select" &&
     `  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: relative;
-  height: 15rem;
-  margin: 14px;
-  padding: 10px;
-  margin-top: 30px;
-  border: 1px solid black`}
+  border: solid black;
+  
+  
+  `}
   ${(props) =>
     props.$variant === "edit" &&
     `  display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  position: relative;
-  height: 200px;
-  margin: 14px;
-  padding: 10px;
-  margin-top: 30px;
-  left: 40px;`}
+  flex-direction: column;  
+  `};
 `;
 
 export default StyledForm;

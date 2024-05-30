@@ -6,7 +6,10 @@ const StyledListItem = styled.li`
     ` 
 border: 2px black solid;
   border-radius: 5px;
-  padding: 5px;`}
+  padding: 5px;
+  min-width: 80px;
+  text-align: center;
+  `}
   ${(props) =>
     props.$variant === "livingroom" &&
     `
@@ -17,7 +20,8 @@ border: 2px black solid;
   height: 23%;
   `}
   ${(props) =>
-    props.$selected === true &&`
+    props.$selected === true &&
+    `
     border: 2px orange solid;`}
 `;
 
