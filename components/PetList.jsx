@@ -1,7 +1,7 @@
 import pets from "@/lib/pets";
-import StyledList from "./Styles/StyledList";
-import StyledListItem from "./Styles/StyledListItem";
-import PositionedButton from "./Styles/StyledButton";
+import StyledList from "@/components/Styles/StyledList";
+import StyledListItem from "@/components/Styles/StyledListItem";
+import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (

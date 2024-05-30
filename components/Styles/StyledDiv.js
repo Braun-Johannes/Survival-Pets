@@ -11,13 +11,4 @@ const StyledDiv = styled.div`
   height: 20rem;
 `;
 
-// const PositionedDiv = styled(StyledDiv)`
-//   position: ${(props) => props.position || "absolute"};
-//   top: ${(props) => props.top || "auto"};
-//   right: ${(props) => props.right || "auto"};
-//   bottom: ${(props) => props.bottom || "auto"};
-//   left: ${(props) => props.left || "auto"};
-//   width: ${(props) => props.width || "auto"};
-// `;
-
 export default StyledDiv;

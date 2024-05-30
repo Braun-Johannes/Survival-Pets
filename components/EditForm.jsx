@@ -1,7 +1,7 @@
-import StyledForm from "./Styles/StyledForm";
-import StyledInput from "./Styles/StyleInput";
-import StyledDiv from "./Styles/StyledDiv";
-import PositionedButton from "./Styles/StyledButton";
+import StyledForm from "@/components/Styles/StyledForm";
+import StyledInput from "@/components/Styles/StyleInput";
+import StyledDiv from "@/components/Styles/StyledDiv";
+import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function EditForm({ selectedPet, onMode, onSubmit }) {
   return (
@@ -12,6 +12,7 @@ export default function EditForm({ selectedPet, onMode, onSubmit }) {
             id="nameInput"
             name="nameInput"
             type="text"
+            maxLength={10}
             defaultValue={selectedPet.name}
             $variant="name"
             required

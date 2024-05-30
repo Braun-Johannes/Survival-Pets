@@ -1,6 +1,6 @@
-import StyledInput from "./Styles/StyleInput";
-import StyledForm from "./Styles/StyledForm";
-import PositionedButton from "./Styles/StyledButton";
+import StyledInput from "@/components/Styles/StyleInput";
+import StyledForm from "@/components/Styles/StyledForm";
+import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function PetForm({ selectedPet, onSubmit }) {
   return (

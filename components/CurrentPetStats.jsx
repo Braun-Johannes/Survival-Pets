@@ -1,8 +1,8 @@
-import StyledStatKey from "./Styles/StyledStatKey";
-import StyledStatsContainer from "./Styles/StyledStatsContainer";
-import StyledListItem from "./Styles/StyledListItem";
-import StyledDiv from "./Styles/StyledDiv";
-import PositionedButton from "./Styles/StyledButton";
+import StyledStatKey from "@/components/Styles/StyledStatKey";
+import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
+import StyledListItem from "@/components/Styles/StyledListItem";
+import StyledDiv from "@/components/Styles/StyledDiv";
+import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function CurrentPetStats({ selectedPet, onMode }) {
   return (
