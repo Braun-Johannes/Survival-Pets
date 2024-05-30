@@ -6,7 +6,7 @@ import StyledDiv from "./Styles/StyledDiv";
 export default function EditForm({ selectedPet, handleMode, onSubmit }) {
   return (
     <StyledDiv>
-      <StyledForm $variant="edit" onSubmit={onSubmit}>
+      <StyledForm onSubmit={onSubmit}>
         <StyledInput
           id="nameInput"
           name="nameInput"

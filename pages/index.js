@@ -22,7 +22,7 @@ export default function HomePage() {
 
     if (data.nameInput.trim() === "") {
       alert(
-        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets"
+        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
       );
       return;
     }

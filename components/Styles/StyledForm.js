@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
 const StyledForm = styled.form`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   border-radius: 5px;
   height: 20rem;
   padding: 10px;
@@ -8,21 +12,11 @@ const StyledForm = styled.form`
 
   ${(props) =>
     props.$variant === "select" &&
-    `  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    `  
   border: solid black;
   
   
   `}
-  ${(props) =>
-    props.$variant === "edit" &&
-    `  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;  
-  `};
 `;
 
 export default StyledForm;
