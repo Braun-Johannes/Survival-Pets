@@ -45,7 +45,6 @@ export default function HomePage() {
           <PetForm selectedPet={selectedPet} onHandleSubmit={handleSubmit} />
         </>
       )}
-
       {mode === "livingroom" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
