@@ -16,7 +16,7 @@ export default function HomePage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-  
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
@@ -26,9 +26,8 @@ export default function HomePage() {
     setMode("livingroom");
   }
   function handleMode(mode) {
-    setMode(mode)
+    setMode(mode);
   }
-
 
   return (
     <div>
@@ -44,14 +43,21 @@ export default function HomePage() {
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <CurrentPetStats selectedPet={selectedPet} onHandleMode={handleMode}/>
+          <CurrentPetStats
+            selectedPet={selectedPet}
+            onHandleMode={handleMode}
+          />
         </>
       )}
       {mode === "edit" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <EditForm selectedPet={selectedPet} onSubmit={handleSubmit} onHandleMode={handleMode}/>
+          <EditForm
+            selectedPet={selectedPet}
+            onSubmit={handleSubmit}
+            onHandleMode={handleMode}
+          />
         </>
       )}
     </div>
