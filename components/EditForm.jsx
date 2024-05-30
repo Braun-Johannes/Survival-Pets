@@ -3,7 +3,7 @@ import StyledInput from "./Styles/StyleInput";
 import StyledButton from "./Styles/StyledButton";
 import StyledDiv from "./Styles/StyledDiv";
 
-export default function EditForm({ selectedPet, onHandleMode, onSubmit }) {
+export default function EditForm({ selectedPet, handleMode, onSubmit }) {
   return (
     <StyledDiv $variant="edit">
       <StyledForm $variant="edit" onSubmit={onSubmit}>
@@ -22,7 +22,7 @@ export default function EditForm({ selectedPet, onHandleMode, onSubmit }) {
       <StyledButton
         $variant="cancelEdit"
         type="button"
-        onClick={() => onHandleMode("livingroom")}
+        onClick={() => handleMode("livingroom")}
       >
         Cancel
       </StyledButton>

@@ -42,17 +42,14 @@ export default function HomePage() {
         <>
           <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
           <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
-          <PetForm selectedPet={selectedPet} onHandleSubmit={handleSubmit} />
+          <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
         </>
       )}
       {mode === "livingroom" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <CurrentPetStats
-            selectedPet={selectedPet}
-            onHandleMode={handleMode}
-          />
+          <CurrentPetStats selectedPet={selectedPet} handleMode={handleMode} />
         </>
       )}
       {mode === "edit" && (
@@ -62,7 +59,7 @@ export default function HomePage() {
           <EditForm
             selectedPet={selectedPet}
             onSubmit={handleSubmit}
-            onHandleMode={handleMode}
+            handleMode={handleMode}
           />
         </>
       )}

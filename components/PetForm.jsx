@@ -2,9 +2,9 @@ import StyledInput from "./Styles/StyleInput";
 import StyledForm from "./Styles/StyledForm";
 import StyledButton from "./Styles/StyledButton";
 
-export default function PetForm({ selectedPet, onHandleSubmit }) {
+export default function PetForm({ selectedPet, onSubmit }) {
   return (
-    <StyledForm onSubmit={onHandleSubmit} $variant="select">
+    <StyledForm onSubmit={onSubmit} $variant="select">
       <label htmlFor="nameInput">Choose a name</label>
       <StyledInput
         id="nameInput"
