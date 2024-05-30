@@ -28,7 +28,7 @@ const StyledButton = styled.button`
     props.$variant === "edit" &&
     `
     background-color: transparent;
-    border: 1px solid rgb(206, 147, 216);
+    border: 1px solid rgb(104, 32, 69);
     font-size: 0.875rem;
     line-height: 1.75;
     letter-spacing: 0.02857em;
@@ -36,7 +36,7 @@ const StyledButton = styled.button`
     min-width: 64px;
     padding: 6px 8px;
     border-radius: 4px;
-    color: rgb(206, 147, 216);
+    color: rgb(104, 32, 69);
     `}
   
 
