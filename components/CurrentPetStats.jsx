@@ -1,8 +1,8 @@
 import StyledStatKey from "./Styles/StyledStatKey";
 import StyledStatsContainer from "./Styles/StyledStatsContainer";
 import StyledListItem from "./Styles/StyledListItem";
-import StyledButton from "./Styles/StyledButton";
 import StyledDiv from "./Styles/StyledDiv";
+import PositionedButton from "./Styles/StyledButton";
 
 export default function CurrentPetStats({ selectedPet, handleMode }) {
   return (
@@ -38,9 +38,14 @@ export default function CurrentPetStats({ selectedPet, handleMode }) {
         </StyledListItem>
         <StyledListItem></StyledListItem>
       </StyledStatsContainer>
-      <StyledButton $variant="edit" onClick={() => handleMode("edit")}>
+      <PositionedButton
+        $variant="edit"
+        top="10px"
+        right="10px"
+        onClick={() => handleMode("edit")}
+      >
         Edit
-      </StyledButton>
+      </PositionedButton>
     </StyledDiv>
   );
 }

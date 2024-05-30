@@ -1,7 +1,7 @@
 import StyledForm from "./Styles/StyledForm";
 import StyledInput from "./Styles/StyleInput";
-import StyledButton from "./Styles/StyledButton";
 import StyledDiv from "./Styles/StyledDiv";
+import PositionedButton from "./Styles/StyledButton";
 
 export default function EditForm({ selectedPet, handleMode, onSubmit }) {
   return (
@@ -15,15 +15,19 @@ export default function EditForm({ selectedPet, handleMode, onSubmit }) {
           $variant="name"
           required
         />
-        <StyledButton type="submit">Update Name</StyledButton>
+        <PositionedButton $variant="confirm" bottom="85px" type="submit">
+          Update Name
+        </PositionedButton>
       </StyledForm>
-      <StyledButton
-        $variant="cancelEdit"
+      <PositionedButton
+        $variant="cancel"
+        top="10px"
+        right="10px"
         type="button"
         onClick={() => handleMode("livingroom")}
       >
         Cancel
-      </StyledButton>
+      </PositionedButton>
     </StyledDiv>
   );
 }

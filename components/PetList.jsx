@@ -1,7 +1,7 @@
 import pets from "@/lib/pets";
-import StyledButton from "./Styles/StyledButton";
 import StyledList from "./Styles/StyledList";
 import StyledListItem from "./Styles/StyledListItem";
+import PositionedButton from "./Styles/StyledButton";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
@@ -14,14 +14,15 @@ export default function PetList({ onSelectPet, selectedPet }) {
               key={pet.id}
               $variant="select"
             >
-              <StyledButton
+              <PositionedButton
                 $variant="highlight"
+                position="static"
                 onClick={() => {
                   onSelectPet(pet);
                 }}
               >
                 {pet.type}
-              </StyledButton>
+              </PositionedButton>
             </StyledListItem>
           );
         })}

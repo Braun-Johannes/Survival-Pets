@@ -1,6 +1,6 @@
 import StyledInput from "./Styles/StyleInput";
 import StyledForm from "./Styles/StyledForm";
-import StyledButton from "./Styles/StyledButton";
+import PositionedButton from "./Styles/StyledButton";
 
 export default function PetForm({ selectedPet, onSubmit }) {
   return (
@@ -16,9 +16,14 @@ export default function PetForm({ selectedPet, onSubmit }) {
         maxLength={10}
         required
       />
-      <StyledButton disabled={!selectedPet} type="submit">
+      <PositionedButton
+        position="static"
+        $variant="confirm"
+        disabled={!selectedPet}
+        type="submit"
+      >
         Select
-      </StyledButton>
+      </PositionedButton>
     </StyledForm>
   );
 }
