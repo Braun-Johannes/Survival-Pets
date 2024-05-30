@@ -20,6 +20,13 @@ export default function HomePage() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
+    if (data.nameInput.trim() === "") {
+      alert(
+        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets"
+      );
+      return;
+    }
+
     const updatedPet = { ...selectedPet, name: data.nameInput };
     setSelectedPet(updatedPet);
 

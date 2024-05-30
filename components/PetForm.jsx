@@ -13,9 +13,12 @@ export default function PetForm({ selectedPet, onHandleSubmit }) {
         defaultValue={selectedPet ? selectedPet.name : ""}
         placeholder="name"
         $variant="name"
+        maxLength={10}
         required
       />
-      <StyledButton disabled={!selectedPet} type="submit">Select</StyledButton>
+      <StyledButton disabled={!selectedPet} type="submit">
+        Select
+      </StyledButton>
     </StyledForm>
   );
 }
