@@ -3,7 +3,7 @@ import StyledInput from "./Styles/StyleInput";
 import StyledDiv from "./Styles/StyledDiv";
 import PositionedButton from "./Styles/StyledButton";
 
-export default function EditForm({ selectedPet, handleMode, onSubmit }) {
+export default function EditForm({ selectedPet, onMode, onSubmit }) {
   return (
     <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
       <StyledDiv>
@@ -25,7 +25,7 @@ export default function EditForm({ selectedPet, handleMode, onSubmit }) {
           top="10px"
           right="10px"
           type="button"
-          onClick={() => handleMode("livingroom")}
+          onClick={() => onMode("livingroom")}
         >
           Cancel
         </PositionedButton>

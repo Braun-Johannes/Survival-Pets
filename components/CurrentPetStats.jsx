@@ -4,7 +4,7 @@ import StyledListItem from "./Styles/StyledListItem";
 import StyledDiv from "./Styles/StyledDiv";
 import PositionedButton from "./Styles/StyledButton";
 
-export default function CurrentPetStats({ selectedPet, handleMode }) {
+export default function CurrentPetStats({ selectedPet, onMode }) {
   return (
     <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
       <StyledDiv>
@@ -43,7 +43,7 @@ export default function CurrentPetStats({ selectedPet, handleMode }) {
           $variant="edit"
           top="10px"
           right="10px"
-          onClick={() => handleMode("edit")}
+          onClick={() => onMode("edit")}
         >
           Edit
         </PositionedButton>

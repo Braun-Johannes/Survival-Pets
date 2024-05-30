@@ -49,7 +49,7 @@ export default function HomePage() {
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <CurrentPetStats selectedPet={selectedPet} handleMode={handleMode} />
+          <CurrentPetStats selectedPet={selectedPet} onMode={handleMode} />
         </>
       )}
       {mode === "edit" && (
@@ -59,7 +59,7 @@ export default function HomePage() {
           <EditForm
             selectedPet={selectedPet}
             onSubmit={handleSubmit}
-            handleMode={handleMode}
+            onMode={handleMode}
           />
         </>
       )}
