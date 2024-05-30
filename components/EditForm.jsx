@@ -16,7 +16,7 @@ export default function EditForm({ selectedPet, onHandleMode, onSubmit }) {
           required
         />
         <StyledButton $variant="updateEdit" type="submit">
-          Update
+          Update Name
         </StyledButton>
       </StyledForm>
       <StyledButton
