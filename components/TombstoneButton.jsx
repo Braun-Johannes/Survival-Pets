@@ -13,7 +13,12 @@ export default function TombstoneButton({ selectedPet, onDeletePet }) {
         >
           <p>R.I.P.</p>
           <p>{selectedPet.name}</p>
-          <p>Select a new Survival Pet</p>
+          <hr />
+          <br />
+          <p>
+            Click here <br /> to select a
+            <br /> new Survival Pet
+          </p>
         </PositionedButton>
       </StyledDiv>
     </>

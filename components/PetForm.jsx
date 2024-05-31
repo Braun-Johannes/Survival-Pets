@@ -12,7 +12,7 @@ export default function PetForm({ selectedPet, onSubmit }) {
           name="nameInput"
           type="text"
           defaultValue={selectedPet ? selectedPet.name : ""}
-          placeholder="name"
+          placeholder="maximum 10 characters.."
           $variant="name"
           maxLength={10}
           required
