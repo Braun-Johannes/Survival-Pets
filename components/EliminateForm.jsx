@@ -14,7 +14,7 @@ export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
           <PositionedButton
             $variant="confirm"
             bottom="85px"
-            right="250px"
+            right="400px"
             type="button"
             onClick={() => onEliminate()}
           >
@@ -24,7 +24,7 @@ export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
         <PositionedButton
           $variant="cancel"
           bottom="85px"
-          right="150px"
+          right="300px"
           type="button"
           onClick={() => onMode("livingroom")}
         >

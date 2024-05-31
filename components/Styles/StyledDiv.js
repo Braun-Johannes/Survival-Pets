@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
 const StyledDiv = styled.div`
-  position: relative;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
-  position: relative;
   border: solid black;
   border-radius: 5px;
   margin: 10px;
