@@ -1,17 +1,22 @@
 import PetList from "@/components/PetList";
 import StyledHeading from "@/components/Styles/StyledHeading";
 import PetForm from "@/components/PetForm";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
 import EliminateForm from "@/components/EliminateForm";
-import pets from "@/lib/pets";
 import TombstoneButton from "@/components/TombstoneButton";
 
 export default function HomePage() {
-  const [selectedPet, setSelectedPet] = useState(pets);
+  const [selectedPet, setSelectedPet] = useState();
   const [mode, setMode] = useState("select");
+
+  let isDead = false;
+
+  if (selectedPet) {
+    isDead = selectedPet.health === 0;
+  }
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
@@ -44,7 +49,6 @@ export default function HomePage() {
     setSelectedPet(eliminatedPet);
     setMode("livingroom");
   }
-  const isDead = selectedPet.health === 0;
 
   function handleDeletePet() {
     setSelectedPet("");
