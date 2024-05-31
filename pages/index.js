@@ -7,6 +7,7 @@ import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
 import EliminateForm from "@/components/EliminateForm";
 import pets from "@/lib/pets";
+import TombstoneButton from "@/components/TombstoneButton";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState(pets);
@@ -45,6 +46,11 @@ export default function HomePage() {
   }
   const isDead = selectedPet.health === 0;
 
+  function handleDeletePet() {
+    setSelectedPet("");
+    setMode("select");
+  }
+
   return (
     <div>
       {mode === "select" && (
@@ -58,10 +64,19 @@ export default function HomePage() {
       {mode === "livingroom" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          {!isDead ? <CurrentPet selectedPet={selectedPet} /> : "Tombstone"}
+          {!isDead ? (
+            <CurrentPet selectedPet={selectedPet} />
+          ) : (
+            <TombstoneButton
+              selectedPet={selectedPet}
+              onMode={handleMode}
+              onDeletePet={handleDeletePet}
+            />
+          )}
           <CurrentPetStats selectedPet={selectedPet} onMode={handleMode} />
         </>
       )}
+
       {mode === "edit" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
@@ -77,8 +92,7 @@ export default function HomePage() {
       {mode === "eliminate" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          {isDead ? "Tombstone" : <CurrentPet selectedPet={selectedPet} />}
-
+          <CurrentPet selectedPet={selectedPet} />
           <EliminateForm
             selectedPet={selectedPet}
             onMode={handleMode}

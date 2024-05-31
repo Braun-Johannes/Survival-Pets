@@ -9,6 +9,12 @@ const StyledDiv = styled.div`
   border-radius: 5px;
   margin: 10px;
   height: 20rem;
+
+  ${(props) =>
+    props.$variant === "tombstone" &&
+    `
+  border: none;
+    `}
 `;
 
 export default StyledDiv;
