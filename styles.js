@@ -10,4 +10,5 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: system-ui;
+
   }`;

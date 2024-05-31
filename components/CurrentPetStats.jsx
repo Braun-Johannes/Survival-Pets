@@ -47,6 +47,14 @@ export default function CurrentPetStats({ selectedPet, onMode }) {
         >
           Edit
         </PositionedButton>
+        <PositionedButton
+          $variant="cancel"
+          top="60px"
+          right="10px"
+          onClick={() => onMode("eliminate")}
+        >
+          Eliminate
+        </PositionedButton>
       </StyledDiv>
     </div>
   );

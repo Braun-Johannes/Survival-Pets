@@ -38,6 +38,7 @@ const StyledButton = styled.button`
     border-radius: 4px;
     color: rgb(104, 32, 69);
     `}
+    
   
 
   ${(props) =>

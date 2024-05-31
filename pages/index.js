@@ -1,13 +1,15 @@
 import PetList from "@/components/PetList";
 import StyledHeading from "@/components/Styles/StyledHeading";
 import PetForm from "@/components/PetForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
+import EliminateForm from "@/components/EliminateForm";
+import pets from "@/lib/pets";
 
 export default function HomePage() {
-  const [selectedPet, setSelectedPet] = useState();
+  const [selectedPet, setSelectedPet] = useState(pets);
   const [mode, setMode] = useState("select");
 
   function handleSelectPet(selectedPetData) {
@@ -36,6 +38,13 @@ export default function HomePage() {
     setMode(mode);
   }
 
+  function handleEliminate() {
+    const eliminatedPet = { ...selectedPet, health: 0 };
+    setSelectedPet(eliminatedPet);
+    setMode("livingroom");
+  }
+  const isDead = selectedPet.health === 0;
+
   return (
     <div>
       {mode === "select" && (
@@ -45,10 +54,11 @@ export default function HomePage() {
           <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
         </>
       )}
+
       {mode === "livingroom" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          <CurrentPet selectedPet={selectedPet} />
+          {!isDead ? <CurrentPet selectedPet={selectedPet} /> : "Tombstone"}
           <CurrentPetStats selectedPet={selectedPet} onMode={handleMode} />
         </>
       )}
@@ -60,6 +70,19 @@ export default function HomePage() {
             selectedPet={selectedPet}
             onSubmit={handleSubmit}
             onMode={handleMode}
+          />
+        </>
+      )}
+
+      {mode === "eliminate" && (
+        <>
+          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+          {isDead ? "Tombstone" : <CurrentPet selectedPet={selectedPet} />}
+
+          <EliminateForm
+            selectedPet={selectedPet}
+            onMode={handleMode}
+            onEliminate={handleEliminate}
           />
         </>
       )}
