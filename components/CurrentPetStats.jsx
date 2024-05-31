@@ -4,7 +4,7 @@ import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
 
-export default function CurrentPetStats({ selectedPet, onMode }) {
+export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
     <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
       <StyledDiv>
@@ -39,11 +39,13 @@ export default function CurrentPetStats({ selectedPet, onMode }) {
           </StyledListItem>
           <StyledListItem></StyledListItem>
         </StyledStatsContainer>
+
         <PositionedButton
           $variant="edit"
           top="10px"
           right="10px"
           onClick={() => onMode("edit")}
+          hidden={isDead}
         >
           Edit
         </PositionedButton>
@@ -52,6 +54,7 @@ export default function CurrentPetStats({ selectedPet, onMode }) {
           top="60px"
           right="10px"
           onClick={() => onMode("eliminate")}
+          hidden={isDead}
         >
           Eliminate
         </PositionedButton>

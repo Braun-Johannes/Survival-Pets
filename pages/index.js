@@ -73,7 +73,11 @@ export default function HomePage() {
               onDeletePet={handleDeletePet}
             />
           )}
-          <CurrentPetStats selectedPet={selectedPet} onMode={handleMode} />
+          <CurrentPetStats
+            isDead={isDead}
+            selectedPet={selectedPet}
+            onMode={handleMode}
+          />
         </>
       )}
 

@@ -59,6 +59,8 @@ const StyledButton = styled.button`
 ${(props) =>
     props.$variant === "tombstone" &&
     `
+    
+    height: 400px;
     background-color: lightyellow;
     font-size: 0.875rem;
     line-height: 1.75;
