@@ -1,7 +1,7 @@
 import pets from "@/lib/pets";
-import StyledButton from "./Styles/StyledButton";
-import StyledList from "./Styles/StyledList";
-import StyledListItem from "./Styles/StyledListItem";
+import StyledList from "@/components/Styles/StyledList";
+import StyledListItem from "@/components/Styles/StyledListItem";
+import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
@@ -10,18 +10,19 @@ export default function PetList({ onSelectPet, selectedPet }) {
         {pets.map((pet) => {
           return (
             <StyledListItem
-              style={{ border: selectedPet === pet ? "2px solid orange" : "" }}
+              $selected={selectedPet === pet}
               key={pet.id}
               $variant="select"
             >
-              <StyledButton
+              <PositionedButton
+                $variant="highlight"
+                position="static"
                 onClick={() => {
                   onSelectPet(pet);
                 }}
-                $variant="select"
               >
                 {pet.type}
-              </StyledButton>
+              </PositionedButton>
             </StyledListItem>
           );
         })}

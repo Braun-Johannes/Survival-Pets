@@ -4,10 +4,10 @@ import PetForm from "@/components/PetForm";
 import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
+import EditForm from "@/components/EditForm";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();
-
   const [mode, setMode] = useState("select");
 
   function handleSelectPet(selectedPetData) {
@@ -16,13 +16,24 @@ export default function HomePage() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
+
+    if (data.nameInput.trim() === "") {
+      alert(
+        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
+      );
+      return;
+    }
 
     const updatedPet = { ...selectedPet, name: data.nameInput };
     setSelectedPet(updatedPet);
 
     setMode("livingroom");
+  }
+  function handleMode(mode) {
+    setMode(mode);
   }
 
   return (
@@ -31,15 +42,25 @@ export default function HomePage() {
         <>
           <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
           <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
-          <PetForm selectedPet={selectedPet} onHandleSubmit={handleSubmit} />
+          <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
         </>
       )}
-
       {mode === "livingroom" && (
         <>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <CurrentPet selectedPet={selectedPet} />
-          <CurrentPetStats selectedPet={selectedPet} />
+          <CurrentPetStats selectedPet={selectedPet} onMode={handleMode} />
+        </>
+      )}
+      {mode === "edit" && (
+        <>
+          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+          <CurrentPet selectedPet={selectedPet} />
+          <EditForm
+            selectedPet={selectedPet}
+            onSubmit={handleSubmit}
+            onMode={handleMode}
+          />
         </>
       )}
     </div>

@@ -1,19 +1,13 @@
 import styled from "styled-components";
 
 const StyledStatsContainer = styled.ul`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-  border: black solid 2px;
-  border-radius: 5px;
-  height: 37vh;
-  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  padding-inline-start: 0;
   list-style: none;
-  @media (min-width: 800px) {
-    width: 350px;
-    height: 300px;
-  }
+  width: 100%;
+  margin: 50px 30px 50px 30px;
 `;
 
 export default StyledStatsContainer;

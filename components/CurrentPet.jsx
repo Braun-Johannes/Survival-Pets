@@ -1,5 +1,5 @@
-import StyledList from "./Styles/StyledList";
-import StyledListItem from "./Styles/StyledListItem";
+import StyledList from "@/components/Styles/StyledList";
+import StyledListItem from "@/components/Styles/StyledListItem";
 
 export default function CurrentPet({ selectedPet }) {
   return (
