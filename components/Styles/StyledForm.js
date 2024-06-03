@@ -17,6 +17,13 @@ const StyledForm = styled.form`
   
   
   `}
+  ${(props) =>
+    props.$variant === "eliminate" &&
+    `  
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
+  `}
 `;
 
 export default StyledForm;

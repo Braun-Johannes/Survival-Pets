@@ -8,29 +8,27 @@ export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
   return (
     <PositionedDiv>
       <StyledDiv>
-        <StyledForm onSubmit={onSubmit}>
-          <StyledParagraph>
-            Are you sure you want to eliminate your pet?
-          </StyledParagraph>
+        <StyledParagraph>
+          Are you sure you want to eliminate your pet?
+        </StyledParagraph>
+        <StyledForm $variant="eliminate" onSubmit={onSubmit}>
           <PositionedButton
+            position="relative"
             $variant="confirm"
-            bottom="85px"
-            right="400px"
             type="button"
             onClick={() => onEliminate()}
           >
             Confirm
           </PositionedButton>
+          <PositionedButton
+            position="relative"
+            $variant="cancel"
+            type="button"
+            onClick={() => onMode("livingroom")}
+          >
+            Cancel
+          </PositionedButton>
         </StyledForm>
-        <PositionedButton
-          $variant="cancel"
-          bottom="85px"
-          right="300px"
-          type="button"
-          onClick={() => onMode("livingroom")}
-        >
-          Cancel
-        </PositionedButton>
       </StyledDiv>
     </PositionedDiv>
   );
@@ -38,7 +36,7 @@ export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
 
 const StyledParagraph = styled.p`
   font-size: 30px;
-  position: absolute;
-  top: 30px;
+  position: relative;
+  top: 40px;
   text-align: center;
 `;

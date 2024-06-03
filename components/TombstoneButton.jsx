@@ -8,8 +8,7 @@ export default function TombstoneButton({ selectedPet, onDeletePet }) {
         <PositionedButton
           onClick={onDeletePet}
           $variant="tombstone"
-          position="absolute"
-          top="60px"
+          position="relative"
         >
           <p>R.I.P.</p>
           <p>{selectedPet.name}</p>

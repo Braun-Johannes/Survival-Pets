@@ -8,7 +8,7 @@ import PositionedDiv from "@/components/Styles/PositionedDiv";
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
     <PositionedDiv>
-      <StyledDiv>
+      <StyledDiv $variant="stats">
         <StyledStatsContainer>
           <StyledListItem $variant="livingroom">
             <StyledStatKey>Name</StyledStatKey>
