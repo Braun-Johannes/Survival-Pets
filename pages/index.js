@@ -7,9 +7,7 @@ import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
 import EliminateForm from "@/components/EliminateForm";
 import TombstoneButton from "@/components/TombstoneButton";
-import PositionedDiv from "@/components/Styles/PositionedDiv";
 import StyledSection from "@/components/Styles/StyledSection";
-import StyledDiv from "@/components/Styles/StyledDiv";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();

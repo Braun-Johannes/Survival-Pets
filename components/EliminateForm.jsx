@@ -4,14 +4,14 @@ import PositionedButton from "@/components/Styles/StyledButton";
 import PositionedDiv from "@/components/Styles/PositionedDiv";
 import styled from "styled-components";
 
-export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
+export default function EliminateForm({ onEliminate, onMode }) {
   return (
     <PositionedDiv>
       <StyledDiv>
         <StyledParagraph>
           Are you sure you want to eliminate your pet?
         </StyledParagraph>
-        <StyledForm $variant="eliminate" onSubmit={onSubmit}>
+        <StyledForm $variant="eliminate">
           <PositionedButton
             position="relative"
             $variant="confirm"
