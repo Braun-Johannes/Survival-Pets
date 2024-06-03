@@ -7,8 +7,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   border-radius: 5px;
   height: 20rem;
-  padding: 10px;
-  margin: 30px 15px 5px 15px;
+  margin: 10px;
 
   ${(props) =>
     props.$variant === "select" &&
