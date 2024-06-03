@@ -3,10 +3,11 @@ import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
+import PositionedDiv from "@/components/Styles/PositionedDiv";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
-    <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
+    <PositionedDiv>
       <StyledDiv>
         <StyledStatsContainer>
           <StyledListItem $variant="livingroom">
@@ -59,6 +60,6 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           Eliminate
         </PositionedButton>
       </StyledDiv>
-    </div>
+    </PositionedDiv>
   );
 }

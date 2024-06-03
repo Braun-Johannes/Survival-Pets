@@ -1,11 +1,12 @@
 import StyledForm from "@/components/Styles/StyledForm";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
+import PositionedDiv from "@/components/Styles/PositionedDiv";
 import styled from "styled-components";
 
 export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
   return (
-    <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
+    <PositionedDiv>
       <StyledDiv>
         <StyledForm onSubmit={onSubmit}>
           <StyledParagraph>
@@ -31,7 +32,7 @@ export default function EliminateForm({ onEliminate, onMode, onSubmit }) {
           Cancel
         </PositionedButton>
       </StyledDiv>
-    </div>
+    </PositionedDiv>
   );
 }
 
