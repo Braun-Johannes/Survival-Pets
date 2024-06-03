@@ -4,7 +4,7 @@ const StyledSection = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 400px;
+  min-height: 420px;
 `;
 
 export default StyledSection;
