@@ -11,8 +11,20 @@ export default function InteractionMenu({ onIncreaseStats }) {
       >
         Feed
       </PositionedButton>
-      <PositionedButton position="static">Sleep</PositionedButton>
-      <PositionedButton position="static">Play</PositionedButton>
+      <PositionedButton
+        type="button"
+        onClick={() => onIncreaseStats("energy", 5)}
+        position="static"
+      >
+        Sleep
+      </PositionedButton>
+      <PositionedButton
+        type="button"
+        onClick={() => onIncreaseStats("happiness", 5)}
+        position="static"
+      >
+        Play
+      </PositionedButton>
     </StyledDiv>
   );
 }
