@@ -56,6 +56,8 @@ const StyledButton = styled.button`
     color: rgb(244, 67, 54);
     `}
 
+
+
 ${(props) =>
     props.$variant === "tombstone" &&
     `
