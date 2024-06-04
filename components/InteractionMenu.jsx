@@ -1,10 +1,16 @@
 import PositionedButton from "./Styles/StyledButton";
 import styled from "styled-components";
 
-export default function InteractionMenu() {
+export default function InteractionMenu({ onIncreaseStats }) {
   return (
     <StyledDiv>
-      <PositionedButton position="static">Feed</PositionedButton>
+      <PositionedButton
+        type="button"
+        onClick={() => onIncreaseStats("satiety", 5)}
+        position="static"
+      >
+        Feed
+      </PositionedButton>
       <PositionedButton position="static">Sleep</PositionedButton>
       <PositionedButton position="static">Play</PositionedButton>
     </StyledDiv>

@@ -43,6 +43,7 @@ export default function HomePage() {
 
     setMode("livingroom");
   }
+
   function handleMode(mode) {
     setMode(mode);
   }
@@ -56,6 +57,18 @@ export default function HomePage() {
   function handleDeletePet() {
     setSelectedPet("");
     setMode("select");
+  }
+
+  function handleIncreaseStats(attribute, steps) {
+    setSelectedPet((prevPet) => {
+      const newValue = Math.min(prevPet[attribute] + steps, 100);
+      console.log(newValue);
+      console.log(prevPet);
+      return {
+        ...prevPet,
+        [attribute]: newValue,
+      };
+    });
   }
 
   return (
@@ -83,10 +96,11 @@ export default function HomePage() {
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
             {!isDead ? (
               <StyledTest>
+                <div></div>
                 <StyledSection>
                   <CurrentPet selectedPet={selectedPet} />
                 </StyledSection>
-                <InteractionMenu />
+                <InteractionMenu onIncreaseStats={handleIncreaseStats} />
               </StyledTest>
             ) : (
               <StyledSection>
@@ -144,12 +158,10 @@ export default function HomePage() {
 const StyledGrid = styled.div`
   display: grid;
   grid-template-rows: repeat(3, auto);
-  border: solid 2px green;
 `;
 
 const StyledTest = styled.section`
   display: grid;
-  grid-template-columns: 1fr 20%;
+  grid-template-columns: 20% 1fr 20%;
   min-height: 400px;
-  border: solid 2px red;
 `;
