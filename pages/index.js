@@ -5,10 +5,20 @@ import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
+import EliminateForm from "@/components/EliminateForm";
+import TombstoneButton from "@/components/TombstoneButton";
+import StyledSection from "@/components/Styles/StyledSection";
+import styled from "styled-components";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();
   const [mode, setMode] = useState("select");
+
+  let isDead = false;
+
+  if (selectedPet) {
+    isDead = selectedPet.health === 0;
+  }
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
@@ -36,33 +46,94 @@ export default function HomePage() {
     setMode(mode);
   }
 
+  function handleEliminate() {
+    const eliminatedPet = { ...selectedPet, health: 0 };
+    setSelectedPet(eliminatedPet);
+    setMode("livingroom");
+  }
+
+  function handleDeletePet() {
+    setSelectedPet("");
+    setMode("select");
+  }
+
   return (
-    <div>
+    <>
       {mode === "select" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
-          <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
+          <StyledSection >
+            <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
+          </StyledSection>
+          
           <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
+          </StyledGrid>
         </>
       )}
+
       {mode === "livingroom" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          <CurrentPet selectedPet={selectedPet} />
-          <CurrentPetStats selectedPet={selectedPet} onMode={handleMode} />
+          {!isDead ? (
+            <StyledSection>
+              <CurrentPet selectedPet={selectedPet} />
+            </StyledSection>
+          ) : (
+            <StyledSection>
+              <TombstoneButton
+                selectedPet={selectedPet}
+                onMode={handleMode}
+                onDeletePet={handleDeletePet}
+              />
+            </StyledSection>
+          )}
+          <CurrentPetStats
+            isDead={isDead}
+            selectedPet={selectedPet}
+            onMode={handleMode}
+          />
+          </StyledGrid>
         </>
       )}
+
       {mode === "edit" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          <CurrentPet selectedPet={selectedPet} />
+          <StyledSection>
+            <CurrentPet selectedPet={selectedPet} />
+          </StyledSection>
           <EditForm
             selectedPet={selectedPet}
             onSubmit={handleSubmit}
             onMode={handleMode}
           />
+          </StyledGrid>
         </>
       )}
-    </div>
+
+      {mode === "eliminate" && (
+        <>
+          <StyledGrid>
+          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+          <StyledSection>
+            <CurrentPet selectedPet={selectedPet} />
+          </StyledSection>
+          <EliminateForm
+            selectedPet={selectedPet}
+            onMode={handleMode}
+            onEliminate={handleEliminate}
+          />
+          </StyledGrid>
+        </>
+      )}
+    </>
   );
 }
+
+const StyledGrid = styled.div`
+display: grid;
+grid-template-rows: repeat(3, auto);
+`

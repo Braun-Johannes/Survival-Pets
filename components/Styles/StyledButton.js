@@ -38,12 +38,30 @@ const StyledButton = styled.button`
     border-radius: 4px;
     color: rgb(104, 32, 69);
     `}
+    
   
 
   ${(props) =>
     props.$variant === "cancel" &&
     `
     background-color: transparent;
+    font-size: 0.875rem;
+    line-height: 1.75;
+    letter-spacing: 0.02857em;
+    text-transform: uppercase;
+    min-width: 64px;
+    padding: 5px 15px;
+    border-radius: 4px;
+    border: 1px solid rgba(244, 67, 54, 0.5);
+    color: rgb(244, 67, 54);
+    `}
+
+${(props) =>
+    props.$variant === "tombstone" &&
+    `
+    
+    height: 400px;
+    background-color: lightyellow;
     font-size: 0.875rem;
     line-height: 1.75;
     letter-spacing: 0.02857em;

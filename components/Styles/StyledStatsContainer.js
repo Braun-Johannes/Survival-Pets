@@ -7,7 +7,6 @@ const StyledStatsContainer = styled.ul`
   padding-inline-start: 0;
   list-style: none;
   width: 100%;
-  margin: 50px 30px 50px 30px;
 `;
 
 export default StyledStatsContainer;

@@ -4,7 +4,6 @@ import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function PetForm({ selectedPet, onSubmit }) {
   return (
-    <div style={{ position: "fixed", bottom: "0", width: "100%" }}>
       <StyledForm onSubmit={onSubmit} $variant="select">
         <label htmlFor="nameInput">Choose a name</label>
         <StyledInput
@@ -12,7 +11,7 @@ export default function PetForm({ selectedPet, onSubmit }) {
           name="nameInput"
           type="text"
           defaultValue={selectedPet ? selectedPet.name : ""}
-          placeholder="name"
+          placeholder="maximum 10 characters.."
           $variant="name"
           maxLength={10}
           required
@@ -26,6 +25,5 @@ export default function PetForm({ selectedPet, onSubmit }) {
           Select
         </PositionedButton>
       </StyledForm>
-    </div>
   );
 }

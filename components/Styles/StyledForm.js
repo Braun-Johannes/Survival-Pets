@@ -7,8 +7,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   border-radius: 5px;
   height: 20rem;
-  padding: 10px;
-  margin: 30px 15px 5px 15px;
+  margin: 10px;
 
   ${(props) =>
     props.$variant === "select" &&
@@ -16,6 +15,13 @@ const StyledForm = styled.form`
   border: solid black;
   
   
+  `}
+  ${(props) =>
+    props.$variant === "eliminate" &&
+    `  
+  flex-direction: row;
+  gap: 10px;
+  flex-wrap: wrap;
   `}
 `;
 
