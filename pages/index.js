@@ -10,10 +10,15 @@ import TombstoneButton from "@/components/TombstoneButton";
 import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
 import InteractionMenu from "@/components/InteractionMenu";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function HomePage() {
-  const [selectedPet, setSelectedPet] = useState();
-  const [mode, setMode] = useState("select");
+  const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
+    defaultValue: {},
+  });
+  const [mode, setMode] = useLocalStorageState("mode", {
+    defaultValue: "select",
+  });
 
   let isDead = false;
 

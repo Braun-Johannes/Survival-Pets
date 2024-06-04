@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export default function InteractionMenu({ onIncreaseStats }) {
   return (
-    <StyledDiv>
+    <InteractionContainer>
       <PositionedButton
         $variant="interaction"
         type="button"
@@ -28,11 +28,11 @@ export default function InteractionMenu({ onIncreaseStats }) {
       >
         Play
       </PositionedButton>
-    </StyledDiv>
+    </InteractionContainer>
   );
 }
 
-const StyledDiv = styled.div`
+const InteractionContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
