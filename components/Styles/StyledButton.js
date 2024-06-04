@@ -11,6 +11,14 @@ const StyledButton = styled.button`
   `}
 
   ${(props) =>
+    props.$variant === "interaction" &&
+    `
+    border-radius: 50%;
+    padding: 10px;
+    
+  `}
+
+  ${(props) =>
     props.$variant === "confirm" &&
     `
     border: 0px;

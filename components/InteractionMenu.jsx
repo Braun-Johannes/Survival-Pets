@@ -5,6 +5,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
   return (
     <StyledDiv>
       <PositionedButton
+        $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("satiety", 5)}
         position="static"
@@ -12,6 +13,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         Feed
       </PositionedButton>
       <PositionedButton
+        $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("energy", 5)}
         position="static"
@@ -19,6 +21,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         Sleep
       </PositionedButton>
       <PositionedButton
+        $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("happiness", 5)}
         position="static"
