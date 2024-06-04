@@ -8,6 +8,9 @@ const StyledButton = styled.button`
     `
     background: none;
     border: none;
+    padding: 5px;
+    min-width: 80px;
+ 
   `}
 
   ${(props) =>
