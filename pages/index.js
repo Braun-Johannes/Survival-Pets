@@ -8,6 +8,7 @@ import EditForm from "@/components/EditForm";
 import EliminateForm from "@/components/EliminateForm";
 import TombstoneButton from "@/components/TombstoneButton";
 import StyledSection from "@/components/Styles/StyledSection";
+import styled from "styled-components";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useState();
@@ -60,16 +61,20 @@ export default function HomePage() {
     <>
       {mode === "select" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
           <StyledSection $variant="top">
             <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
           </StyledSection>
+          
           <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
+          </StyledGrid>
         </>
       )}
 
       {mode === "livingroom" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           {!isDead ? (
             <StyledSection>
@@ -89,11 +94,13 @@ export default function HomePage() {
             selectedPet={selectedPet}
             onMode={handleMode}
           />
+          </StyledGrid>
         </>
       )}
 
       {mode === "edit" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <StyledSection>
             <CurrentPet selectedPet={selectedPet} />
@@ -103,11 +110,13 @@ export default function HomePage() {
             onSubmit={handleSubmit}
             onMode={handleMode}
           />
+          </StyledGrid>
         </>
       )}
 
       {mode === "eliminate" && (
         <>
+          <StyledGrid>
           <StyledHeading $variant="livingroom">Living Room</StyledHeading>
           <StyledSection>
             <CurrentPet selectedPet={selectedPet} />
@@ -117,8 +126,15 @@ export default function HomePage() {
             onMode={handleMode}
             onEliminate={handleEliminate}
           />
+          </StyledGrid>
         </>
       )}
     </>
   );
 }
+
+const StyledGrid = styled.div`
+display: grid;
+grid-template-rows: repeat(3, auto);
+border: solid green 3px;
+`

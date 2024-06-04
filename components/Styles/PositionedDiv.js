@@ -1,9 +1,8 @@
 import styled from "styled-components";
 
-const PositionedDiv = styled.section`
-position: fixed;
-bottom: 0;
-width: 100%;
+const PositionedDiv = styled.div`
+border: 3px solid blue;
+
 `;
 
 export default PositionedDiv;
