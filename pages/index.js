@@ -63,7 +63,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
           <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
-          <StyledSection $variant="top">
+          <StyledSection >
             <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
           </StyledSection>
           

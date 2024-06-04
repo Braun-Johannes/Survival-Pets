@@ -1,11 +1,9 @@
 import StyledInput from "@/components/Styles/StyleInput";
 import StyledForm from "@/components/Styles/StyledForm";
 import PositionedButton from "@/components/Styles/StyledButton";
-import PositionedDiv from "./Styles/PositionedDiv";
 
 export default function PetForm({ selectedPet, onSubmit }) {
   return (
-    <PositionedDiv>
       <StyledForm onSubmit={onSubmit} $variant="select">
         <label htmlFor="nameInput">Choose a name</label>
         <StyledInput
@@ -27,6 +25,5 @@ export default function PetForm({ selectedPet, onSubmit }) {
           Select
         </PositionedButton>
       </StyledForm>
-    </PositionedDiv>
   );
 }
