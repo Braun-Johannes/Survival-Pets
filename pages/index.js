@@ -136,5 +136,4 @@ export default function HomePage() {
 const StyledGrid = styled.div`
 display: grid;
 grid-template-rows: repeat(3, auto);
-border: solid green 3px;
 `
