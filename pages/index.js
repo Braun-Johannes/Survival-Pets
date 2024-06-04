@@ -1,7 +1,6 @@
 import PetList from "@/components/PetList";
 import StyledHeading from "@/components/Styles/StyledHeading";
 import PetForm from "@/components/PetForm";
-import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
@@ -20,7 +19,7 @@ export default function HomePage() {
     defaultValue: "select",
   });
 
-  let isDead = false;
+  let isDead = selectedPet.health === 0;
 
   if (selectedPet) {
     isDead = selectedPet.health === 0;
