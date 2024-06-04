@@ -67,8 +67,6 @@ export default function HomePage() {
   function handleIncreaseStats(attribute, steps) {
     setSelectedPet((prevPet) => {
       const newValue = Math.min(prevPet[attribute] + steps, 100);
-      console.log(newValue);
-      console.log(prevPet);
       return {
         ...prevPet,
         [attribute]: newValue,
@@ -100,13 +98,13 @@ export default function HomePage() {
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
             {!isDead ? (
-              <StyledTest>
+              <StyledContainer>
                 <div></div>
                 <StyledSection>
                   <CurrentPet selectedPet={selectedPet} />
                 </StyledSection>
                 <InteractionMenu onIncreaseStats={handleIncreaseStats} />
-              </StyledTest>
+              </StyledContainer>
             ) : (
               <StyledSection>
                 <TombstoneButton
@@ -164,8 +162,7 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-rows: repeat(3, auto);
 `;
-
-const StyledTest = styled.section`
+const StyledContainer = styled.section`
   display: grid;
   grid-template-columns: 20% 1fr 20%;
   min-height: 400px;

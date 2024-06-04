@@ -15,6 +15,7 @@ const StyledButton = styled.button`
     `
     border-radius: 50%;
     padding: 10px;
+    background-color: ${props.color || "white"}
     
   `}
 

@@ -9,6 +9,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         type="button"
         onClick={() => onIncreaseStats("satiety", 5)}
         position="static"
+        color="lightgreen"
       >
         Feed
       </PositionedButton>
@@ -17,6 +18,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         type="button"
         onClick={() => onIncreaseStats("energy", 5)}
         position="static"
+        color="lightblue"
       >
         Sleep
       </PositionedButton>
@@ -25,6 +27,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         type="button"
         onClick={() => onIncreaseStats("happiness", 5)}
         position="static"
+        color="orange"
       >
         Play
       </PositionedButton>
