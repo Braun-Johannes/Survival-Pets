@@ -4,11 +4,11 @@ const StyledListItem = styled.li`
   ${(props) =>
     props.$variant === "select" &&
     ` 
-border: 2px black solid;
-  border-radius: 5px;
-  padding: 5px;
-  min-width: 80px;
-  text-align: center;
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 80px;
+    text-align: center;
   `}
   ${(props) =>
     props.$variant === "livingroom" &&
@@ -22,7 +22,8 @@ border: 2px black solid;
   ${(props) =>
     props.$selected === true &&
     `
-    border: 2px orange solid;`}
+    border: 3px orange solid;
+    `}
 `;
 
 export default StyledListItem;
