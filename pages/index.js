@@ -19,11 +19,7 @@ export default function HomePage() {
     defaultValue: "select",
   });
 
-  let isDead = selectedPet.health === 0;
-
-  if (selectedPet) {
-    isDead = selectedPet.health === 0;
-  }
+  const isDead = selectedPet.health === 0;
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);

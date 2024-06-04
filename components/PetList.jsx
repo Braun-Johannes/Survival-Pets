@@ -10,7 +10,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
         {pets.map((pet) => {
           return (
             <StyledListItem
-              $selected={selectedPet === pet}
+              $selected={selectedPet.id === pet.id}
               key={pet.id}
               $variant="select"
             >

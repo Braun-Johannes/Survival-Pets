@@ -4,7 +4,7 @@ const StyledListItem = styled.li`
   ${(props) =>
     props.$variant === "select" &&
     ` 
-border: 2px black solid;
+    border: black solid 2px;
   border-radius: 5px;
   padding: 5px;
   min-width: 80px;
@@ -22,7 +22,7 @@ border: 2px black solid;
   ${(props) =>
     props.$selected === true &&
     `
-    border: 2px orange solid;`}
+border: 2px solid orange;`}
 `;
 
 export default StyledListItem;
