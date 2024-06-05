@@ -100,7 +100,7 @@ export default function HomePage() {
           // calculate reduction based on elapsed time
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          const reduction = Math.floor(elapsedTime) * 10;
+          const reduction = Math.floor(elapsedTime) * 10; // --> parameter for stat reduction
 
           // decrease stats over time
 
@@ -125,12 +125,15 @@ export default function HomePage() {
 
             const stats = [newEnergy, newSatiety, newHappiness];
             const statsAtZero = stats.filter((value) => value === 0).length;
-            const healthReduction = statsAtZero * 2;
+            const healthReduction = statsAtZero * 2; // --> Parameter for health reduction
             const newHealth =
               statsAtZero > 0
                 ? Math.min(Math.max(prevPet.health - healthReduction, 0), 100)
                 : prevPet.health;
 
+            if (newHealth === 0) {
+              setTimeAlive(Math.floor(currentTime - prevPet.createdAt));
+            }
             return {
               ...prevPet,
               energy: newEnergy,
@@ -147,11 +150,6 @@ export default function HomePage() {
       return () => clearInterval(interval);
     }
   }, [selectedPet, setSelectedPet]);
-
-  const currentTime = Date.now() / 1000;
-  if (selectedPet.health === 0) {
-    setTimeAlive(Math.floor(currentTime - prevPet.createdAt));
-  }
 
   const ageInSeconds =
     selectedPet && !isDead
