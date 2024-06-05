@@ -10,7 +10,7 @@ import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
 import InteractionMenu from "@/components/InteractionMenu";
 import useLocalStorageState from "use-local-storage-state";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -19,6 +19,8 @@ export default function HomePage() {
   const [mode, setMode] = useLocalStorageState("mode", {
     defaultValue: "select",
   });
+
+  const [timeAlive, setTimeAlive] = useState(0);
 
   const isDead = selectedPet.health === 0;
 
@@ -88,16 +90,27 @@ export default function HomePage() {
         setSelectedPet((prevPet) => {
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          const healthReduction = Math.floor(elapsedTime) * 1; // --> 2 points every minute
-
-          if (healthReduction > 0) {
-            const newHealth = Math.min(
-              Math.max(prevPet.health - healthReduction, 0),
+          // const healthReduction = Math.floor(elapsedTime) * 1; // --> 2 points every minute
+          const reduction = Math.floor(elapsedTime) * 1;
+          // console.log(selectedPet);
+          if (reduction > 0) {
+            const newEnergy = Math.min(
+              Math.max(prevPet.energy - reduction, 0),
+              100
+            );
+            const newSatiety = Math.min(
+              Math.max(prevPet.satiety - reduction, 0),
+              100
+            );
+            const newHappiness = Math.min(
+              Math.max(prevPet.happiness - reduction, 0),
               100
             );
             return {
               ...prevPet,
-              health: newHealth,
+              energy: newEnergy,
+              satiety: newSatiety,
+              happiness: newHappiness,
               lastUpdated: currentTime,
             };
           }
@@ -108,9 +121,10 @@ export default function HomePage() {
     }
   }, [selectedPet, setSelectedPet]);
 
-  const ageInSeconds = selectedPet
-    ? Math.floor(Date.now() / 1000 - selectedPet.createdAt)
-    : 0;
+  const ageInSeconds =
+    selectedPet && !isDead
+      ? Math.floor(Date.now() / 1000 - selectedPet.createdAt)
+      : 0;
 
   // ___________________________________________________________________
 
