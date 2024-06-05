@@ -34,7 +34,16 @@ export default function HomePage() {
   }
 
   function handleEliminate() {
-    const eliminatedPet = { ...selectedPet, health: 0 };
+    // store pets age
+    setTimeAlive(Math.floor(Date.now() / 1000 - selectedPet.createdAt));
+
+    const eliminatedPet = {
+      ...selectedPet,
+      health: 0,
+      energy: 0,
+      satiety: 0,
+      happiness: 0,
+    };
     setSelectedPet(eliminatedPet);
     setMode("livingroom");
   }
