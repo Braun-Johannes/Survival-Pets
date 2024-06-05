@@ -118,9 +118,12 @@ export default function HomePage() {
               100
             );
 
+            const stats = [newEnergy, newSatiety, newHappiness];
+            const statsAtZero = stats.filter((value) => value === 0).length;
+            const healthReduction = statsAtZero * 2;
             const newHealth =
-              newEnergy === 0
-                ? Math.min(Math.max(prevPet.health - reduction, 0), 100)
+              statsAtZero > 0
+                ? Math.min(Math.max(prevPet.health - healthReduction, 0), 100)
                 : prevPet.health;
 
             return {
