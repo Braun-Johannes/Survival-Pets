@@ -181,7 +181,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-            <h2>Pet Age in seconds: {ageInSeconds}</h2>
+            {!isDead && <StyledH2>Pet Age in seconds: {ageInSeconds}</StyledH2>}
             {!isDead ? (
               <StyledContainer>
                 <div></div>
@@ -251,4 +251,10 @@ const StyledContainer = styled.section`
   display: grid;
   grid-template-columns: 20% 1fr 20%;
   min-height: 400px;
+`;
+
+const StyledH2 = styled.h2`
+  text-align: end;
+  margin-right: 20px;
+  font-size: 1.2rem;
 `;
