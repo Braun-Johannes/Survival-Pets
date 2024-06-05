@@ -14,6 +14,14 @@ const StyledButton = styled.button`
   `}
 
   ${(props) =>
+    props.$variant === "interaction" &&
+    `
+    border-radius: 50%;
+    padding: 10px;
+    background-color: ${props.color || "white"}
+  `}
+
+  ${(props) =>
     props.$variant === "confirm" &&
     `
     border: 0px;
@@ -58,6 +66,8 @@ const StyledButton = styled.button`
     border: 1px solid rgba(244, 67, 54, 0.5);
     color: rgb(244, 67, 54);
     `}
+
+
 
 ${(props) =>
     props.$variant === "tombstone" &&

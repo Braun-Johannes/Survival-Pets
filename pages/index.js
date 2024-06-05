@@ -1,7 +1,6 @@
 import PetList from "@/components/PetList";
 import StyledHeading from "@/components/Styles/StyledHeading";
 import PetForm from "@/components/PetForm";
-import { useState } from "react";
 import CurrentPet from "@/components/CurrentPet";
 import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
@@ -9,16 +8,18 @@ import EliminateForm from "@/components/EliminateForm";
 import TombstoneButton from "@/components/TombstoneButton";
 import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
+import InteractionMenu from "@/components/InteractionMenu";
+import useLocalStorageState from "use-local-storage-state";
 
 export default function HomePage() {
-  const [selectedPet, setSelectedPet] = useState();
-  const [mode, setMode] = useState("select");
+  const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
+    defaultValue: {},
+  });
+  const [mode, setMode] = useLocalStorageState("mode", {
+    defaultValue: "select",
+  });
 
-  let isDead = false;
-
-  if (selectedPet) {
-    isDead = selectedPet.health === 0;
-  }
+  const isDead = selectedPet.health === 0;
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
@@ -42,6 +43,7 @@ export default function HomePage() {
 
     setMode("livingroom");
   }
+
   function handleMode(mode) {
     setMode(mode);
   }
@@ -57,17 +59,31 @@ export default function HomePage() {
     setMode("select");
   }
 
+  function handleIncreaseStats(attribute, steps) {
+    setSelectedPet((prevPet) => {
+      const newValue = Math.min(prevPet[attribute] + steps, 100);
+      return {
+        ...prevPet,
+        [attribute]: newValue,
+      };
+    });
+  }
+
   return (
     <>
       {mode === "select" && (
         <>
           <StyledGrid>
-          <StyledHeading $variant="select">Select a Survival Pet</StyledHeading>
-          <StyledSection >
-            <PetList onSelectPet={handleSelectPet} selectedPet={selectedPet} />
-          </StyledSection>
-          
-          <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
+            <StyledHeading $variant="select">
+              Select a Survival Pet
+            </StyledHeading>
+            <StyledSection>
+              <PetList
+                onSelectPet={handleSelectPet}
+                selectedPet={selectedPet}
+              />
+            </StyledSection>
+            <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
           </StyledGrid>
         </>
       )}
@@ -75,25 +91,29 @@ export default function HomePage() {
       {mode === "livingroom" && (
         <>
           <StyledGrid>
-          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          {!isDead ? (
-            <StyledSection>
-              <CurrentPet selectedPet={selectedPet} />
-            </StyledSection>
-          ) : (
-            <StyledSection>
-              <TombstoneButton
-                selectedPet={selectedPet}
-                onMode={handleMode}
-                onDeletePet={handleDeletePet}
-              />
-            </StyledSection>
-          )}
-          <CurrentPetStats
-            isDead={isDead}
-            selectedPet={selectedPet}
-            onMode={handleMode}
-          />
+            <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            {!isDead ? (
+              <StyledContainer>
+                <div></div>
+                <StyledSection>
+                  <CurrentPet selectedPet={selectedPet} />
+                </StyledSection>
+                <InteractionMenu onIncreaseStats={handleIncreaseStats} />
+              </StyledContainer>
+            ) : (
+              <StyledSection>
+                <TombstoneButton
+                  selectedPet={selectedPet}
+                  onMode={handleMode}
+                  onDeletePet={handleDeletePet}
+                />
+              </StyledSection>
+            )}
+            <CurrentPetStats
+              isDead={isDead}
+              selectedPet={selectedPet}
+              onMode={handleMode}
+            />
           </StyledGrid>
         </>
       )}
@@ -101,15 +121,15 @@ export default function HomePage() {
       {mode === "edit" && (
         <>
           <StyledGrid>
-          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          <StyledSection>
-            <CurrentPet selectedPet={selectedPet} />
-          </StyledSection>
-          <EditForm
-            selectedPet={selectedPet}
-            onSubmit={handleSubmit}
-            onMode={handleMode}
-          />
+            <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <StyledSection>
+              <CurrentPet selectedPet={selectedPet} />
+            </StyledSection>
+            <EditForm
+              selectedPet={selectedPet}
+              onSubmit={handleSubmit}
+              onMode={handleMode}
+            />
           </StyledGrid>
         </>
       )}
@@ -117,15 +137,15 @@ export default function HomePage() {
       {mode === "eliminate" && (
         <>
           <StyledGrid>
-          <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-          <StyledSection>
-            <CurrentPet selectedPet={selectedPet} />
-          </StyledSection>
-          <EliminateForm
-            selectedPet={selectedPet}
-            onMode={handleMode}
-            onEliminate={handleEliminate}
-          />
+            <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <StyledSection>
+              <CurrentPet selectedPet={selectedPet} />
+            </StyledSection>
+            <EliminateForm
+              selectedPet={selectedPet}
+              onMode={handleMode}
+              onEliminate={handleEliminate}
+            />
           </StyledGrid>
         </>
       )}
@@ -134,6 +154,11 @@ export default function HomePage() {
 }
 
 const StyledGrid = styled.div`
-display: grid;
-grid-template-rows: repeat(3, auto);
-`
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+`;
+const StyledContainer = styled.section`
+  display: grid;
+  grid-template-columns: 20% 1fr 20%;
+  min-height: 400px;
+`;
