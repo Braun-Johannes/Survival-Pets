@@ -21,29 +21,11 @@ export default function HomePage() {
 
   const isDead = selectedPet.health === 0;
 
+  // _________________HANDLE STATES FUNCTIONS___________________________
+
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
   }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    if (data.nameInput.trim() === "") {
-      alert(
-        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
-      );
-      return;
-    }
-
-    const updatedPet = { ...selectedPet, name: data.nameInput };
-    setSelectedPet(updatedPet);
-
-    setMode("livingroom");
-  }
-
   function handleMode(mode) {
     setMode(mode);
   }
@@ -58,6 +40,35 @@ export default function HomePage() {
     setSelectedPet("");
     setMode("select");
   }
+
+  // __________________________________________________________________
+
+  // _______________HANDLE SUBMIT _____________________________________
+
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+
+    if (data.nameInput.trim() === "") {
+      alert(
+        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
+      );
+      return;
+    }
+
+    const updatedPet = {
+      ...selectedPet,
+      name: data.nameInput,
+      lastUpdated: Date.now() / 1000,
+      createdAt: Date.now() / 1000,
+    };
+    setSelectedPet(updatedPet);
+
+    setMode("livingroom");
+  }
+  // ___________________________________________________________________
 
   function handleIncreaseStats(attribute, steps) {
     setSelectedPet((prevPet) => {
