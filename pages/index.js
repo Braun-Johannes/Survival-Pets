@@ -88,7 +88,7 @@ export default function HomePage() {
         setSelectedPet((prevPet) => {
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          const healthReduction = Math.floor(elapsedTime / 60) * 2; // --> 2 points every minute
+          const healthReduction = Math.floor(elapsedTime) * 1; // --> 2 points every minute
 
           if (healthReduction > 0) {
             const newHealth = Math.min(
@@ -137,6 +137,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <h2>Pet Age in seconds: {ageInSeconds}</h2>
             {!isDead ? (
               <StyledContainer>
                 <div></div>
