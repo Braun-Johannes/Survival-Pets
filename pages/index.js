@@ -93,6 +93,21 @@ export default function HomePage() {
 
   // __________________________TIME LOGIC_______________________________
 
+  function formatPetsAge(seconds) {
+    const days = Math.floor(seconds / (24 * 3600));
+    seconds %= 24 * 3600;
+    const hours = Math.floor(seconds / 3600);
+    seconds %= 3600;
+    const minutes = Math.floor(seconds / 60);
+    seconds %= 60;
+    const parts = [];
+    if (days > 0) parts.push(`${days}d`);
+    if (hours > 0) parts.push(`${hours}h`);
+    if (minutes > 0) parts.push(`${minutes}m`);
+    parts.push(`${seconds}s`);
+    return parts.join(" ");
+  }
+
   useEffect(() => {
     if (selectedPet) {
       const interval = setInterval(() => {
@@ -100,7 +115,7 @@ export default function HomePage() {
           // calculate reduction based on elapsed time
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          const reduction = Math.floor(elapsedTime) * 10; // --> parameter for stat reduction
+          const reduction = Math.floor(elapsedTime) * 5; // --> parameter for stat reduction
 
           // decrease stats over time
 
@@ -181,7 +196,9 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-            {!isDead && <StyledH2>Pet Age in seconds: {ageInSeconds}</StyledH2>}
+            {!isDead && (
+              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+            )}
             {!isDead ? (
               <StyledContainer>
                 <div></div>
