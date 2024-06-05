@@ -10,6 +10,7 @@ import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
 import InteractionMenu from "@/components/InteractionMenu";
 import useLocalStorageState from "use-local-storage-state";
+import { useEffect } from "react";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -41,6 +42,15 @@ export default function HomePage() {
     setMode("select");
   }
 
+  function handleIncreaseStats(attribute, steps) {
+    setSelectedPet((prevPet) => {
+      const newValue = Math.min(prevPet[attribute] + steps, 100);
+      return {
+        ...prevPet,
+        [attribute]: newValue,
+      };
+    });
+  }
   // __________________________________________________________________
 
   // _______________HANDLE SUBMIT _____________________________________
@@ -70,15 +80,39 @@ export default function HomePage() {
   }
   // ___________________________________________________________________
 
-  function handleIncreaseStats(attribute, steps) {
-    setSelectedPet((prevPet) => {
-      const newValue = Math.min(prevPet[attribute] + steps, 100);
-      return {
-        ...prevPet,
-        [attribute]: newValue,
-      };
-    });
-  }
+  // __________________________TIME LOGIC_______________________________
+
+  useEffect(() => {
+    if (selectedPet) {
+      const interval = setInterval(() => {
+        setSelectedPet((prevPet) => {
+          const currentTime = Date.now() / 1000;
+          const elapsedTime = currentTime - prevPet.lastUpdated;
+          const healthReduction = Math.floor(elapsedTime / 60) * 2; // --> 2 points every minute
+
+          if (healthReduction > 0) {
+            const newHealth = Math.min(
+              Math.max(prevPet.health - healthReduction, 0),
+              100
+            );
+            return {
+              ...prevPet,
+              health: newHealth,
+              lastUpdated: currentTime,
+            };
+          }
+          return prevPet;
+        });
+      }, 1000); // Check every second
+      return () => clearInterval(interval);
+    }
+  }, [selectedPet, setSelectedPet]);
+
+  const ageInSeconds = selectedPet
+    ? Math.floor(Date.now() / 1000 - selectedPet.createdAt)
+    : 0;
+
+  // ___________________________________________________________________
 
   return (
     <>
