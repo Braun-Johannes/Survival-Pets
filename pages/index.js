@@ -99,10 +99,12 @@ export default function HomePage() {
         setSelectedPet((prevPet) => {
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          // const healthReduction = Math.floor(elapsedTime) * 1; // --> 2 points every minute
-          const reduction = Math.floor(elapsedTime) * 1;
+          const reduction = Math.floor(elapsedTime) * 2;
           // console.log(selectedPet);
           if (reduction > 0) {
+            if (prevPet.health === 0) {
+              return prevPet;
+            }
             const newEnergy = Math.min(
               Math.max(prevPet.energy - reduction, 0),
               100
@@ -115,17 +117,24 @@ export default function HomePage() {
               Math.max(prevPet.happiness - reduction, 0),
               100
             );
+
+            const newHealth =
+              newEnergy === 0
+                ? Math.min(Math.max(prevPet.health - reduction, 0), 100)
+                : prevPet.health;
+
             return {
               ...prevPet,
               energy: newEnergy,
               satiety: newSatiety,
               happiness: newHappiness,
               lastUpdated: currentTime,
+              health: newHealth,
             };
           }
           return prevPet;
         });
-      }, 1000); // Check every second
+      }, 10); // Check every 100th of a second
       return () => clearInterval(interval);
     }
   }, [selectedPet, setSelectedPet]);
