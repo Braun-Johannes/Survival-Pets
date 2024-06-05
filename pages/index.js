@@ -161,7 +161,7 @@ export default function HomePage() {
 
           return prevPet;
         });
-      }, 10); // Check every 100th of a second
+      }, 100); // Check every 10th of a second
       return () => clearInterval(interval);
     }
   }, [selectedPet, setSelectedPet]);
