@@ -80,11 +80,14 @@ export default function HomePage() {
       return;
     }
 
+const currentTime = mode === "select" ? Date.now() / 1000 : selectedPet.createdAt
+
     const updatedPet = {
       ...selectedPet,
       name: data.nameInput,
       lastUpdated: Date.now() / 1000,
-      createdAt: Date.now() / 1000,
+      createdAt: currentTime,
+      
     };
     setSelectedPet(updatedPet);
 
@@ -148,7 +151,7 @@ export default function HomePage() {
 
           return prevPet;
         });
-      }, 100); // Check every 10th of a second
+      }, 1000); // Check every 10th of a second
       return () => clearInterval(interval);
     }
   }, [selectedPet, setSelectedPet]);
