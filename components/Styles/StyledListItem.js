@@ -9,7 +9,6 @@ const StyledListItem = styled.li`
 
     border: 2px black solid;
     border-radius: 5px;
-    padding: 5px;
     min-width: 80px;
     text-align: center;
 
@@ -29,7 +28,6 @@ const StyledListItem = styled.li`
 
     border: 3px orange solid;
     `}
-
 `;
 
 export default StyledListItem;
