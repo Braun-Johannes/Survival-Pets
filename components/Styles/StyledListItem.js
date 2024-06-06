@@ -3,11 +3,7 @@ import styled from "styled-components";
 const StyledListItem = styled.li`
   ${(props) =>
     props.$variant === "select" &&
-    ` 
-
- 
-
-    border: 2px black solid;
+    `
     border-radius: 5px;
     min-width: 80px;
     text-align: center;
