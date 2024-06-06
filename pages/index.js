@@ -11,6 +11,7 @@ import styled from "styled-components";
 import InteractionMenu from "@/components/InteractionMenu";
 import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState } from "react";
+import FormatPetsAge from "@/utils/FormatPetsAge";
 
 export default function HomePage() {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -93,20 +94,6 @@ export default function HomePage() {
 
   // __________________________TIME LOGIC_______________________________
 
-  function formatPetsAge(seconds) {
-    const days = Math.floor(seconds / (24 * 3600));
-    seconds %= 24 * 3600;
-    const hours = Math.floor(seconds / 3600);
-    seconds %= 3600;
-    const minutes = Math.floor(seconds / 60);
-    seconds %= 60;
-    const parts = [];
-    if (days > 0) parts.push(`${days}d`);
-    if (hours > 0) parts.push(`${hours}h`);
-    if (minutes > 0) parts.push(`${minutes}m`);
-    parts.push(`${seconds}s`);
-    return parts.join(" ");
-  }
 
   useEffect(() => {
     if (selectedPet) {
@@ -197,7 +184,7 @@ export default function HomePage() {
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
             {!isDead && (
-              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+              <StyledH2>Time Alive: {FormatPetsAge(ageInSeconds)}</StyledH2>
             )}
             {!isDead ? (
               <StyledContainer>
