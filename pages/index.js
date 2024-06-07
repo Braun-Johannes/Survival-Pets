@@ -218,6 +218,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             <StyledSection>
               <CurrentPet selectedPet={selectedPet} />
             </StyledSection>
@@ -234,6 +235,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             <StyledSection>
               <CurrentPet selectedPet={selectedPet} />
             </StyledSection>
