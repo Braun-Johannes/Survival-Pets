@@ -22,7 +22,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
                   onSelectPet(pet);
                 }}
               >
-                <SVGIcon $variant={pet.type} size={100} ariaLabel={pet.type} />
+                <SVGIcon variant={pet.type} size={100} ariaLabel={pet.type} />
               </PositionedButton>
             </StyledListItem>
           );
