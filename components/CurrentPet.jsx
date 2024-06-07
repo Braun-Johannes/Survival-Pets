@@ -1,6 +1,6 @@
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
-import { SVGIcon } from "@/utils";
+import SVGIcon from "./SVGIcon";
 
 export default function CurrentPet({ selectedPet }) {
   return (
