@@ -3,61 +3,68 @@ import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
-
+import SVGIcon from "./SVGIcon";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
-      <StyledDiv >
-        <StyledStatsContainer>
-          <StyledListItem $variant="livingroom">
-            <StyledStatKey>Name</StyledStatKey>
-            <br />
-            {selectedPet.name}
-          </StyledListItem>
-          <StyledListItem $variant="livingroom">
-            <StyledStatKey>Type</StyledStatKey>
-            <br /> {selectedPet.type}
-          </StyledListItem>
-          <StyledListItem $variant="livingroom">
-            <StyledStatKey>Health</StyledStatKey>
-            <br /> {selectedPet.health}/100
-          </StyledListItem>
-          <StyledListItem $variant="livingroom">
-            <StyledStatKey>Happiness</StyledStatKey>
-            <br />
-            {selectedPet.happiness}/100
-          </StyledListItem>
-          <StyledListItem $variant="livingroom">
-            <StyledStatKey>Satiety</StyledStatKey>
-            <br />
-            {selectedPet.satiety}/100
-          </StyledListItem>
-          <StyledListItem $variant="livingroom">
-            <StyledStatKey>Energy</StyledStatKey>
-            <br />
-            {selectedPet.energy}/100
-          </StyledListItem>
-          <StyledListItem></StyledListItem>
-        </StyledStatsContainer>
+    <StyledDiv>
+      <StyledStatsContainer>
+        <StyledListItem $variant="livingroom">
+          <StyledStatKey>Name</StyledStatKey>
+          <br />
+          {selectedPet.name}
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <StyledStatKey>
+            <SVGIcon variant="food" size={20} />
+          </StyledStatKey>
+          <br />
+          {selectedPet.satiety}/100
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <StyledStatKey>Type</StyledStatKey>
+          <br /> {selectedPet.type}
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <StyledStatKey>
+            <SVGIcon variant="thunder" size={20} />
+          </StyledStatKey>
+          <br />
+          {selectedPet.energy}/100
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <StyledStatKey>
+            <SVGIcon variant="health" size={20} />
+          </StyledStatKey>
+          <br /> {selectedPet.health}/100
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <StyledStatKey>
+            <SVGIcon variant="smiley" size={20} />
+          </StyledStatKey>
+          <br />
+          {selectedPet.happiness}/100
+        </StyledListItem>
+      </StyledStatsContainer>
 
-        <PositionedButton
-          $variant="edit"
-          top="10px"
-          right="10px"
-          onClick={() => onMode("edit")}
-          hidden={isDead}
-        >
-          Edit
-        </PositionedButton>
-        <PositionedButton
-          $variant="cancel"
-          top="60px"
-          right="10px"
-          onClick={() => onMode("eliminate")}
-          hidden={isDead}
-        >
-          Eliminate
-        </PositionedButton>
-      </StyledDiv>
+      <PositionedButton
+        $variant="edit"
+        top="10px"
+        right="10px"
+        onClick={() => onMode("edit")}
+        hidden={isDead}
+      >
+        Edit
+      </PositionedButton>
+      <PositionedButton
+        $variant="cancel"
+        top="60px"
+        right="10px"
+        onClick={() => onMode("eliminate")}
+        hidden={isDead}
+      >
+        Eliminate
+      </PositionedButton>
+    </StyledDiv>
   );
 }
