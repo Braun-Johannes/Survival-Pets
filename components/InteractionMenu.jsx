@@ -12,7 +12,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         position="static"
         color="lightgreen"
       >
-        <SVGIcon variant="food" />
+        <SVGIcon variant="food" ariaLabel="feed" />
       </PositionedButton>
       <PositionedButton
         $variant="interaction"
@@ -21,7 +21,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         position="static"
         color="lightblue"
       >
-        <SVGIcon variant="sleep" />
+        <SVGIcon variant="sleep" ariaLabel="sleep" />
       </PositionedButton>
       <PositionedButton
         $variant="interaction"
@@ -30,7 +30,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         position="static"
         color="orange"
       >
-        <SVGIcon variant="ball" />
+        <SVGIcon variant="ball" ariaLabel="play" />
       </PositionedButton>
     </InteractionContainer>
   );

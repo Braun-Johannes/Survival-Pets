@@ -15,7 +15,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           <StyledStatKey $variant="icon">{selectedPet.name}</StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="food" size={20} />
+          <SVGIcon variant="food" size={20} ariaLabel="satiety" />
           <br />
           <StyledStatKey $variant="icon">
             {selectedPet.satiety}/100
@@ -27,21 +27,21 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           <StyledStatKey $variant="icon">{selectedPet.type}</StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="thunder" size={20} />
+          <SVGIcon variant="thunder" size={20} ariaLabel="energy" />
           <br />
           <StyledStatKey $variant="icon">
             {selectedPet.energy}/100
           </StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="health" size={20} />
+          <SVGIcon variant="health" size={20} ariaLabel="health" />
           <br />
           <StyledStatKey $variant="icon">
             {selectedPet.health}/100
           </StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="smiley" size={20} />
+          <SVGIcon variant="smiley" size={20} ariaLabel="happiness" />
           <br />
           <StyledStatKey $variant="icon">
             {selectedPet.happiness}/100
