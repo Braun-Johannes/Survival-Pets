@@ -12,6 +12,7 @@ const StyledListItem = styled.li`
   ${(props) =>
     props.$variant === "livingroom" &&
     `
+    text-align: center;
   padding: 8px;
   width: 50%;
   margin: 1%;

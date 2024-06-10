@@ -10,40 +10,42 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
     <StyledDiv>
       <StyledStatsContainer>
         <StyledListItem $variant="livingroom">
-          <StyledStatKey>Name</StyledStatKey>
+          <span>Name</span>
           <br />
-          {selectedPet.name}
+          <StyledStatKey $variant="icon">{selectedPet.name}</StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <StyledStatKey>
-            <SVGIcon variant="food" size={20} />
-          </StyledStatKey>
+          <SVGIcon variant="food" size={20} />
           <br />
-          {selectedPet.satiety}/100
-        </StyledListItem>
-        <StyledListItem $variant="livingroom">
-          <StyledStatKey>Type</StyledStatKey>
-          <br /> {selectedPet.type}
-        </StyledListItem>
-        <StyledListItem $variant="livingroom">
-          <StyledStatKey>
-            <SVGIcon variant="thunder" size={20} />
+          <StyledStatKey $variant="icon">
+            {selectedPet.satiety}/100
           </StyledStatKey>
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <span>Type</span>
           <br />
-          {selectedPet.energy}/100
+          <StyledStatKey $variant="icon">{selectedPet.type}</StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <StyledStatKey>
-            <SVGIcon variant="health" size={20} />
-          </StyledStatKey>
-          <br /> {selectedPet.health}/100
-        </StyledListItem>
-        <StyledListItem $variant="livingroom">
-          <StyledStatKey>
-            <SVGIcon variant="smiley" size={20} />
-          </StyledStatKey>
+          <SVGIcon variant="thunder" size={20} />
           <br />
-          {selectedPet.happiness}/100
+          <StyledStatKey $variant="icon">
+            {selectedPet.energy}/100
+          </StyledStatKey>
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <SVGIcon variant="health" size={20} />
+          <br />
+          <StyledStatKey $variant="icon">
+            {selectedPet.health}/100
+          </StyledStatKey>
+        </StyledListItem>
+        <StyledListItem $variant="livingroom">
+          <SVGIcon variant="smiley" size={20} />
+          <br />
+          <StyledStatKey $variant="icon">
+            {selectedPet.happiness}/100
+          </StyledStatKey>
         </StyledListItem>
       </StyledStatsContainer>
 
