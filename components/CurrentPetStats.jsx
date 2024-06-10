@@ -56,7 +56,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
         onClick={() => onMode("edit")}
         hidden={isDead}
       >
-        Edit
+        <SVGIcon variant="pen" size={20} />
       </PositionedButton>
       <PositionedButton
         $variant="cancel"
@@ -65,7 +65,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
         onClick={() => onMode("eliminate")}
         hidden={isDead}
       >
-        Eliminate
+        <SVGIcon variant="dead" size={25} />
       </PositionedButton>
     </StyledDiv>
   );

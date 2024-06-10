@@ -104,7 +104,7 @@ export default function HomePage() {
           // calculate reduction based on elapsed time
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          const reduction = Math.floor(elapsedTime) * 0.5; // --> parameter for stat reduction
+          const reduction = Math.floor(elapsedTime) * 1; // --> parameter for stat reduction
 
           // decrease stats over time
 
