@@ -2,6 +2,7 @@ import pets from "@/lib/pets";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import PositionedButton from "@/components/Styles/StyledButton";
+import SVGIcon from "./SVGIcon";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
@@ -21,7 +22,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
                   onSelectPet(pet);
                 }}
               >
-                {pet.type}
+                <SVGIcon variant={pet.type} size={100} ariaLabel={pet.type} />
               </PositionedButton>
             </StyledListItem>
           );

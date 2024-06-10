@@ -104,7 +104,7 @@ export default function HomePage() {
           // calculate reduction based on elapsed time
           const currentTime = Date.now() / 1000;
           const elapsedTime = currentTime - prevPet.lastUpdated;
-          const reduction = Math.floor(elapsedTime) * 2; // --> parameter for stat reduction
+          const reduction = Math.floor(elapsedTime) * 0.5; // --> parameter for stat reduction
 
           // decrease stats over time
 
@@ -150,7 +150,7 @@ export default function HomePage() {
 
           return prevPet;
         });
-      }, 1000); // Check every 10th of a second
+      }, 100); // Check every 10th of a second
       return () => clearInterval(interval);
     }
   }, [selectedPet, setSelectedPet]);
@@ -218,6 +218,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             <StyledSection>
               <CurrentPet selectedPet={selectedPet} />
             </StyledSection>
@@ -234,6 +235,7 @@ export default function HomePage() {
         <>
           <StyledGrid>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+            <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             <StyledSection>
               <CurrentPet selectedPet={selectedPet} />
             </StyledSection>
