@@ -33,7 +33,14 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <ul style={{ padding: 0 }}>
+      <ul
+        style={{
+          padding: 0,
+          position: "fixed",
+          top: 0,
+          left: 0,
+        }}
+      >
         {toasts.map((toast) => (
           <Toast
             key={toast.id}
