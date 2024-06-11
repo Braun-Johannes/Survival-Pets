@@ -4,6 +4,7 @@ import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
 import SVGIcon from "./SVGIcon";
+import StatBar from "@/components/StatBar";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
@@ -15,11 +16,11 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           <StyledStatKey $variant="icon">{selectedPet.name}</StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="food" size={20} ariaLabel="satiety" />
-          <br />
-          <StyledStatKey $variant="icon">
-            {selectedPet.satiety}/100
-          </StyledStatKey>
+          <StatBar
+            color={"lightgreen"}
+            value={selectedPet.satiety}
+            icon={"food"}
+          />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <span>Type</span>
@@ -27,25 +28,21 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           <StyledStatKey $variant="icon">{selectedPet.type}</StyledStatKey>
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="thunder" size={20} ariaLabel="energy" />
-          <br />
-          <StyledStatKey $variant="icon">
-            {selectedPet.energy}/100
-          </StyledStatKey>
+          <StatBar
+            color={"lightblue"}
+            value={selectedPet.energy}
+            icon={"thunder"}
+          />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="health" size={20} ariaLabel="health" />
-          <br />
-          <StyledStatKey $variant="icon">
-            {selectedPet.health}/100
-          </StyledStatKey>
+          <StatBar color={"green"} value={selectedPet.health} icon={"health"} />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <SVGIcon variant="smiley" size={20} ariaLabel="happiness" />
-          <br />
-          <StyledStatKey $variant="icon">
-            {selectedPet.happiness}/100
-          </StyledStatKey>
+          <StatBar
+            color={"orange"}
+            value={selectedPet.happiness}
+            icon={"smiley"}
+          />
         </StyledListItem>
       </StyledStatsContainer>
 
