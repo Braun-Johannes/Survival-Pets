@@ -13,7 +13,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState } from "react";
 import { formatPetsAge } from "@/utils";
 
-export default function HomePage() {
+export default function HomePage({ onAddToast }) {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
     defaultValue: {},
   });
@@ -176,7 +176,11 @@ export default function HomePage() {
                 selectedPet={selectedPet}
               />
             </StyledSection>
-            <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
+            <PetForm
+              selectedPet={selectedPet}
+              onAddToast={onAddToast}
+              onSubmit={handleSubmit}
+            />
           </StyledGrid>
         </>
       )}

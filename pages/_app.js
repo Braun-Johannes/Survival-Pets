@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <Component {...pageProps} onAddToast={handleAddToast} />
       <ul style={{ padding: 0 }}>
         {toasts.map((toast) => (
           <Toast
