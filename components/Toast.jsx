@@ -1,34 +1,34 @@
 import PositionedButton from "./Styles/StyledButton";
 import styled from "styled-components";
 
-const toastColors = {
-  success: "rgba(0,128,0,0.8)",
-  warning: "rgba(255,165,0,0.8)",
-  error: "rgba(255,0,0,0.8)",
-};
-
 export default function Toast({ toast, onToastClose }) {
   return (
-    <li
-      style={{
-        transition: "opacity 0.5s ease-in-out",
-        opacity: toast.visible ? 1 : 0,
-        listStyle: "none",
-        marginBottom: "10px",
-        background: toastColors[toast.variant],
-        color: "white",
-        padding: "10px",
-        borderRadius: "5px",
-      }}
-    >
+    <StyledToastMessage visible={toast.visible} variant={toast.variant}>
       {toast.message} -{" "}
       <PositionedButton
         $variant="cancel"
         position="relative"
         onClick={() => onToastClose(toast.id)}
       >
-        Cancel
+        X
       </PositionedButton>
-    </li>
+    </StyledToastMessage>
   );
 }
+
+const toastColors = {
+  success: "rgba(0,128,0,0.8)",
+  warning: "rgba(255,165,0,0.8)",
+  error: "rgba(255,0,0,0.8)",
+};
+
+const StyledToastMessage = styled.li`
+  transition: opacity 0.5s ease-in-out;
+  list-style: none;
+  color: white;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  opacity: ${({ visible }) => (visible ? 1 : 0)};
+  background: ${({ variant }) => toastColors[variant]};
+`;

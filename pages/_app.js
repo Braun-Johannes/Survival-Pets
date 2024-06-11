@@ -1,4 +1,5 @@
 import GlobalStyle from "../styles";
+import StyledToastContainer from "@/components/Styles/StyledToastContainer";
 import { useState } from "react";
 import { nanoid } from "nanoid";
 import Toast from "@/components/Toast";
@@ -33,7 +34,7 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <ul style={{ padding: 0, position: "fixed", top: 50, left: 0 }}>
+      <StyledToastContainer>
         {toasts.map((toast) => (
           <Toast
             key={toast.id}
@@ -41,7 +42,7 @@ export default function App({ Component, pageProps }) {
             onToastClose={handleDeleteToast}
           />
         ))}
-      </ul>
+      </StyledToastContainer>
       <Component {...pageProps} onAddToast={handleAddToast} />
     </>
   );
