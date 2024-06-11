@@ -1,19 +1,17 @@
-import StyledStatKey from "@/components/Styles/StyledStatKey";
 import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
 import SVGIcon from "./SVGIcon";
 import StatBar from "@/components/StatBar";
+import PetInfo from "./PetInfo";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
     <StyledDiv>
       <StyledStatsContainer>
         <StyledListItem $variant="livingroom">
-          <span>Name</span>
-          <br />
-          <StyledStatKey $variant="icon">{selectedPet.name}</StyledStatKey>
+          <PetInfo label={"Name"} value={selectedPet.name} />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <StatBar
@@ -23,9 +21,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <span>Type</span>
-          <br />
-          <StyledStatKey $variant="icon">{selectedPet.type}</StyledStatKey>
+          <PetInfo label={"Type"} value={selectedPet.type} />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <StatBar
