@@ -3,7 +3,12 @@ import StyledInput from "@/components/Styles/StyleInput";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
 
-export default function EditForm({ selectedPet, onMode, onSubmit }) {
+export default function EditForm({
+  selectedPet,
+  onMode,
+  onSubmit,
+  onAddToast,
+}) {
   return (
     <StyledDiv>
       <StyledForm onSubmit={onSubmit}>
@@ -16,7 +21,14 @@ export default function EditForm({ selectedPet, onMode, onSubmit }) {
           $variant="name"
           required
         />
-        <PositionedButton $variant="confirm" bottom="85px" type="submit">
+        <PositionedButton
+          $variant="confirm"
+          bottom="85px"
+          type="submit"
+          onClick={() =>
+            onAddToast("You successfully changed your name", "warning")
+          }
+        >
           Update Name
         </PositionedButton>
       </StyledForm>

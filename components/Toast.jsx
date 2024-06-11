@@ -1,3 +1,6 @@
+import PositionedButton from "./Styles/StyledButton";
+import styled from "styled-components";
+
 const toastColors = {
   success: "rgba(0,128,0,0.8)",
   warning: "rgba(255,165,0,0.8)",
@@ -8,7 +11,6 @@ export default function Toast({ toast, onToastClose }) {
   return (
     <li
       style={{
-        position: "fixed",
         transition: "opacity 0.5s ease-in-out",
         opacity: toast.visible ? 1 : 0,
         listStyle: "none",
@@ -20,7 +22,13 @@ export default function Toast({ toast, onToastClose }) {
       }}
     >
       {toast.message} -{" "}
-      <button onClick={() => onToastClose(toast.id)}>close</button>
+      <PositionedButton
+        $variant="cancel"
+        position="relative"
+        onClick={() => onToastClose(toast.id)}
+      >
+        Cancel
+      </PositionedButton>
     </li>
   );
 }

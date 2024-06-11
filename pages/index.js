@@ -230,6 +230,7 @@ export default function HomePage({ onAddToast }) {
               selectedPet={selectedPet}
               onSubmit={handleSubmit}
               onMode={handleMode}
+              onAddToast={onAddToast}
             />
           </StyledGrid>
         </>
