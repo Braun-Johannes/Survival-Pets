@@ -98,62 +98,45 @@ export default function HomePage() {
   // __________________________TIME LOGIC_______________________________
 
   useEffect(() => {
-    if (selectedPet) {
-      const interval = setInterval(() => {
+    let interval;
+    if (mode !== "select") {
+      interval = setInterval(() => {
         setSelectedPet((prevPet) => {
           // calculate reduction based on elapsed time
-          const currentTime = Date.now() / 1000;
-          const elapsedTime = currentTime - prevPet.lastUpdated;
-          const reduction = Math.floor(elapsedTime) * 5; // --> parameter for stat reduction
+          const currentTime = Math.floor(Date.now() / 1000);
+          const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
-          // decrease stats over time
+          const decreaseRate = 2;
+          let health = prevPet.health;
+          let satiety = prevPet.satiety;
+          let energy = prevPet.energy;
+          let happiness = prevPet.happiness;
 
-          if (reduction > 0) {
-            if (prevPet.health === 0) {
-              return prevPet;
-            }
-            const newEnergy = Math.min(
-              Math.max(prevPet.energy - reduction, 0),
-              100
-            );
-            const newSatiety = Math.min(
-              Math.max(prevPet.satiety - reduction, 0),
-              100
-            );
-            const newHappiness = Math.min(
-              Math.max(prevPet.happiness - reduction, 0),
-              100
-            );
+          for (let t = 0; t < elapsedTime; t++) {
+            if (satiety > 0) satiety = Math.max(0, satiety - decreaseRate);
+            if (energy > 0) energy = Math.max(0, energy - decreaseRate);
+            if (happiness > 0)
+              happiness = Math.max(0, happiness - decreaseRate);
 
-            // decrease health based on how many stats are at zero
+            const zeroCount =
+              (satiety === 0) + (energy === 0) + (happiness === 0);
+            const healthDecreaseRate = zeroCount * 1;
 
-            const stats = [newEnergy, newSatiety, newHappiness];
-            const statsAtZero = stats.filter((value) => value === 0).length;
-            const healthReduction = statsAtZero * 2; // --> Parameter for health reduction
-            const newHealth =
-              statsAtZero > 0
-                ? Math.min(Math.max(prevPet.health - healthReduction, 0), 100)
-                : prevPet.health;
-
-            if (newHealth === 0) {
-              setTimeAlive(Math.floor(currentTime - prevPet.createdAt));
-            }
-            return {
-              ...prevPet,
-              energy: newEnergy,
-              satiety: newSatiety,
-              happiness: newHappiness,
-              lastUpdated: currentTime,
-              health: newHealth,
-            };
+            health = Math.max(0, health - healthDecreaseRate);
           }
-
-          return prevPet;
+          return {
+            ...prevPet,
+            energy: energy,
+            satiety: satiety,
+            happiness: happiness,
+            lastUpdated: currentTime,
+            health: health,
+          };
         });
       }, 100); // Check every 10th of a second
       return () => clearInterval(interval);
     }
-  }, [selectedPet, setSelectedPet]);
+  }, [selectedPet, setSelectedPet, mode]);
 
   const ageInSeconds =
     selectedPet && !isDead
