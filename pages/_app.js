@@ -33,7 +33,6 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} onAddToast={handleAddToast} />
       <ul style={{ padding: 0 }}>
         {toasts.map((toast) => (
           <Toast
@@ -43,6 +42,7 @@ export default function App({ Component, pageProps }) {
           />
         ))}
       </ul>
+      <Component {...pageProps} onAddToast={handleAddToast} />
     </>
   );
 }
