@@ -12,6 +12,8 @@ import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
 
 import { formatPetsAge } from "@/utils";
+import StyledDiv from "@/components/Styles/StyledDiv";
+import SVGIcon from "@/components/SVGIcon";
 
 export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubmit, onIncreaseStats,onEliminate, onMode, onDeletePet, ageInSeconds}) {
   
@@ -43,7 +45,9 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
             )}
             {!isDead ? (
               <StyledContainer>
-                <StyledLink href={"/Graveyard"}>Graveyard</StyledLink>
+                <div>
+                <StyledLink href={"/graveyard"}><SVGIcon variant="tombstone" /></StyledLink>
+                </div>
                 <StyledSection>
                   <CurrentPet selectedPet={selectedPet} />
                 </StyledSection>
@@ -121,8 +125,14 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledLink = styled(Link)`
+text-decoration: none;
 color: black;
-align-items; flex
-margin: auto;
-border: 3px black solid;
+align-items; flex;
+padding: 5px;
+border-radius: 40%;
+border-right: 3px black solid;
+border-left: 3px black solid;
+border-bottom: 3px black solid;
+margin-left: 30%;
+background-color: lightgrey;
 `

@@ -10,6 +10,12 @@ const StyledList = styled.ul`
     props.$variant === "graveyard" &&
     `
   flex-wrap: wrap;
+  max-width: 800px
+  justify-content: center;
+  justify-self: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  
   `}
 `;
 

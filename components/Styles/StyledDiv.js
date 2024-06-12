@@ -4,6 +4,8 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+bottom: 0;
+width: calc(100vw - 1rem);
   align-items: center;
   justify-content: center;
   border: solid black;

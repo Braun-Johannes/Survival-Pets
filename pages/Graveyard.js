@@ -7,7 +7,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 
-export default function Graveyard({deceasedPets, selectedPet, ageInSeconds}) {
+export default function graveyard({deceasedPets, selectedPet, ageInSeconds}) {
    
 
     
