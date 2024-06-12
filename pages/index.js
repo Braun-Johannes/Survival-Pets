@@ -10,10 +10,10 @@ import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
 import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
-
 import { formatPetsAge } from "@/utils";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import SVGIcon from "@/components/SVGIcon";
+
 
 export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubmit, onIncreaseStats,onEliminate, onMode, onDeletePet, ageInSeconds}) {
   
@@ -31,7 +31,8 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
                 selectedPet={selectedPet}
               />
             </StyledSection>
-            <PetForm selectedPet={selectedPet} onSubmit={onSubmit} />
+            <PetForm selectedPet={selectedPet} onSubmit={onSubmit} onAddToast={onAddToast} />
+
           </StyledGrid>
         </>
       )}
@@ -83,6 +84,8 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
               onMode={onMode}
+              onAddToast={onAddToast}
+
             />
           </StyledGrid>
         </>
