@@ -15,6 +15,7 @@ const StyledDiv = styled.div`
     `
   border: none;
     `}
+    
 `;
 
 export default StyledDiv;

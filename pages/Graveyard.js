@@ -18,7 +18,7 @@ export default function Graveyard({deceasedPets, selectedPet, ageInSeconds}) {
     <StyledHeading>Graveyard</StyledHeading>
     </div>
     {deceasedPets ?
-    <StyledList $variant="graveyard"> {deceasedPets.map((deceasedPet) => {return <StyledListItem $variant="graveyard" key={deceasedPet.key}>
+    <StyledList $variant="graveyard"> {deceasedPets.map((deceasedPet) => {return <StyledListItem $variant="graveyard" key={deceasedPet.id}>
         <GraveyardCard deceasedPet={deceasedPet}/>
     </StyledListItem>
     })}</StyledList> : <StyledHeading>No animals in the graveyard yet. You are doing a great job!</StyledHeading>}
@@ -33,5 +33,4 @@ const StyledGrid = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-
 `

@@ -121,4 +121,8 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledLink = styled(Link)`
-color: black`
+color: black;
+align-items; flex
+margin: auto;
+border: 3px black solid;
+`
