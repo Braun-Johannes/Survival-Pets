@@ -72,17 +72,12 @@ const StyledButton = styled.button`
 ${(props) =>
     props.$variant === "tombstone" &&
     `
-    
-    height: 400px;
     background-color: transparent;
-    font-size: 0.875rem;
-    line-height: 1.75;
-    letter-spacing: 0.02857em;
-    text-transform: uppercase;
-    min-width: 64px;
-    padding: 5px 15px;
-    color: rgb(244, 67, 54);
-    border: none
+    border: none;
+    padding: 0;
+    display: inline-block;
+    width: auto;
+    height: auto;
     `}
 `;
 

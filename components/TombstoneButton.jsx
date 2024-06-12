@@ -9,7 +9,11 @@ export default function TombstoneButton({ selectedPet, onDeletePet }) {
         $variant="tombstone"
         position="relative"
       >
-        <SVGIcon variant="tombstone" size={350}></SVGIcon>
+        <SVGIcon
+          variant="tombstone"
+          size={300}
+          text={selectedPet.name}
+        ></SVGIcon>
       </PositionedButton>
     </>
   );
