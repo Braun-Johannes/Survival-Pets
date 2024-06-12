@@ -10,9 +10,7 @@ import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
 import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
-
 import { formatPetsAge } from "@/utils";
-import StyledDiv from "@/components/Styles/StyledDiv";
 import SVGIcon from "@/components/SVGIcon";
 
 export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubmit, onIncreaseStats,onEliminate, onMode, onDeletePet, ageInSeconds}) {
@@ -127,7 +125,7 @@ const StyledH2 = styled.h2`
 const StyledLink = styled(Link)`
 text-decoration: none;
 color: black;
-align-items; flex;
+align-items: flex;
 padding: 5px;
 border-radius: 40%;
 border-right: 3px black solid;
