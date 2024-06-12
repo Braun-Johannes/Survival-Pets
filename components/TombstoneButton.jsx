@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import PositionedButton from "@/components/Styles/StyledButton";
-import Tombstone from "./Styles/StyledTombstone";
 import SVGIcon from "./SVGIcon";
 import { formatPetsAge } from "@/utils";
 
