@@ -2,11 +2,12 @@ import GraveyardCard from "@/components/GraveyardCard";
 import StyledHeading from "@/components/Styles/StyledHeading"
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
+import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
 import Link from "next/link";
 import styled from "styled-components";
 
 
-export default function Graveyard({deceasedPets}) {
+export default function Graveyard({deceasedPets, selectedPet, ageInSeconds}) {
    
 
     
@@ -21,7 +22,7 @@ export default function Graveyard({deceasedPets}) {
         <GraveyardCard deceasedPet={deceasedPet}/>
     </StyledListItem>
     })}</StyledList> : <StyledHeading>No animals in the graveyard yet. You are doing a great job!</StyledHeading>}
-    <div></div>
+    <GraveyardCurrentPetCard selectedPet={selectedPet} ageInSeconds={ageInSeconds}></GraveyardCurrentPetCard>
     </StyledGrid>
     </>)
 }
