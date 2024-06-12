@@ -16,10 +16,11 @@ export default function Graveyard({deceasedPets}) {
             <StyledLink href={"/"}> Back</StyledLink>
     <StyledHeading>Graveyard</StyledHeading>
     </div>
+    {deceasedPets ?
     <StyledList $variant="graveyard"> {deceasedPets.map((deceasedPet) => {return <StyledListItem $variant="graveyard" key={deceasedPet.key}>
         <GraveyardCard deceasedPet={deceasedPet}/>
     </StyledListItem>
-    })}</StyledList>
+    })}</StyledList> : <StyledHeading>No animals in the graveyard yet. You are doing a great job!</StyledHeading>}
     <div></div>
     </StyledGrid>
     </>)
@@ -31,6 +32,5 @@ const StyledGrid = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-color: black;
-margin: 10 px
+
 `
