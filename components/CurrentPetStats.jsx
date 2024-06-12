@@ -15,7 +15,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <StatBar
-            color={"lightgreen"}
+            color={"#7CFC00"}
             value={selectedPet.satiety}
             icon={"food"}
           />
@@ -25,13 +25,17 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <StatBar
-            color={"lightblue"}
+            color={"#40E0D0"}
             value={selectedPet.energy}
             icon={"thunder"}
           />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
-          <StatBar color={"green"} value={selectedPet.health} icon={"health"} />
+          <StatBar
+            color={"#228B22"}
+            value={selectedPet.health}
+            icon={"heart"}
+          />
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <StatBar

@@ -6,7 +6,7 @@ export default function StatBar({ icon, value, color }) {
     <>
       <Container>
         <IconWrapper>
-          <SVGIcon variant={icon} size={30} ariaLabel="satiety" />
+          <SVGIcon variant={icon} size={30} />
         </IconWrapper>
         <BarContainer>
           <ParameterBar color={color} value={value} />
@@ -17,14 +17,15 @@ export default function StatBar({ icon, value, color }) {
 }
 
 const IconWrapper = styled.div`
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: lightsteelblue;
-  margin-right: -15px;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 50%;
+  background-color: #add8e6;
+  margin-right: -15px;
   z-index: 1;
 `;
 
@@ -32,10 +33,9 @@ const BarContainer = styled.div`
   width: 150px;
   height: 35px;
   background-color: lightgray;
+  border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
-  display: flex;
-  align-items: center;
 `;
 
 const ParameterBar = styled.div`
