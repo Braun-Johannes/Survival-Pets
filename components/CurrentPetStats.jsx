@@ -32,7 +32,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
         </StyledListItem>
         <StyledListItem $variant="livingroom">
           <StatBar
-            color={"#228B22"}
+            color={"#FF7F7F"}
             value={selectedPet.health}
             icon={"heart"}
           />
