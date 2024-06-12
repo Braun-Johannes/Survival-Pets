@@ -15,11 +15,8 @@ export default createGlobalStyle`
   body {
     margin: 0;
     font-family: ${concertOne.style.fontFamily};
-  }
-  
-  input, button {
-    font-family: ${concertOne.style.fontFamily};
-  }
-  h1, h2 {
+    };
+
+input, button {
     font-family: ${concertOne.style.fontFamily};
   }`;
