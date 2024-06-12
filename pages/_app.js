@@ -1,23 +1,26 @@
 import GlobalStyle from "../styles";
+import { nanoid } from "nanoid";
+import Toast from "@/components/Toast";
+import StyledToastContainer from "@/components/Styles/StyledToastContainer";
 import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState } from "react";
 import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
-
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
     defaultValue: {},
   });
   const [mode, setMode] = useLocalStorageState("mode", {
     defaultValue: "select",
   });
-  const [deceasedPets, setDeceasedPets] = useLocalStorageState("deceasedPets", {},)
+  const [deceasedPets, setDeceasedPets] = useLocalStorageState(
+    "deceasedPets",
+    {}
+  );
 
   const [timeAlive, setTimeAlive] = useState(0);
 
   const isDead = selectedPet.health === 0;
-
-  
 
   // _________________HANDLE STATES FUNCTIONS___________________________
 
@@ -46,10 +49,10 @@ export default function App({ Component, pageProps }) {
   function handleDeletePet() {
     setMode("select");
     if (isDead && !deceasedPets) {
-      setDeceasedPets([{ key: uid(), ...selectedPet }])
+      setDeceasedPets([{ key: uid(), ...selectedPet }]);
     } else if (isDead && deceasedPets) {
-      setDeceasedPets([{...selectedPet, id: uid() }, ...deceasedPets])
-    } 
+      setDeceasedPets([{ ...selectedPet, id: uid() }, ...deceasedPets]);
+    }
     setSelectedPet("");
   }
 
@@ -161,23 +164,60 @@ export default function App({ Component, pageProps }) {
 
   // ___________________________________________________________________
 
+  const [toasts, setToasts] = useState([]);
 
+  function handleAddToast(message, variant = "success") {
+    const id = nanoid();
+    setToasts((prevToasts) => [
+      ...prevToasts,
+      { id, visible: true, message, variant },
+    ]);
 
+    setTimeout(() => {
+      setToasts((prevToasts) =>
+        prevToasts.map((toast) =>
+          toast.id === id ? { ...toast, visible: false } : toast
+        )
+      );
+    }, 4500);
+
+    setTimeout(() => {
+      handleDeleteToast(id);
+    }, 5000);
+  }
+
+  function handleDeleteToast(id) {
+    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
+  }
   return (
     <>
       <GlobalStyle />
-      <Component {...pageProps} 
-      onSelectPet={handleSelectPet} 
-      selectedPet={selectedPet} 
-      onSubmit={handleSubmit}
-      onIncreaseStats={handleIncreaseStats} 
-      onMode={handleMode}
-      onDeletePet={handleDeletePet}
-      isDead={isDead}
-      mode={mode}
-      onEliminate={handleEliminate}
-      ageInSeconds={ageInSeconds}
-      deceasedPets={deceasedPets}/>
+
+      <StyledToastContainer>
+        {toasts.map((toast) => (
+          <Toast
+            key={toast.id}
+            toast={toast}
+            onToastClose={handleDeleteToast}
+          />
+        ))}
+      </StyledToastContainer>
+
+      <Component
+        {...pageProps}
+        onSelectPet={handleSelectPet}
+        selectedPet={selectedPet}
+        onSubmit={handleSubmit}
+        onIncreaseStats={handleIncreaseStats}
+        onMode={handleMode}
+        onDeletePet={handleDeletePet}
+        isDead={isDead}
+        mode={mode}
+        onEliminate={handleEliminate}
+        ageInSeconds={ageInSeconds}
+        deceasedPets={deceasedPets}
+        onAddToast={handleAddToast}
+      />
     </>
   );
 }

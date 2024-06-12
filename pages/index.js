@@ -13,8 +13,19 @@ import InteractionMenu from "@/components/InteractionMenu";
 import { formatPetsAge } from "@/utils";
 import SVGIcon from "@/components/SVGIcon";
 
-export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubmit, onIncreaseStats,onEliminate, onMode, onDeletePet, ageInSeconds}) {
-  
+export default function HomePage({
+  selectedPet,
+  mode,
+  isDead,
+  onSelectPet,
+  onSubmit,
+  onIncreaseStats,
+  onEliminate,
+  onMode,
+  onDeletePet,
+  ageInSeconds,
+  onAddToast,
+}) {
   return (
     <>
       {mode === "select" && (
@@ -24,12 +35,13 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
               Select a Survival Pet
             </StyledHeading>
             <StyledSection>
-              <PetList
-                onSelectPet={onSelectPet}
-                selectedPet={selectedPet}
-              />
+              <PetList onSelectPet={onSelectPet} selectedPet={selectedPet} />
             </StyledSection>
-            <PetForm selectedPet={selectedPet} onSubmit={onSubmit} />
+            <PetForm
+              selectedPet={selectedPet}
+              onSubmit={onSubmit}
+              onAddToast={onAddToast}
+            />
           </StyledGrid>
         </>
       )}
@@ -44,7 +56,9 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
             {!isDead ? (
               <StyledContainer>
                 <div>
-                <StyledLink href={"/graveyard"} ><SVGIcon variant="graveyard" /></StyledLink>
+                  <StyledLink href={"/graveyard"}>
+                    <SVGIcon variant="graveyard" />
+                  </StyledLink>
                 </div>
                 <StyledSection>
                   <CurrentPet selectedPet={selectedPet} />
@@ -81,6 +95,7 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
               onMode={onMode}
+              onAddToast={onAddToast}
             />
           </StyledGrid>
         </>
@@ -123,14 +138,14 @@ const StyledH2 = styled.h2`
 `;
 
 const StyledLink = styled(Link)`
-text-decoration: none;
-color: black;
-align-items: flex;
-padding: 5px;
-border-radius: 40%;
-border-right: 3px black solid;
-border-left: 3px black solid;
-border-bottom: 3px black solid;
-margin-left: 30%;
-background-color: lightgrey;
-`
+  text-decoration: none;
+  color: black;
+  align-items: flex;
+  padding: 5px;
+  border-radius: 40%;
+  border-right: 3px black solid;
+  border-left: 3px black solid;
+  border-bottom: 3px black solid;
+  margin-left: 30%;
+  background-color: lightgrey;
+`;
