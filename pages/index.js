@@ -46,7 +46,7 @@ export default function HomePage({selectedPet, mode, isDead, onSelectPet, onSubm
             {!isDead ? (
               <StyledContainer>
                 <div>
-                <StyledLink href={"/graveyard"}><SVGIcon variant="tombstone" /></StyledLink>
+                <StyledLink href={"/graveyard"} ><SVGIcon variant="graveyard" /></StyledLink>
                 </div>
                 <StyledSection>
                   <CurrentPet selectedPet={selectedPet} />
