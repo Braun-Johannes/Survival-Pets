@@ -1,8 +1,10 @@
 import { createGlobalStyle } from "styled-components";
+import { Concert_One } from "next/font/google";
+
+const concertOne = Concert_One({ subsets: ["latin"], weight: ["400"] });
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Concert+One&family=Poetsen+One&display=swap');
+
 
   *,
   *::before,
@@ -12,12 +14,12 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: "Concert One", cursive;
+    font-family: ${concertOne.style.fontFamily};
   }
   
   input, button {
-    font-family: "Concert One", cursive;
+    font-family: ${concertOne.style.fontFamily};
   }
   h1, h2 {
-    font-family: "Poetsen One", cursive;
+    font-family: ${concertOne.style.fontFamily};
   }`;
