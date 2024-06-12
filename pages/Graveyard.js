@@ -14,7 +14,7 @@ export default function graveyard({deceasedPets, selectedPet, ageInSeconds}) {
     return(<>
     <StyledGrid>
         <div>
-            <StyledLink href={"/"}> Back</StyledLink>
+            <StyledLink href={"/"} > ←</StyledLink>
     <StyledHeading>Graveyard</StyledHeading>
     </div>
     {deceasedPets ?
@@ -33,4 +33,9 @@ const StyledGrid = styled.div`
 `;
 
 const StyledLink = styled(Link)`
+position: absolute;
+text-decoration: none;
+color: black;
+font-size: 3rem;
+margin-left: 10px;
 `
