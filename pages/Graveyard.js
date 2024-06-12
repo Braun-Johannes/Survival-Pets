@@ -1,30 +1,42 @@
 import GraveyardCard from "@/components/GraveyardCard";
-import StyledHeading from "@/components/Styles/StyledHeading"
+import StyledHeading from "@/components/Styles/StyledHeading";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
 import Link from "next/link";
 import styled from "styled-components";
 
-
-export default function graveyard({deceasedPets, selectedPet, ageInSeconds}) {
-   
-
-    
-    return(<>
-    <StyledGrid>
+export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
+  return (
+    <>
+      <StyledGrid>
         <div>
-            <StyledLink href={"/"} > ←</StyledLink>
-    <StyledHeading>Graveyard</StyledHeading>
-    </div>
-    {deceasedPets ?
-    <StyledList $variant="graveyard"> {deceasedPets.map((deceasedPet) => {return <StyledListItem $variant="graveyard" key={deceasedPet.id}>
-        <GraveyardCard deceasedPet={deceasedPet}/>
-    </StyledListItem>
-    })}</StyledList> : <StyledHeading>No animals in the graveyard yet. You are doing a great job!</StyledHeading>}
-    <GraveyardCurrentPetCard selectedPet={selectedPet} ageInSeconds={ageInSeconds}></GraveyardCurrentPetCard>
-    </StyledGrid>
-    </>)
+          <StyledLink href={"/"}> ←</StyledLink>
+          <StyledHeading>Graveyard</StyledHeading>
+        </div>
+        {deceasedPets ? (
+          <StyledList $variant="graveyard">
+            {" "}
+            {deceasedPets.map((deceasedPet) => {
+              return (
+                <StyledListItem $variant="graveyard" key={deceasedPet.id}>
+                  <GraveyardCard deceasedPet={deceasedPet} />
+                </StyledListItem>
+              );
+            })}
+          </StyledList>
+        ) : (
+          <StyledHeading>
+            No animals in the graveyard yet. You are doing a great job!
+          </StyledHeading>
+        )}
+        <GraveyardCurrentPetCard
+          selectedPet={selectedPet}
+          ageInSeconds={ageInSeconds}
+        ></GraveyardCurrentPetCard>
+      </StyledGrid>
+    </>
+  );
 }
 
 const StyledGrid = styled.div`
@@ -33,9 +45,9 @@ const StyledGrid = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-position: absolute;
-text-decoration: none;
-color: black;
-font-size: 3rem;
-margin-left: 10px;
-`
+  position: absolute;
+  text-decoration: none;
+  color: black;
+  font-size: 3rem;
+  margin-left: 10px;
+`;

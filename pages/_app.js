@@ -7,20 +7,20 @@ import { useEffect, useState } from "react";
 import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
-
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
     defaultValue: {},
   });
   const [mode, setMode] = useLocalStorageState("mode", {
     defaultValue: "select",
   });
-  const [deceasedPets, setDeceasedPets] = useLocalStorageState("deceasedPets", {},)
+  const [deceasedPets, setDeceasedPets] = useLocalStorageState(
+    "deceasedPets",
+    {}
+  );
 
   const [timeAlive, setTimeAlive] = useState(0);
 
   const isDead = selectedPet.health === 0;
-
-  
 
   // _________________HANDLE STATES FUNCTIONS___________________________
 
@@ -49,10 +49,10 @@ export default function App({ Component, pageProps }) {
   function handleDeletePet() {
     setMode("select");
     if (isDead && !deceasedPets) {
-      setDeceasedPets([{ key: uid(), ...selectedPet }])
+      setDeceasedPets([{ key: uid(), ...selectedPet }]);
     } else if (isDead && deceasedPets) {
-      setDeceasedPets([{...selectedPet, id: uid() }, ...deceasedPets])
-    } 
+      setDeceasedPets([{ ...selectedPet, id: uid() }, ...deceasedPets]);
+    }
     setSelectedPet("");
   }
 
@@ -164,13 +164,6 @@ export default function App({ Component, pageProps }) {
 
   // ___________________________________________________________________
 
-
-
-
-
-
-
-
   const [toasts, setToasts] = useState([]);
 
   function handleAddToast(message, variant = "success") {
@@ -195,14 +188,12 @@ export default function App({ Component, pageProps }) {
 
   function handleDeleteToast(id) {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
-  
-
-
+  }
   return (
     <>
       <GlobalStyle />
-    
-    <StyledToastContainer>
+
+      <StyledToastContainer>
         {toasts.map((toast) => (
           <Toast
             key={toast.id}
@@ -212,20 +203,21 @@ export default function App({ Component, pageProps }) {
         ))}
       </StyledToastContainer>
 
-      <Component {...pageProps} 
-      onSelectPet={handleSelectPet} 
-      selectedPet={selectedPet} 
-      onSubmit={handleSubmit}
-      onIncreaseStats={handleIncreaseStats} 
-      onMode={handleMode}
-      onDeletePet={handleDeletePet}
-      isDead={isDead}
-      mode={mode}
-      onEliminate={handleEliminate}
-      ageInSeconds={ageInSeconds}
-      deceasedPets={deceasedPets}
-  onAddToast={handleAddToast}/>
-
+      <Component
+        {...pageProps}
+        onSelectPet={handleSelectPet}
+        selectedPet={selectedPet}
+        onSubmit={handleSubmit}
+        onIncreaseStats={handleIncreaseStats}
+        onMode={handleMode}
+        onDeletePet={handleDeletePet}
+        isDead={isDead}
+        mode={mode}
+        onEliminate={handleEliminate}
+        ageInSeconds={ageInSeconds}
+        deceasedPets={deceasedPets}
+        onAddToast={handleAddToast}
+      />
     </>
   );
 }
