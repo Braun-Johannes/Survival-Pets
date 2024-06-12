@@ -13,7 +13,7 @@ import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState } from "react";
 import { formatPetsAge } from "@/utils";
 
-export default function HomePage() {
+export default function HomePage({ onAddToast }) {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
     defaultValue: {},
   });
@@ -103,6 +103,7 @@ export default function HomePage() {
       interval = setInterval(() => {
         setSelectedPet((prevPet) => {
           // calculate reduction based on elapsed time
+
           const currentTime = Math.floor(Date.now() / 1000);
           const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
@@ -159,7 +160,11 @@ export default function HomePage() {
                 selectedPet={selectedPet}
               />
             </StyledSection>
-            <PetForm selectedPet={selectedPet} onSubmit={handleSubmit} />
+            <PetForm
+              selectedPet={selectedPet}
+              onAddToast={onAddToast}
+              onSubmit={handleSubmit}
+            />
           </StyledGrid>
         </>
       )}
@@ -209,6 +214,7 @@ export default function HomePage() {
               selectedPet={selectedPet}
               onSubmit={handleSubmit}
               onMode={handleMode}
+              onAddToast={onAddToast}
             />
           </StyledGrid>
         </>
