@@ -190,6 +190,7 @@ export default function HomePage({ onAddToast }) {
                   selectedPet={selectedPet}
                   onMode={handleMode}
                   onDeletePet={handleDeletePet}
+                  timeAlive={timeAlive}
                 />
               </StyledSection>
             )}
