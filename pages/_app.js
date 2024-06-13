@@ -21,7 +21,9 @@ export default function App({ Component, pageProps }) {
     defaultValue: false,
   });
 
-  const [timeAlive, setTimeAlive] = useState(0);
+  const [timeAlive, setTimeAlive] = useLocalStorageState("timeAlive", {
+    defaultValue: 0,
+  });
 
   const isDead = selectedPet.health === 0;
 
@@ -279,6 +281,7 @@ export default function App({ Component, pageProps }) {
         ageInSeconds={ageInSeconds}
         deceasedPets={deceasedPets}
         onAddSnackbar={handleAddSnackbar}
+        timeAlive={timeAlive}
       />
     </>
   );

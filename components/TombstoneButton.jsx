@@ -1,7 +1,11 @@
 import PositionedButton from "@/components/Styles/StyledButton";
 import StyledDiv from "@/components/Styles/StyledDiv";
 
-export default function TombstoneButton({ selectedPet, onDeletePet }) {
+export default function TombstoneButton({
+  selectedPet,
+  onDeletePet,
+  timeAlive,
+}) {
   return (
     <>
       <StyledDiv $variant="tombstone">

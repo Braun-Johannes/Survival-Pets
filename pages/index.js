@@ -25,6 +25,7 @@ export default function HomePage({
   onDeletePet,
   ageInSeconds,
   onAddSnackbar,
+  timeAlive,
 }) {
   return (
     <>
@@ -71,6 +72,7 @@ export default function HomePage({
                   selectedPet={selectedPet}
                   onMode={onMode}
                   onDeletePet={onDeletePet}
+                  timeAlive={timeAlive}
                 />
               </StyledSection>
             )}
