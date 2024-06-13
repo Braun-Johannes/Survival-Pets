@@ -10,7 +10,7 @@ import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
 import InteractionMenu from "@/components/InteractionMenu";
 import useLocalStorageState from "use-local-storage-state";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { formatPetsAge } from "@/utils";
 
 export default function HomePage({ onAddToast }) {
