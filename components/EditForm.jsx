@@ -23,7 +23,7 @@ export default function EditForm({
         />
         <PositionedButton
           $variant="confirm"
-          bottom="85px"
+          $bottom="85px"
           type="submit"
           onClick={() =>
             onAddToast("You successfully changed your name", "warning")
@@ -34,8 +34,8 @@ export default function EditForm({
       </StyledForm>
       <PositionedButton
         $variant="cancel"
-        top="10px"
-        right="10px"
+        $top="10px"
+        $right="10px"
         type="button"
         onClick={() => onMode("livingroom")}
       >

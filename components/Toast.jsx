@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 export default function Toast({ toast, onToastClose }) {
   return (
-    <StyledToastMessage visible={toast.visible} variant={toast.variant}>
+    <StyledToastMessage $visible={toast.visible} $variant={toast.variant}>
       {toast.message} -{" "}
       <PositionedButton
         $variant="cancel"
-        position="relative"
+        $position="relative"
         onClick={() => onToastClose(toast.id)}
       >
         X
@@ -29,6 +29,6 @@ const StyledToastMessage = styled.li`
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
-  opacity: ${({ visible }) => (visible ? 1 : 0)};
-  background: ${({ variant }) => toastColors[variant]};
+  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
+  background: ${({ $variant }) => toastColors[$variant]};
 `;

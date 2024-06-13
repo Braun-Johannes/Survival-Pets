@@ -88,11 +88,11 @@ ${(props) =>
 `;
 
 const PositionedButton = styled(StyledButton)`
-  position: ${(props) => props.position || "absolute"};
-  top: ${(props) => props.top || "auto"};
-  right: ${(props) => props.right || "auto"};
-  bottom: ${(props) => props.bottom || "auto"};
-  left: ${(props) => props.left || "auto"};
+  position: ${(props) => props.$position || "absolute"};
+  top: ${(props) => props.$top || "auto"};
+  right: ${(props) => props.$right || "auto"};
+  bottom: ${(props) => props.$bottom || "auto"};
+  left: ${(props) => props.$left || "auto"};
 `;
 
 export default PositionedButton;

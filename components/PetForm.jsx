@@ -17,9 +17,9 @@ export default function PetForm({ selectedPet, onSubmit, onAddToast }) {
         required
       />
       <PositionedButton
-        position="static"
+        $position="static"
         $variant="confirm"
-        disabled={!selectedPet}
+        disabled={!selectedPet.id}
         type="submit"
         onClick={() => onAddToast("You successfully selected your pet!")}
       >

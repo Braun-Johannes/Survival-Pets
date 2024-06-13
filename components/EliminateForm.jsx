@@ -5,29 +5,29 @@ import styled from "styled-components";
 
 export default function EliminateForm({ onEliminate, onMode }) {
   return (
-      <StyledDiv>
-        <StyledParagraph>
-          Are you sure you want to eliminate your pet?
-        </StyledParagraph>
-        <StyledForm $variant="eliminate">
-          <PositionedButton
-            position="relative"
-            $variant="confirm"
-            type="button"
-            onClick={() => onEliminate()}
-          >
-            Confirm
-          </PositionedButton>
-          <PositionedButton
-            position="relative"
-            $variant="cancel"
-            type="button"
-            onClick={() => onMode("livingroom")}
-          >
-            Cancel
-          </PositionedButton>
-        </StyledForm>
-      </StyledDiv>
+    <StyledDiv>
+      <StyledParagraph>
+        Are you sure you want to eliminate your pet?
+      </StyledParagraph>
+      <StyledForm $variant="eliminate">
+        <PositionedButton
+          $position="relative"
+          $variant="confirm"
+          type="button"
+          onClick={() => onEliminate()}
+        >
+          Confirm
+        </PositionedButton>
+        <PositionedButton
+          $position="relative"
+          $variant="cancel"
+          type="button"
+          onClick={() => onMode("livingroom")}
+        >
+          Cancel
+        </PositionedButton>
+      </StyledForm>
+    </StyledDiv>
   );
 }
 
