@@ -1,5 +1,5 @@
-import PositionedButton from "./Styles/StyledButton";
-import SVGIcon from "./SVGIcon";
+import PositionedButton from "@/components/Styles/StyledButton";
+import SVGIcon from "@/components/SVGIcon";
 import styled from "styled-components";
 
 export default function InteractionMenu({ onIncreaseStats }) {

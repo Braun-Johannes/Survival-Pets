@@ -5,6 +5,7 @@ export default function SVGIcon({
   color = "black",
   size = 50,
   ariaLabel,
+  text,
 }) {
   return (
     <svg

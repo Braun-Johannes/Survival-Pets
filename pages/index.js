@@ -26,6 +26,7 @@ export default function HomePage({
   ageInSeconds,
   onAddToast,
 }) {
+
   return (
     <>
       {mode === "select" && (
@@ -68,9 +69,11 @@ export default function HomePage({
             ) : (
               <StyledSection>
                 <TombstoneButton
-                  selectedPet={selectedPet}
+                  selectedPet={selectedPet}        
+                  timeAlive={timeAlive}
                   onMode={onMode}
                   onDeletePet={onDeletePet}
+
                 />
               </StyledSection>
             )}
