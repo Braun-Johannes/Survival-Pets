@@ -3,7 +3,7 @@ import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledDiv from "@/components/Styles/StyledDiv";
 import PositionedButton from "@/components/Styles/StyledButton";
-import SVGIcon from "./SVGIcon";
+import SVGIcon from "@/components/SVGIcon";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (

@@ -1,4 +1,4 @@
-import PositionedButton from "./Styles/StyledButton";
+import PositionedButton from "@/components/Styles/StyledButton";
 import styled from "styled-components";
 
 export default function Toast({ toast, onToastClose }) {
