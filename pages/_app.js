@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import Toast from "@/components/Toast";
 import StyledToastContainer from "@/components/Styles/StyledToastContainer";
 import useLocalStorageState from "use-local-storage-state";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
