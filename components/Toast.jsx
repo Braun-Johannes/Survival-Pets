@@ -18,8 +18,11 @@ export default function Toast({ toast, onToastClose }) {
 
 const toastColors = {
   success: "rgba(0,128,0,0.8)",
-  warning: "rgba(255,165,0,0.8)",
-  error: "rgba(255,0,0,0.8)",
+  edit: "rgba(104, 32, 69,0.8)",
+  feed: "rgba(144,238,144, 0.8)",
+  sleep: "rgba(173,216,230, 0.8)",
+  play: "rgba(255,165,0, 0.8)",
+  health: "rgba(255,127,127, 0.8)",
 };
 
 const StyledToastMessage = styled.li`

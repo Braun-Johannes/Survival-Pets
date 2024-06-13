@@ -26,6 +26,12 @@ export default function App({ Component, pageProps }) {
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
+    setToastShown({
+      energy: false,
+      satiety: false,
+      happiness: false,
+      health: false,
+    });
   }
   function handleMode(mode) {
     setMode(mode);
@@ -162,9 +168,20 @@ export default function App({ Component, pageProps }) {
       ? Math.floor(Date.now() / 1000 - selectedPet.createdAt)
       : timeAlive;
 
-  // ___________________________________________________________________
+  // ____________________________Snackbar_______________________________________
 
   const [toasts, setToasts] = useState([]);
+
+  const statThreshold = 40;
+  const healthThreshold = 50;
+
+  const [toastShown, setToastShown] = useState({
+    energy: false,
+    satiety: false,
+    happiness: false,
+    health: false,
+  });
+  // setToastShown is called inside handleSelectPet
 
   function handleAddToast(message, variant = "success") {
     const id = nanoid();
@@ -189,6 +206,48 @@ export default function App({ Component, pageProps }) {
   function handleDeleteToast(id) {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   }
+
+  useEffect(() => {
+    if (selectedPet) {
+      if (selectedPet.energy < statThreshold && !toastShown.energy) {
+        handleAddToast(
+          `Energy is below 40! Let ${selectedPet.name} sleep!`,
+          "sleep"
+        );
+        setToastShown((prev) => ({ ...prev, energy: true }));
+      } else if (selectedPet.energy >= statThreshold && toastShown.energy) {
+        setToastShown((prev) => ({ ...prev, energy: false }));
+      }
+      if (selectedPet.satiety < statThreshold && !toastShown.satiety) {
+        handleAddToast(`Satiety is below 40! Feed ${selectedPet.name}`, "feed");
+        setToastShown((prev) => ({ ...prev, satiety: true }));
+      } else if (selectedPet.satiety >= statThreshold && toastShown.satiety) {
+        setToastShown((prev) => ({ ...prev, satiety: false }));
+      }
+      if (selectedPet.happiness < statThreshold && !toastShown.happiness) {
+        handleAddToast(
+          `Happiness is below 40! Play with ${selectedPet.name}!`,
+          "play"
+        );
+        setToastShown((prev) => ({ ...prev, happiness: true }));
+      } else if (
+        selectedPet.happiness >= statThreshold &&
+        toastShown.happiness
+      ) {
+        setToastShown((prev) => ({ ...prev, happiness: false }));
+      }
+      if (selectedPet.health < healthThreshold && !toastShown.health) {
+        handleAddToast(
+          `Health is below 50! Take care of ${selectedPet.name}!`,
+          "health"
+        );
+        setToastShown((prev) => ({ ...prev, health: true }));
+      } else if (selectedPet.health >= healthThreshold && toastShown.health) {
+        setToastShown((prev) => ({ ...prev, health: false }));
+      }
+    }
+  }, [selectedPet, toastShown, handleAddToast]);
+
   return (
     <>
       <GlobalStyle />
