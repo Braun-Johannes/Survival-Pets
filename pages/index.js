@@ -8,144 +8,24 @@ import EliminateForm from "@/components/EliminateForm";
 import TombstoneButton from "@/components/TombstoneButton";
 import StyledSection from "@/components/Styles/StyledSection";
 import styled from "styled-components";
+import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
-import useLocalStorageState from "use-local-storage-state";
-import { useEffect, useState } from "react";
 import { formatPetsAge } from "@/utils";
+import SVGIcon from "@/components/SVGIcon";
 
-export default function HomePage({ onAddToast }) {
-  const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
-    defaultValue: {},
-  });
-  const [mode, setMode] = useLocalStorageState("mode", {
-    defaultValue: "select",
-  });
-
-  const [timeAlive, setTimeAlive] = useState(0);
-
-  const isDead = selectedPet.health === 0;
-
-  // _________________HANDLE STATES FUNCTIONS___________________________
-
-  function handleSelectPet(selectedPetData) {
-    setSelectedPet(selectedPetData);
-  }
-  function handleMode(mode) {
-    setMode(mode);
-  }
-
-  function handleEliminate() {
-    // store pets age
-    setTimeAlive(Math.floor(Date.now() / 1000 - selectedPet.createdAt));
-
-    const eliminatedPet = {
-      ...selectedPet,
-      health: 0,
-      energy: 0,
-      satiety: 0,
-      happiness: 0,
-    };
-    setSelectedPet(eliminatedPet);
-    setMode("livingroom");
-  }
-
-  function handleDeletePet() {
-    setSelectedPet("");
-    setMode("select");
-  }
-
-  function handleIncreaseStats(attribute, steps) {
-    setSelectedPet((prevPet) => {
-      const newValue = Math.min(prevPet[attribute] + steps, 100);
-      return {
-        ...prevPet,
-        [attribute]: newValue,
-      };
-    });
-  }
-  // __________________________________________________________________
-
-  // _______________HANDLE SUBMIT _____________________________________
-
-  function handleSubmit(event) {
-    event.preventDefault();
-
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    if (data.nameInput.trim() === "") {
-      alert(
-        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
-      );
-      return;
-    }
-
-    const currentTime =
-      mode === "select" ? Date.now() / 1000 : selectedPet.createdAt;
-
-    const updatedPet = {
-      ...selectedPet,
-      name: data.nameInput,
-      lastUpdated: Date.now() / 1000,
-      createdAt: currentTime,
-    };
-    setSelectedPet(updatedPet);
-
-    setMode("livingroom");
-  }
-  // ___________________________________________________________________
-
-  // __________________________TIME LOGIC_______________________________
-
-  useEffect(() => {
-    let interval;
-    if (mode !== "select") {
-      interval = setInterval(() => {
-        setSelectedPet((prevPet) => {
-          // calculate reduction based on elapsed time
-
-          const currentTime = Math.floor(Date.now() / 1000);
-          const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
-
-          const decreaseRate = 2;
-          let health = prevPet.health;
-          let satiety = prevPet.satiety;
-          let energy = prevPet.energy;
-          let happiness = prevPet.happiness;
-
-          for (let t = 0; t < elapsedTime; t++) {
-            if (satiety > 0) satiety = Math.max(0, satiety - decreaseRate);
-            if (energy > 0) energy = Math.max(0, energy - decreaseRate);
-            if (happiness > 0)
-              happiness = Math.max(0, happiness - decreaseRate);
-
-            const zeroCount =
-              (satiety === 0) + (energy === 0) + (happiness === 0);
-            const healthDecreaseRate = zeroCount * 1;
-
-            health = Math.max(0, health - healthDecreaseRate);
-          }
-          return {
-            ...prevPet,
-            energy: energy,
-            satiety: satiety,
-            happiness: happiness,
-            lastUpdated: currentTime,
-            health: health,
-          };
-        });
-      }, 100); // Check every 10th of a second
-      return () => clearInterval(interval);
-    }
-  }, [selectedPet, setSelectedPet, mode]);
-
-  const ageInSeconds =
-    selectedPet && !isDead
-      ? Math.floor(Date.now() / 1000 - selectedPet.createdAt)
-      : timeAlive;
-
-  // ___________________________________________________________________
-
+export default function HomePage({
+  selectedPet,
+  mode,
+  isDead,
+  onSelectPet,
+  onSubmit,
+  onIncreaseStats,
+  onEliminate,
+  onMode,
+  onDeletePet,
+  ageInSeconds,
+  onAddToast,
+}) {
   return (
     <>
       {mode === "select" && (
@@ -155,15 +35,12 @@ export default function HomePage({ onAddToast }) {
               Select a Survival Pet
             </StyledHeading>
             <StyledSection>
-              <PetList
-                onSelectPet={handleSelectPet}
-                selectedPet={selectedPet}
-              />
+              <PetList onSelectPet={onSelectPet} selectedPet={selectedPet} />
             </StyledSection>
             <PetForm
               selectedPet={selectedPet}
+              onSubmit={onSubmit}
               onAddToast={onAddToast}
-              onSubmit={handleSubmit}
             />
           </StyledGrid>
         </>
@@ -178,25 +55,29 @@ export default function HomePage({ onAddToast }) {
             )}
             {!isDead ? (
               <StyledContainer>
-                <div></div>
+                <div>
+                  <StyledLink href={"/graveyard"}>
+                    <SVGIcon variant="graveyard" />
+                  </StyledLink>
+                </div>
                 <StyledSection>
                   <CurrentPet selectedPet={selectedPet} />
                 </StyledSection>
-                <InteractionMenu onIncreaseStats={handleIncreaseStats} />
+                <InteractionMenu onIncreaseStats={onIncreaseStats} />
               </StyledContainer>
             ) : (
               <StyledSection>
                 <TombstoneButton
                   selectedPet={selectedPet}
-                  onMode={handleMode}
-                  onDeletePet={handleDeletePet}
+                  onMode={onMode}
+                  onDeletePet={onDeletePet}
                 />
               </StyledSection>
             )}
             <CurrentPetStats
               isDead={isDead}
               selectedPet={selectedPet}
-              onMode={handleMode}
+              onMode={onMode}
             />
           </StyledGrid>
         </>
@@ -212,8 +93,8 @@ export default function HomePage({ onAddToast }) {
             </StyledSection>
             <EditForm
               selectedPet={selectedPet}
-              onSubmit={handleSubmit}
-              onMode={handleMode}
+              onSubmit={onSubmit}
+              onMode={onMode}
               onAddToast={onAddToast}
             />
           </StyledGrid>
@@ -230,8 +111,8 @@ export default function HomePage({ onAddToast }) {
             </StyledSection>
             <EliminateForm
               selectedPet={selectedPet}
-              onMode={handleMode}
-              onEliminate={handleEliminate}
+              onMode={onMode}
+              onEliminate={onEliminate}
             />
           </StyledGrid>
         </>
@@ -254,4 +135,17 @@ const StyledH2 = styled.h2`
   text-align: end;
   margin-right: 20px;
   font-size: 1.2rem;
+`;
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  align-items: flex;
+  padding: 5px;
+  border-radius: 40%;
+  border-right: 3px black solid;
+  border-left: 3px black solid;
+  border-bottom: 3px black solid;
+  margin-left: 30%;
+  background-color: lightgrey;
 `;

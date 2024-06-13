@@ -5,6 +5,18 @@ const StyledList = styled.ul`
   gap: 20px;
   list-style: none;
   padding: 0;
+
+  ${(props) =>
+    props.$variant === "graveyard" &&
+    `
+  flex-wrap: wrap;
+  max-width: 800px
+  justify-content: center;
+  justify-self: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  
+  `}
 `;
 
 export default StyledList;
