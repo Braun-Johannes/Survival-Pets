@@ -82,9 +82,7 @@ export default function App({ Component, pageProps }) {
     const data = Object.fromEntries(formData);
 
     if (data.nameInput.trim() === "") {
-      alert(
-        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
-      );
+      alert("Please insert a Name!");
       return;
     }
 
