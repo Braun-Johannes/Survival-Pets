@@ -79,7 +79,7 @@ const LowerTombstone = styled.div`
   overflow: hidden;
   position: relative;
   font-size: 1rem;
-  padding: 5px 0px 95px 0px;
+  padding: 5px 0 95px 0px;
   box-shadow: 1px 1px 1px #000000;
 `;
 
