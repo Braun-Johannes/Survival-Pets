@@ -183,7 +183,7 @@ export default function App({ Component, pageProps }) {
   });
   // setToastShown is called inside handleSelectPet
 
-  function handleAddToast(message, variant = "success") {
+  const handleAddToast = useCallback((message, variant = "success") => {
     const id = nanoid();
     setToasts((prevToasts) => [
       ...prevToasts,
@@ -201,7 +201,7 @@ export default function App({ Component, pageProps }) {
     setTimeout(() => {
       handleDeleteToast(id);
     }, 5000);
-  }
+  }, []);
 
   function handleDeleteToast(id) {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
