@@ -10,7 +10,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         type="button"
         onClick={() => onIncreaseStats("satiety", 5)}
         position="static"
-        color="lightgreen"
+        color="#7CFC00"
       >
         <SVGIcon variant="food" ariaLabel="feed" />
       </PositionedButton>
@@ -19,7 +19,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         type="button"
         onClick={() => onIncreaseStats("energy", 5)}
         position="static"
-        color="lightblue"
+        color="#40E0D0"
       >
         <SVGIcon variant="sleep" ariaLabel="sleep" />
       </PositionedButton>
