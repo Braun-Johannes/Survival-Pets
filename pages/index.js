@@ -21,7 +21,9 @@ export default function HomePage({ onAddToast }) {
     defaultValue: "select",
   });
 
-  const [timeAlive, setTimeAlive] = useState(0);
+  const [timeAlive, setTimeAlive] = useLocalStorageState("timeAlive", {
+    defaultValue: 0,
+  });
 
   const isDead = selectedPet.health === 0;
 
@@ -99,7 +101,7 @@ export default function HomePage({ onAddToast }) {
 
   useEffect(() => {
     let interval;
-    if (mode !== "select") {
+    if (mode !== "select" && selectedPet.health > 0) {
       interval = setInterval(() => {
         setSelectedPet((prevPet) => {
           // calculate reduction based on elapsed time
