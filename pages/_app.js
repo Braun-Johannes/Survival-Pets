@@ -120,7 +120,7 @@ export default function App({ Component, pageProps }) {
           const currentTime = Math.floor(Date.now() / 1000);
           const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
-          const decreaseRate = 2; // value to change stat ticks
+          const decreaseRate = 0.2; // value to change stat ticks
           let health = prevPet.health;
           let satiety = prevPet.satiety;
           let energy = prevPet.energy;
