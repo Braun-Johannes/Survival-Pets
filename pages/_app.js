@@ -25,6 +25,8 @@ export default function App({ Component, pageProps }) {
     defaultValue: 0,
   });
 
+  const [snackbars, setSnackbars] = useState([]);
+
   const isDead = selectedPet.health === 0;
 
   // _________________HANDLE STATES FUNCTIONS___________________________
@@ -154,7 +156,7 @@ export default function App({ Component, pageProps }) {
       }, 100); // Check every 10th of a second
       return () => clearInterval(interval);
     }
-  }, [selectedPet, setSelectedPet, mode, setWasDead]);
+  }, [selectedPet, setSelectedPet, setTimeAlive, mode, setWasDead]);
 
   const ageInSeconds =
     selectedPet && !isDead
@@ -162,8 +164,6 @@ export default function App({ Component, pageProps }) {
       : timeAlive;
 
   // ____________________________Snackbar_______________________________________
-
-  const [snackbars, setSnackbars] = useState([]);
 
   const statThreshold = 40;
   const healthThreshold = 50;
