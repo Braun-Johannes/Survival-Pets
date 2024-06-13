@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PositionedButton from "@/components/Styles/StyledButton";
-import SVGIcon from "./SVGIcon";
+import SVGIcon from "@/components/SVGIcon";
 import { formatPetsAge } from "@/utils";
 
 export default function TombstoneButton({
