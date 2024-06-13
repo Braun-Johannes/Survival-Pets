@@ -17,6 +17,9 @@ export default function App({ Component, pageProps }) {
     "deceasedPets",
     {}
   );
+  const [wasDead, setWasDead] = useLocalStorageState("wasDead", {
+    defaultValue: false,
+  });
 
   const [timeAlive, setTimeAlive] = useState(0);
 
@@ -127,10 +130,16 @@ export default function App({ Component, pageProps }) {
 
             const zeroCount =
               (satiety === 0) + (energy === 0) + (happiness === 0);
-            const healthDecreaseRate = zeroCount * 1;
+            const healthDecreaseRate = zeroCount * 2;
 
             health = Math.max(0, health - healthDecreaseRate);
           }
+
+          if (health === 0 && prevPet.health > 0) {
+            setWasDead(true);
+            setTimeAlive(Math.floor(currentTime - prevPet.createdAt));
+          }
+
           return {
             ...prevPet,
             energy: energy,
@@ -143,7 +152,7 @@ export default function App({ Component, pageProps }) {
       }, 100); // Check every 10th of a second
       return () => clearInterval(interval);
     }
-  }, [selectedPet, setSelectedPet, mode]);
+  }, [selectedPet, setSelectedPet, mode, setWasDead]);
 
   const ageInSeconds =
     selectedPet && !isDead

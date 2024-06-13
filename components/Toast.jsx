@@ -8,7 +8,7 @@ export default function Toast({ snackbar, onSnackbarClose }) {
       <PositionedButton
         $variant="cancel"
         $position="relative"
-        onClick={() => onSnackbarClose(toast.id)}
+        onClick={() => onSnackbarClose(snackbar.id)}
       >
         X
       </PositionedButton>
