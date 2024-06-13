@@ -25,6 +25,14 @@ const StyledListItem = styled.li`
 
     border: 3px orange solid;
     `}
+    ${(props) =>
+      props.$variant === "graveyard" &&
+      `
+      border-radius: 5px;
+      min-width: 90px;
+      text-align: center;
+  
+    `}
 `;
 
 export default StyledListItem;

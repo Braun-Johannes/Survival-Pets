@@ -14,9 +14,11 @@
     "eslint-config-next": "13.4.8",
     "nanoid": "^5.0.7",
     "next": "13.4.8",
+    "randomuuid": "^1.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "styled-components": "^6.0.2",
+    "uid": "^2.0.2",
     "use-local-storage-state": "^19.2.0"
   },
   "devDependencies": {
