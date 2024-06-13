@@ -7,7 +7,7 @@ export default function EditForm({
   selectedPet,
   onMode,
   onSubmit,
-  onAddToast,
+  onAddSnackbar,
 }) {
   return (
     <StyledDiv>
@@ -26,7 +26,7 @@ export default function EditForm({
           $bottom="85px"
           type="submit"
           onClick={() =>
-            onAddToast("You successfully changed your name", "warning")
+            onAddSnackbar("You successfully changed your name", "warning")
           }
         >
           Update Name

@@ -26,7 +26,7 @@ export default function App({ Component, pageProps }) {
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
-    setToastShown({
+    setSnackbarShown({
       energy: false,
       satiety: false,
       happiness: false,
@@ -168,94 +168,106 @@ export default function App({ Component, pageProps }) {
 
   // ____________________________Snackbar_______________________________________
 
-  const [toasts, setToasts] = useState([]);
+  const [snackbars, setSnackbars] = useState([]);
 
   const statThreshold = 40;
   const healthThreshold = 50;
 
-  const [toastShown, setToastShown] = useState({
+  const [snackbarShown, setSnackbarShown] = useState({
     energy: false,
     satiety: false,
     happiness: false,
     health: false,
   });
-  // setToastShown is called inside handleSelectPet
 
-  const handleAddToast = useCallback((message, variant = "success") => {
+  // setSnackbarShown is called inside handleSelectPet
+
+  const handleAddSnackbar = useCallback((message, variant = "success") => {
     const id = nanoid();
-    setToasts((prevToasts) => [
-      ...prevToasts,
+    setSnackbars((prevSnackbar) => [
+      ...prevSnackbar,
       { id, visible: true, message, variant },
     ]);
 
     setTimeout(() => {
-      setToasts((prevToasts) =>
-        prevToasts.map((toast) =>
-          toast.id === id ? { ...toast, visible: false } : toast
+      setSnackbars((prevSnackbar) =>
+        prevSnackbar.map((snackbar) =>
+          snackbar.id === id ? { ...snackbar, visible: false } : snackbar
         )
       );
     }, 4500);
 
     setTimeout(() => {
-      handleDeleteToast(id);
+      handleDeleteSnackbar(id);
     }, 5000);
   }, []);
 
-  function handleDeleteToast(id) {
-    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
+  function handleDeleteSnackbar(id) {
+    setSnackbars((prevSnackbar) =>
+      prevSnackbar.filter((snackbar) => snackbar.id !== id)
+    );
   }
 
   useEffect(() => {
     if (selectedPet) {
-      if (selectedPet.energy < statThreshold && !toastShown.energy) {
-        handleAddToast(
+      if (selectedPet.energy < statThreshold && !snackbarShown.energy) {
+        handleAddSnackbar(
           `Energy is below 40! Let ${selectedPet.name} sleep!`,
           "sleep"
         );
-        setToastShown((prev) => ({ ...prev, energy: true }));
-      } else if (selectedPet.energy >= statThreshold && toastShown.energy) {
-        setToastShown((prev) => ({ ...prev, energy: false }));
+        setSnackbarShown((prev) => ({ ...prev, energy: true }));
+      } else if (selectedPet.energy >= statThreshold && snackbarShown.energy) {
+        setSnackbarShown((prev) => ({ ...prev, energy: false }));
       }
-      if (selectedPet.satiety < statThreshold && !toastShown.satiety) {
-        handleAddToast(`Satiety is below 40! Feed ${selectedPet.name}`, "feed");
-        setToastShown((prev) => ({ ...prev, satiety: true }));
-      } else if (selectedPet.satiety >= statThreshold && toastShown.satiety) {
-        setToastShown((prev) => ({ ...prev, satiety: false }));
+      if (selectedPet.satiety < statThreshold && !snackbarShown.satiety) {
+        handleAddSnackbar(
+          `Satiety is below 40! Feed ${selectedPet.name}`,
+          "feed"
+        );
+        setSnackbarShown((prev) => ({ ...prev, satiety: true }));
+      } else if (
+        selectedPet.satiety >= statThreshold &&
+        snackbarShown.satiety
+      ) {
+        setSnackbarShown((prev) => ({ ...prev, satiety: false }));
       }
-      if (selectedPet.happiness < statThreshold && !toastShown.happiness) {
-        handleAddToast(
+      if (selectedPet.happiness < statThreshold && !snackbarShown.happiness) {
+        handleAddSnackbar(
           `Happiness is below 40! Play with ${selectedPet.name}!`,
           "play"
         );
-        setToastShown((prev) => ({ ...prev, happiness: true }));
+        setSnackbarShown((prev) => ({ ...prev, happiness: true }));
       } else if (
         selectedPet.happiness >= statThreshold &&
-        toastShown.happiness
+        snackbarShown.happiness
       ) {
-        setToastShown((prev) => ({ ...prev, happiness: false }));
+        setSnackbarShown((prev) => ({ ...prev, happiness: false }));
       }
-      if (selectedPet.health < healthThreshold && !toastShown.health) {
-        handleAddToast(
+      if (selectedPet.health < healthThreshold && !snackbarShown.health) {
+        handleAddSnackbar(
           `Health is below 50! Take care of ${selectedPet.name}!`,
           "health"
         );
-        setToastShown((prev) => ({ ...prev, health: true }));
-      } else if (selectedPet.health >= healthThreshold && toastShown.health) {
-        setToastShown((prev) => ({ ...prev, health: false }));
+        setSnackbarShown((prev) => ({ ...prev, health: true }));
+      } else if (
+        selectedPet.health >= healthThreshold &&
+        snackbarShown.health
+      ) {
+        setSnackbarShown((prev) => ({ ...prev, health: false }));
       }
     }
-  }, [selectedPet, toastShown, handleAddToast]);
+  }, [selectedPet, snackbarShown, handleAddSnackbar]);
 
   return (
     <>
       <GlobalStyle />
 
       <StyledToastContainer>
-        {toasts.map((toast) => (
+        {snackbars.map((snackbar) => (
           <Toast
-            key={toast.id}
-            toast={toast}
-            onToastClose={handleDeleteToast}
+            key={snackbar.id}
+            snackbar={snackbar}
+            onSnackbarClose={handleDeleteSnackbar}
           />
         ))}
       </StyledToastContainer>
@@ -273,7 +285,7 @@ export default function App({ Component, pageProps }) {
         onEliminate={handleEliminate}
         ageInSeconds={ageInSeconds}
         deceasedPets={deceasedPets}
-        onAddToast={handleAddToast}
+        onAddSnackbar={handleAddSnackbar}
       />
     </>
   );

@@ -24,7 +24,7 @@ export default function HomePage({
   onMode,
   onDeletePet,
   ageInSeconds,
-  onAddToast,
+  onAddSnackbar,
 }) {
   return (
     <>
@@ -40,7 +40,7 @@ export default function HomePage({
             <PetForm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
-              onAddToast={onAddToast}
+              onAddSnack={onAddSnackbar}
             />
           </StyledGrid>
         </>
@@ -95,7 +95,7 @@ export default function HomePage({
               selectedPet={selectedPet}
               onSubmit={onSubmit}
               onMode={onMode}
-              onAddToast={onAddToast}
+              onAddSnackbar={onAddSnackbar}
             />
           </StyledGrid>
         </>
