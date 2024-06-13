@@ -31,7 +31,7 @@ export default function TombstoneButton({
           <PositionedButton
             onClick={onDeletePet}
             $variant="tombstone"
-            position="relative"
+            $position="relative"
           >
             <p>
               Press here
