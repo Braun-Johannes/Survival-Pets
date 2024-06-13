@@ -1,14 +1,14 @@
 import PositionedButton from "./Styles/StyledButton";
 import styled from "styled-components";
 
-export default function Toast({ toast, onToastClose }) {
+export default function Toast({ snackbar, onSnackbarClose }) {
   return (
-    <StyledToastMessage $visible={toast.visible} $variant={toast.variant}>
-      {toast.message} -{" "}
+    <StyledToastMessage $visible={snackbar.visible} $variant={snackbar.variant}>
+      {snackbar.message} -{" "}
       <PositionedButton
         $variant="cancel"
         $position="relative"
-        onClick={() => onToastClose(toast.id)}
+        onClick={() => onSnackbarClose(toast.id)}
       >
         X
       </PositionedButton>

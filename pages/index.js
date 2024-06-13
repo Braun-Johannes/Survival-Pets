@@ -40,7 +40,7 @@ export default function HomePage({
             <PetForm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
-              onAddSnack={onAddSnackbar}
+              onAddSnackbar={onAddSnackbar}
             />
           </StyledGrid>
         </>
