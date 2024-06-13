@@ -113,7 +113,7 @@ export default function App({ Component, pageProps }) {
           const currentTime = Math.floor(Date.now() / 1000);
           const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
-          const decreaseRate = 2; // value to change stat ticks
+          const decreaseRate = 10; // value to change stat ticks
           let health = prevPet.health;
           let satiety = prevPet.satiety;
           let energy = prevPet.energy;
@@ -193,7 +193,7 @@ export default function App({ Component, pageProps }) {
   }
 
   useEffect(() => {
-    if (selectedPet) {
+    if (selectedPet && !isDead) {
       if (selectedPet.energy < statThreshold && !snackbarShown.energy) {
         handleAddSnackbar(
           `Energy is below 40! Let ${selectedPet.name} sleep!`,
@@ -240,7 +240,7 @@ export default function App({ Component, pageProps }) {
         setSnackbarShown((prev) => ({ ...prev, health: false }));
       }
     }
-  }, [selectedPet, snackbarShown, handleAddSnackbar]);
+  }, [selectedPet, isDead, snackbarShown, handleAddSnackbar]);
 
   return (
     <>
