@@ -27,6 +27,7 @@ export default function HomePage({
   onAddSnackbar,
   timeAlive,
 }) {
+
   return (
     <>
       {mode === "select" && (
@@ -69,7 +70,8 @@ export default function HomePage({
             ) : (
               <StyledSection>
                 <TombstoneButton
-                  selectedPet={selectedPet}
+                  selectedPet={selectedPet}        
+                  timeAlive={timeAlive}
                   onMode={onMode}
                   onDeletePet={onDeletePet}
                   timeAlive={timeAlive}

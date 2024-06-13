@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
+import { Concert_One } from "next/font/google";
+
+const concertOne = Concert_One({ subsets: ["latin"], weight: ["400"] });
 
 export default createGlobalStyle`
+
+
   *,
   *::before,
   *::after {
@@ -13,5 +18,9 @@ export default createGlobalStyle`
 
   body {
     margin: 0;
-    font-family: system-ui;
+    font-family: ${concertOne.style.fontFamily};
+    };
+
+input, button {
+    font-family: ${concertOne.style.fontFamily};
   }`;

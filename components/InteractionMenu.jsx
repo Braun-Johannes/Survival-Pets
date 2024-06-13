@@ -1,5 +1,5 @@
-import PositionedButton from "./Styles/StyledButton";
-import SVGIcon from "./SVGIcon";
+import PositionedButton from "@/components/Styles/StyledButton";
+import SVGIcon from "@/components/SVGIcon";
 import styled from "styled-components";
 
 export default function InteractionMenu({ onIncreaseStats }) {
@@ -9,8 +9,10 @@ export default function InteractionMenu({ onIncreaseStats }) {
         $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("satiety", 5)}
+
         $position="static"
-        color="lightgreen"
+        color="#7CFC00"
+
       >
         <SVGIcon variant="food" ariaLabel="feed" />
       </PositionedButton>
@@ -18,8 +20,11 @@ export default function InteractionMenu({ onIncreaseStats }) {
         $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("energy", 5)}
+
         $position="static"
-        color="lightblue"
+
+        color="#40E0D0"
+
       >
         <SVGIcon variant="sleep" ariaLabel="sleep" />
       </PositionedButton>
