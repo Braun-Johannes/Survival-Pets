@@ -3,7 +3,7 @@ import { nanoid } from "nanoid";
 import Toast from "@/components/Toast";
 import StyledToastContainer from "@/components/Styles/StyledToastContainer";
 import useLocalStorageState from "use-local-storage-state";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
 
 export default function App({ Component, pageProps }) {
@@ -17,8 +17,15 @@ export default function App({ Component, pageProps }) {
     "deceasedPets",
     {}
   );
+  const [wasDead, setWasDead] = useLocalStorageState("wasDead", {
+    defaultValue: false,
+  });
 
-  const [timeAlive, setTimeAlive] = useState(0);
+  const [timeAlive, setTimeAlive] = useLocalStorageState("timeAlive", {
+    defaultValue: 0,
+  });
+
+  const [snackbars, setSnackbars] = useState([]);
 
   const isDead = selectedPet.health === 0;
 
@@ -26,6 +33,12 @@ export default function App({ Component, pageProps }) {
 
   function handleSelectPet(selectedPetData) {
     setSelectedPet(selectedPetData);
+    setSnackbarShown({
+      energy: false,
+      satiety: false,
+      happiness: false,
+      health: false,
+    });
   }
   function handleMode(mode) {
     setMode(mode);
@@ -76,9 +89,7 @@ export default function App({ Component, pageProps }) {
     const data = Object.fromEntries(formData);
 
     if (data.nameInput.trim() === "") {
-      alert(
-        "Wer das hier findet, hat richtig getestet! Danke von den SurvivalPets - Please insert a Name!"
-      );
+      alert("Please insert a Name!");
       return;
     }
 
@@ -100,105 +111,158 @@ export default function App({ Component, pageProps }) {
   // __________________________TIME LOGIC_______________________________
 
   useEffect(() => {
-    if (selectedPet) {
-      const interval = setInterval(() => {
+    let interval;
+    if (mode !== "select") {
+      interval = setInterval(() => {
         setSelectedPet((prevPet) => {
           // calculate reduction based on elapsed time
-          const currentTime = Date.now() / 1000;
-          const elapsedTime = currentTime - prevPet.lastUpdated;
-          const reduction = Math.floor(elapsedTime) * 5; // --> parameter for stat reduction
 
-          // decrease stats over time
+          const currentTime = Math.floor(Date.now() / 1000);
+          const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
-          if (reduction > 0) {
-            if (prevPet.health === 0) {
-              return prevPet;
-            }
-            const newEnergy = Math.min(
-              Math.max(prevPet.energy - reduction, 0),
-              100
-            );
-            const newSatiety = Math.min(
-              Math.max(prevPet.satiety - reduction, 0),
-              100
-            );
-            const newHappiness = Math.min(
-              Math.max(prevPet.happiness - reduction, 0),
-              100
-            );
+          const decreaseRate = 2; // value to change stat ticks
+          let health = prevPet.health;
+          let satiety = prevPet.satiety;
+          let energy = prevPet.energy;
+          let happiness = prevPet.happiness;
 
-            // decrease health based on how many stats are at zero
+          for (let t = 0; t < elapsedTime; t++) {
+            if (satiety > 0) satiety = Math.max(0, satiety - decreaseRate);
+            if (energy > 0) energy = Math.max(0, energy - decreaseRate);
+            if (happiness > 0)
+              happiness = Math.max(0, happiness - decreaseRate);
 
-            const stats = [newEnergy, newSatiety, newHappiness];
-            const statsAtZero = stats.filter((value) => value === 0).length;
-            const healthReduction = statsAtZero * 2; // --> Parameter for health reduction
-            const newHealth =
-              statsAtZero > 0
-                ? Math.min(Math.max(prevPet.health - healthReduction, 0), 100)
-                : prevPet.health;
+            const zeroCount =
+              (satiety === 0) + (energy === 0) + (happiness === 0);
+            const healthDecreaseRate = zeroCount * 2;
 
-            if (newHealth === 0) {
-              setTimeAlive(Math.floor(currentTime - prevPet.createdAt));
-            }
-            return {
-              ...prevPet,
-              energy: newEnergy,
-              satiety: newSatiety,
-              happiness: newHappiness,
-              lastUpdated: currentTime,
-              health: newHealth,
-            };
+            health = Math.max(0, health - healthDecreaseRate);
           }
 
-          return prevPet;
+          if (health === 0 && prevPet.health > 0) {
+            setWasDead(true);
+            setTimeAlive(Math.floor(currentTime - prevPet.createdAt));
+          }
+
+          return {
+            ...prevPet,
+            energy: energy,
+            satiety: satiety,
+            happiness: happiness,
+            lastUpdated: currentTime,
+            health: health,
+          };
         });
       }, 100); // Check every 10th of a second
       return () => clearInterval(interval);
     }
-  }, [selectedPet, setSelectedPet]);
+  }, [selectedPet, setSelectedPet, setTimeAlive, mode, setWasDead]);
 
   const ageInSeconds =
     selectedPet && !isDead
       ? Math.floor(Date.now() / 1000 - selectedPet.createdAt)
       : timeAlive;
 
-  // ___________________________________________________________________
+  // ____________________________Snackbar_______________________________________
 
-  const [toasts, setToasts] = useState([]);
+  const statThreshold = 40;
+  const healthThreshold = 50;
 
-  function handleAddToast(message, variant = "success") {
+  const [snackbarShown, setSnackbarShown] = useState({
+    energy: false,
+    satiety: false,
+    happiness: false,
+    health: false,
+  });
+
+  // setSnackbarShown is called inside handleSelectPet
+
+  const handleAddSnackbar = useCallback((message, variant = "success") => {
     const id = nanoid();
-    setToasts((prevToasts) => [
-      ...prevToasts,
+    setSnackbars((prevSnackbar) => [
+      ...prevSnackbar,
       { id, visible: true, message, variant },
     ]);
 
     setTimeout(() => {
-      setToasts((prevToasts) =>
-        prevToasts.map((toast) =>
-          toast.id === id ? { ...toast, visible: false } : toast
+      setSnackbars((prevSnackbar) =>
+        prevSnackbar.map((snackbar) =>
+          snackbar.id === id ? { ...snackbar, visible: false } : snackbar
         )
       );
     }, 4500);
 
     setTimeout(() => {
-      handleDeleteToast(id);
+      handleDeleteSnackbar(id);
     }, 5000);
+  }, []);
+
+  function handleDeleteSnackbar(id) {
+    setSnackbars((prevSnackbar) =>
+      prevSnackbar.filter((snackbar) => snackbar.id !== id)
+    );
   }
 
-  function handleDeleteToast(id) {
-    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
-  }
+  useEffect(() => {
+    if (selectedPet && !isDead) {
+      if (selectedPet.energy < statThreshold && !snackbarShown.energy) {
+        handleAddSnackbar(
+          `Energy is below 40! Let ${selectedPet.name} sleep!`,
+          "sleep"
+        );
+        setSnackbarShown((prev) => ({ ...prev, energy: true }));
+      } else if (selectedPet.energy >= statThreshold && snackbarShown.energy) {
+        setSnackbarShown((prev) => ({ ...prev, energy: false }));
+      }
+      if (selectedPet.satiety < statThreshold && !snackbarShown.satiety) {
+        handleAddSnackbar(
+          `Satiety is below 40! Feed ${selectedPet.name}`,
+          "feed"
+        );
+        setSnackbarShown((prev) => ({ ...prev, satiety: true }));
+      } else if (
+        selectedPet.satiety >= statThreshold &&
+        snackbarShown.satiety
+      ) {
+        setSnackbarShown((prev) => ({ ...prev, satiety: false }));
+      }
+      if (selectedPet.happiness < statThreshold && !snackbarShown.happiness) {
+        handleAddSnackbar(
+          `Happiness is below 40! Play with ${selectedPet.name}!`,
+          "play"
+        );
+        setSnackbarShown((prev) => ({ ...prev, happiness: true }));
+      } else if (
+        selectedPet.happiness >= statThreshold &&
+        snackbarShown.happiness
+      ) {
+        setSnackbarShown((prev) => ({ ...prev, happiness: false }));
+      }
+      if (selectedPet.health < healthThreshold && !snackbarShown.health) {
+        handleAddSnackbar(
+          `Health is below 50! Take care of ${selectedPet.name}!`,
+          "health"
+        );
+        setSnackbarShown((prev) => ({ ...prev, health: true }));
+      } else if (
+        selectedPet.health >= healthThreshold &&
+        snackbarShown.health
+      ) {
+        setSnackbarShown((prev) => ({ ...prev, health: false }));
+      }
+    }
+  }, [selectedPet, isDead, snackbarShown, handleAddSnackbar]);
+
   return (
     <>
       <GlobalStyle />
 
       <StyledToastContainer>
-        {toasts.map((toast) => (
+        {snackbars.map((snackbar) => (
           <Toast
-            key={toast.id}
-            toast={toast}
-            onToastClose={handleDeleteToast}
+            key={snackbar.id}
+            snackbar={snackbar}
+            onSnackbarClose={handleDeleteSnackbar}
           />
         ))}
       </StyledToastContainer>
@@ -216,7 +280,8 @@ export default function App({ Component, pageProps }) {
         onEliminate={handleEliminate}
         ageInSeconds={ageInSeconds}
         deceasedPets={deceasedPets}
-        onAddToast={handleAddToast}
+        onAddSnackbar={handleAddSnackbar}
+        timeAlive={timeAlive}
       />
     </>
   );

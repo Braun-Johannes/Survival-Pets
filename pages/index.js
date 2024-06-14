@@ -24,9 +24,9 @@ export default function HomePage({
   onMode,
   onDeletePet,
   ageInSeconds,
-  onAddToast,
+  onAddSnackbar,
+  timeAlive,
 }) {
-
   return (
     <>
       {mode === "select" && (
@@ -41,7 +41,7 @@ export default function HomePage({
             <PetForm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
-              onAddToast={onAddToast}
+              onAddSnackbar={onAddSnackbar}
             />
           </StyledGrid>
         </>
@@ -69,11 +69,10 @@ export default function HomePage({
             ) : (
               <StyledSection>
                 <TombstoneButton
-                  selectedPet={selectedPet}        
+                  selectedPet={selectedPet}
                   timeAlive={timeAlive}
                   onMode={onMode}
                   onDeletePet={onDeletePet}
-
                 />
               </StyledSection>
             )}
@@ -98,7 +97,7 @@ export default function HomePage({
               selectedPet={selectedPet}
               onSubmit={onSubmit}
               onMode={onMode}
-              onAddToast={onAddToast}
+              onAddSnackbar={onAddSnackbar}
             />
           </StyledGrid>
         </>

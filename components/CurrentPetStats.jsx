@@ -49,8 +49,8 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
 
       <PositionedButton
         $variant="edit"
-        top="10px"
-        right="10px"
+        $top="10px"
+        $right="10px"
         onClick={() => onMode("edit")}
         hidden={isDead}
       >
@@ -58,8 +58,8 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
       </PositionedButton>
       <PositionedButton
         $variant="cancel"
-        top="60px"
-        right="10px"
+        $top="60px"
+        $right="10px"
         onClick={() => onMode("eliminate")}
         hidden={isDead}
       >

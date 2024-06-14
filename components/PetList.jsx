@@ -17,7 +17,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
             >
               <PositionedButton
                 $variant="highlight"
-                position="static"
+                $position="static"
                 onClick={() => {
                   onSelectPet(pet);
                 }}
