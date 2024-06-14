@@ -1,15 +1,14 @@
-import StyledForm from "@/components/Styles/StyledForm";
-import StyledDiv from "@/components/Styles/StyledDiv";
+import StyledSection from "@/components/Styles/StyledSection";
 import PositionedButton from "@/components/Styles/StyledButton";
 import styled from "styled-components";
 
 export default function EliminateForm({ onEliminate, onMode }) {
   return (
-      <StyledDiv>
+      <StyledSection>
         <StyledParagraph>
           Are you sure you want to eliminate your pet?
         </StyledParagraph>
-        <StyledForm $variant="eliminate">
+        <EliminateButtons>
           <PositionedButton
             position="relative"
             $variant="confirm"
@@ -26,14 +25,18 @@ export default function EliminateForm({ onEliminate, onMode }) {
           >
             Cancel
           </PositionedButton>
-        </StyledForm>
-      </StyledDiv>
+          </EliminateButtons>
+      </StyledSection>
   );
 }
 
 const StyledParagraph = styled.p`
   font-size: 30px;
-  position: relative;
-  top: 40px;
   text-align: center;
 `;
+
+const EliminateButtons = styled.div`
+display: flex;
+flex-direction: row;
+gap: 20px;
+`

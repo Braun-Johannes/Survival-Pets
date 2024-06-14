@@ -15,6 +15,7 @@ const StyledList = styled.ul`
   justify-self: center;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 350px;
   
   `}
 `;

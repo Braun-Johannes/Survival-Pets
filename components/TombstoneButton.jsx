@@ -1,14 +1,12 @@
 import PositionedButton from "@/components/Styles/StyledButton";
-import StyledDiv from "@/components/Styles/StyledDiv";
 
 export default function TombstoneButton({ selectedPet, onDeletePet }) {
   return (
-    <>
-      <StyledDiv $variant="tombstone">
+      <div $variant="tombstone">
         <PositionedButton
           onClick={onDeletePet}
           $variant="tombstone"
-          position="relative"
+          position="static"
         >
           <p>R.I.P.</p>
           <p>{selectedPet.name}</p>
@@ -19,7 +17,6 @@ export default function TombstoneButton({ selectedPet, onDeletePet }) {
             <br /> new Survival Pet
           </p>
         </PositionedButton>
-      </StyledDiv>
-    </>
+      </div>
   );
 }

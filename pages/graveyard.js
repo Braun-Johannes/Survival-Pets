@@ -8,7 +8,6 @@ import styled from "styled-components";
 
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
-    <>
       <StyledGrid>
         <div>
           <StyledLink href={"/"}> ←</StyledLink>
@@ -35,14 +34,15 @@ export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
           ageInSeconds={ageInSeconds}
         ></GraveyardCurrentPetCard>
       </StyledGrid>
-    </>
   );
 }
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, auto);
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
 `;
+
 
 const StyledLink = styled(Link)`
   position: absolute;

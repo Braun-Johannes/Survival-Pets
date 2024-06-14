@@ -1,6 +1,6 @@
 import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
-import StyledDiv from "@/components/Styles/StyledDiv";
+import StyledSection from "@/components/Styles/StyledSection";
 import PositionedButton from "@/components/Styles/StyledButton";
 import SVGIcon from "./SVGIcon";
 import StatBar from "@/components/StatBar";
@@ -8,7 +8,7 @@ import PetInfo from "./PetInfo";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
-    <StyledDiv>
+    <StyledSection>
       <StyledStatsContainer>
         <StyledListItem $variant="livingroom">
           <PetInfo label={"Name"} value={selectedPet.name} />
@@ -64,6 +64,6 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
       >
         <SVGIcon variant="dead" size={25} ariaLabel="eliminate" />
       </PositionedButton>
-    </StyledDiv>
+    </StyledSection>
   );
 }

@@ -6,7 +6,7 @@ import CurrentPetStats from "@/components/CurrentPetStats";
 import EditForm from "@/components/EditForm";
 import EliminateForm from "@/components/EliminateForm";
 import TombstoneButton from "@/components/TombstoneButton";
-import StyledSection from "@/components/Styles/StyledSection";
+import StyledDiv from "@/components/Styles/StyledDiv";
 import styled from "styled-components";
 import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
@@ -34,9 +34,9 @@ export default function HomePage({
             <StyledHeading $variant="select">
               Select a Survival Pet
             </StyledHeading>
-            <StyledSection>
+            <StyledDiv>
               <PetList onSelectPet={onSelectPet} selectedPet={selectedPet} />
-            </StyledSection>
+            </StyledDiv>
             <PetForm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
@@ -49,10 +49,12 @@ export default function HomePage({
       {mode === "livingroom" && (
         <>
           <StyledGrid>
+            <div>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
             {!isDead && (
               <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             )}
+            </div>
             {!isDead ? (
               <StyledContainer>
                 <div>
@@ -60,19 +62,19 @@ export default function HomePage({
                     <SVGIcon variant="graveyard" />
                   </StyledLink>
                 </div>
-                <StyledSection>
+                <StyledDiv>
                   <CurrentPet selectedPet={selectedPet} />
-                </StyledSection>
+                </StyledDiv>
                 <InteractionMenu onIncreaseStats={onIncreaseStats} />
               </StyledContainer>
             ) : (
-              <StyledSection>
+              <StyledDiv>
                 <TombstoneButton
                   selectedPet={selectedPet}
                   onMode={onMode}
                   onDeletePet={onDeletePet}
                 />
-              </StyledSection>
+              </StyledDiv>
             )}
             <CurrentPetStats
               isDead={isDead}
@@ -86,11 +88,13 @@ export default function HomePage({
       {mode === "edit" && (
         <>
           <StyledGrid>
+            <div>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
             <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-            <StyledSection>
+            </div>
+            <StyledDiv>
               <CurrentPet selectedPet={selectedPet} />
-            </StyledSection>
+            </StyledDiv>
             <EditForm
               selectedPet={selectedPet}
               onSubmit={onSubmit}
@@ -104,11 +108,13 @@ export default function HomePage({
       {mode === "eliminate" && (
         <>
           <StyledGrid>
+            <div>
             <StyledHeading $variant="livingroom">Living Room</StyledHeading>
             <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-            <StyledSection>
+            </div>
+            <StyledDiv>
               <CurrentPet selectedPet={selectedPet} />
-            </StyledSection>
+            </StyledDiv>
             <EliminateForm
               selectedPet={selectedPet}
               onMode={onMode}
@@ -123,7 +129,9 @@ export default function HomePage({
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 1fr;
+  grid-template-rows: 10% auto 30%;
+  height: calc(100vh - 1rem);
 `;
 const StyledContainer = styled.section`
   display: grid;
