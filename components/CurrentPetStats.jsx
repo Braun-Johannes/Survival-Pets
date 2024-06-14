@@ -2,9 +2,10 @@ import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import StyledSection from "@/components/Styles/StyledSection";
 import PositionedButton from "@/components/Styles/StyledButton";
-import SVGIcon from "./SVGIcon";
+import SVGIcon from "@/components/SVGIcon";
 import StatBar from "@/components/StatBar";
 import PetInfo from "./PetInfo";
+
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
   return (
@@ -48,8 +49,8 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
 
       <PositionedButton
         $variant="edit"
-        top="10px"
-        right="10px"
+        $top="10px"
+        $right="10px"
         onClick={() => onMode("edit")}
         hidden={isDead}
       >
@@ -57,8 +58,8 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
       </PositionedButton>
       <PositionedButton
         $variant="cancel"
-        top="60px"
-        right="10px"
+        $top="60px"
+        $right="10px"
         onClick={() => onMode("eliminate")}
         hidden={isDead}
       >

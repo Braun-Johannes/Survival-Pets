@@ -7,7 +7,7 @@ export default function EditForm({
   selectedPet,
   onMode,
   onSubmit,
-  onAddToast,
+  onAddSnackbar,
 }) {
   return (
     <StyledSection>
@@ -24,7 +24,7 @@ export default function EditForm({
             </StyledForm>
         <PositionedButton
           $variant="confirm"
-          bottom="3rem"
+          $bottom="3rem"
           type="submit"
           onClick={() =>
             onAddToast("You successfully changed your name", "warning")
@@ -34,8 +34,8 @@ export default function EditForm({
         </PositionedButton>
       <PositionedButton
         $variant="cancel"
-        top="10px"
-        right="10px"
+        $top="10px"
+        $right="10px"
         type="button"
         onClick={() => onMode("livingroom")}
         >

@@ -3,7 +3,7 @@ import StyledSection from "./Styles/StyledSection";
 import StyledForm from "@/components/Styles/StyledForm";
 import PositionedButton from "@/components/Styles/StyledButton";
 
-export default function PetForm({ selectedPet, onSubmit, onAddToast }) {
+export default function PetForm({ selectedPet, onSubmit, onAddSnackbar }) {
   return (
     <StyledForm onSubmit={onSubmit} $variant="select">
       <label htmlFor="nameInput">Choose a name</label>
@@ -18,11 +18,11 @@ export default function PetForm({ selectedPet, onSubmit, onAddToast }) {
         required
       />
       <PositionedButton
-        position="static"
+        $position="static"
         $variant="confirm"
-        disabled={!selectedPet}
+        disabled={!selectedPet.id}
         type="submit"
-        onClick={() => onAddToast("You successfully selected your pet!")}
+        onClick={() => onAddSnackbar("You successfully selected your pet!")}
       >
         Select
       </PositionedButton>

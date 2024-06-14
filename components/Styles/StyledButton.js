@@ -72,27 +72,21 @@ const StyledButton = styled.button`
 ${(props) =>
     props.$variant === "tombstone" &&
     `
-    
-    height: 400px;
-    background-color: lightyellow;
-    font-size: 0.875rem;
-    line-height: 1.75;
-    letter-spacing: 0.02857em;
-    text-transform: uppercase;
-    min-width: 64px;
-    padding: 5px 15px;
-    border-radius: 4px;
-    border: 1px solid rgba(244, 67, 54, 0.5);
-    color: rgb(244, 67, 54);
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    display: inline-block;
+    width: auto;
+    height: auto;
     `}
 `;
 
 const PositionedButton = styled(StyledButton)`
-  position: ${(props) => props.position || "absolute"};
-  top: ${(props) => props.top || "auto"};
-  right: ${(props) => props.right || "auto"};
-  bottom: ${(props) => props.bottom || "auto"};
-  left: ${(props) => props.left || "auto"};
+  position: ${(props) => props.$position || "absolute"};
+  top: ${(props) => props.$top || "auto"};
+  right: ${(props) => props.$right || "auto"};
+  bottom: ${(props) => props.$bottom || "auto"};
+  left: ${(props) => props.$left || "auto"};
 `;
 
 export default PositionedButton;

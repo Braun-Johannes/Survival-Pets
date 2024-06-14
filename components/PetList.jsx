@@ -2,7 +2,7 @@ import pets from "@/lib/pets";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import PositionedButton from "@/components/Styles/StyledButton";
-import SVGIcon from "./SVGIcon";
+import SVGIcon from "@/components/SVGIcon";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
@@ -17,7 +17,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
             >
               <PositionedButton
                 $variant="highlight"
-                position="static"
+                $position="static"
                 onClick={() => {
                   onSelectPet(pet);
                 }}
