@@ -12,12 +12,12 @@ const StyledSection = styled.section`
   border-radius: 10px;
   margin: 10px;
   min-height: 30%;
+  background: white;
   ${(props) =>
     props.$variant === "tombstone" &&
     `
   border: none;
     `}
-
 `;
 
 export default StyledSection;

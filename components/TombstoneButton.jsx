@@ -9,7 +9,6 @@ export default function TombstoneButton({
   timeAlive,
 }) {
   return (
-
     <>
       <StyledTombstone>
         <UpperTombstone></UpperTombstone>
@@ -17,7 +16,6 @@ export default function TombstoneButton({
           <Name>
             <p>
               R.I.P.
-              <br />
               <br />
               {selectedPet.name}
             </p>
@@ -27,8 +25,6 @@ export default function TombstoneButton({
               {formatPetsAge(timeAlive)}
             </p>
           </Name>
-          <br />
-          <br />
           <PositionedButton
             onClick={onDeletePet}
             $variant="tombstone"
@@ -37,12 +33,10 @@ export default function TombstoneButton({
             <p>
               Press here
               <br />
-              <br />
               <SVGIcon variant="sloth" />
               <SVGIcon variant="cheetah" />
               <SVGIcon variant="racoon" />
               <SVGIcon variant="dragon" />
-              <br />
               <br />
               to create a new survival pet
             </p>
@@ -57,6 +51,7 @@ const StyledTombstone = styled.div`
   text-align: center;
   font-size: 0;
   bottom: 150px;
+  margin-top: -80px;
   left: calc(50% - 100px);
 `;
 
@@ -68,7 +63,6 @@ const UpperTombstone = styled.div`
   margin: 0 auto;
   position: relative;
   top: 65px;
-  z-index: -10;
   font-size: 1rem;
   box-shadow: 1px 1px 1px #000000;
 `;

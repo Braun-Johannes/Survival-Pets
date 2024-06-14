@@ -51,10 +51,10 @@ export default function HomePage({
         <>
           <StyledGrid>
             <div>
-            <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-            {!isDead && (
-              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-            )}
+              <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+              {!isDead && (
+                <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+              )}
             </div>
             {!isDead ? (
               <StyledContainer>
@@ -91,8 +91,8 @@ export default function HomePage({
         <>
           <StyledGrid>
             <div>
-            <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-            <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+              <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             </div>
             <StyledDiv>
               <CurrentPet selectedPet={selectedPet} />
@@ -111,8 +111,8 @@ export default function HomePage({
         <>
           <StyledGrid>
             <div>
-            <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-            <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+              <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
             </div>
             <StyledDiv>
               <CurrentPet selectedPet={selectedPet} />
