@@ -9,6 +9,7 @@ const StyledList = styled.ul`
   ${(props) =>
     props.$variant === "graveyard" &&
     `
+    overflow: hidden;
   flex-wrap: wrap;
   max-width: 800px
   justify-content: center;

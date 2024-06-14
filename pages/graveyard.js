@@ -8,11 +8,12 @@ import styled from "styled-components";
 
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
+    <>
+      <div>
+        <StyledLink href={"/"}> ←</StyledLink>
+        <StyledHeading>Graveyard</StyledHeading>
+      </div>
       <StyledGrid>
-        <div>
-          <StyledLink href={"/"}> ←</StyledLink>
-          <StyledHeading>Graveyard</StyledHeading>
-        </div>
         {deceasedPets ? (
           <StyledList $variant="graveyard">
             {" "}
@@ -29,11 +30,12 @@ export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
             No animals in the graveyard yet. You are doing a great job!
           </StyledHeading>
         )}
-        <GraveyardCurrentPetCard
-          selectedPet={selectedPet}
-          ageInSeconds={ageInSeconds}
-        ></GraveyardCurrentPetCard>
       </StyledGrid>
+      <GraveyardCurrentPetCard
+        selectedPet={selectedPet}
+        ageInSeconds={ageInSeconds}
+      ></GraveyardCurrentPetCard>
+    </>
   );
 }
 
@@ -42,7 +44,6 @@ const StyledGrid = styled.div`
   grid-template-rows: auto auto;
   grid-template-columns: 1fr;
 `;
-
 
 const StyledLink = styled(Link)`
   position: absolute;
