@@ -2,9 +2,22 @@ import styled from "styled-components";
 
 const StyledSection = styled.section`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  bottom: 0;
+  width: calc(100vw - 1rem);
   align-items: center;
-  min-height: 400px;
+  justify-content: center;
+  border: solid black;
+  border-radius: 10px;
+  margin: 10px;
+  min-height: 30%;
+  background: white;
+  ${(props) =>
+    props.$variant === "tombstone" &&
+    `
+  border: none;
+    `}
 `;
 
 export default StyledSection;

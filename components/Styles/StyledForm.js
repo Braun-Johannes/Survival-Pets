@@ -5,14 +5,18 @@ const StyledForm = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border-radius: 5px;
-  height: 20rem;
+  min-height: 30%;
   margin: 10px;
 
   ${(props) =>
     props.$variant === "select" &&
     `  
   border: solid black;
+    border-radius: 5px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   
   
   `}
@@ -22,6 +26,7 @@ const StyledForm = styled.form`
   flex-direction: row;
   gap: 10px;
   flex-wrap: wrap;
+  
   `}
 `;
 

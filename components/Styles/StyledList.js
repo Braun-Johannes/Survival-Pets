@@ -9,12 +9,14 @@ const StyledList = styled.ul`
   ${(props) =>
     props.$variant === "graveyard" &&
     `
+    overflow: hidden;
   flex-wrap: wrap;
   max-width: 800px
   justify-content: center;
   justify-self: center;
   margin-left: 10px;
   margin-right: 10px;
+  margin-bottom: 350px;
   
   `}
 `;
