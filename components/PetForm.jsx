@@ -1,5 +1,4 @@
 import StyledInput from "@/components/Styles/StyleInput";
-import StyledSection from "./Styles/StyledSection";
 import StyledForm from "@/components/Styles/StyledForm";
 import PositionedButton from "@/components/Styles/StyledButton";
 

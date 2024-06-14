@@ -10,7 +10,7 @@ export default function EliminateForm({ onEliminate, onMode }) {
         </StyledParagraph>
         <EliminateButtons>
           <PositionedButton
-            position="relative"
+            $position="relative"
             $variant="confirm"
             type="button"
             onClick={() => onEliminate()}
@@ -18,7 +18,7 @@ export default function EliminateForm({ onEliminate, onMode }) {
             Confirm
           </PositionedButton>
           <PositionedButton
-            position="relative"
+            $position="relative"
             $variant="cancel"
             type="button"
             onClick={() => onMode("livingroom")}
