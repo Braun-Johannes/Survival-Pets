@@ -31,59 +31,63 @@ export default function HomePage({
     <>
       {mode === "select" && (
         <>
-          <StyledGrid>
-            <StyledHeading $variant="select">
-              Select a Survival Pet
-            </StyledHeading>
-            <StyledDiv>
-              <PetList onSelectPet={onSelectPet} selectedPet={selectedPet} />
-            </StyledDiv>
-            <PetForm
-              selectedPet={selectedPet}
-              onSubmit={onSubmit}
-              onAddSnackbar={onAddSnackbar}
-            />
-          </StyledGrid>
+          <StyledModeBackground $variant="select">
+            <StyledGrid>
+              <StyledHeading $variant="select">
+                Select a Survival Pet
+              </StyledHeading>
+              <StyledDiv>
+                <PetList onSelectPet={onSelectPet} selectedPet={selectedPet} />
+              </StyledDiv>
+              <PetForm
+                selectedPet={selectedPet}
+                onSubmit={onSubmit}
+                onAddSnackbar={onAddSnackbar}
+              />
+            </StyledGrid>
+          </StyledModeBackground>
         </>
       )}
 
       {mode === "livingroom" && (
         <>
-          <StyledGrid>
-            <div>
-              <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-              {!isDead && (
-                <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-              )}
-            </div>
-            {!isDead ? (
-              <StyledContainer>
-                <div>
-                  <StyledLink href={"/graveyard"}>
-                    <SVGIcon variant="graveyard" />
-                  </StyledLink>
-                </div>
+          <StyledModeBackground $variant="livingroom">
+            <StyledGrid>
+              <div>
+                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                {!isDead && (
+                  <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+                )}
+              </div>
+              {!isDead ? (
+                <StyledContainer>
+                  <div>
+                    <StyledLink href={"/graveyard"}>
+                      <SVGIcon variant="graveyard" />
+                    </StyledLink>
+                  </div>
+                  <StyledDiv>
+                    <CurrentPet selectedPet={selectedPet} />
+                  </StyledDiv>
+                  <InteractionMenu onIncreaseStats={onIncreaseStats} />
+                </StyledContainer>
+              ) : (
                 <StyledDiv>
-                  <CurrentPet selectedPet={selectedPet} />
+                  <TombstoneButton
+                    selectedPet={selectedPet}
+                    timeAlive={timeAlive}
+                    onMode={onMode}
+                    onDeletePet={onDeletePet}
+                  />
                 </StyledDiv>
-                <InteractionMenu onIncreaseStats={onIncreaseStats} />
-              </StyledContainer>
-            ) : (
-              <StyledDiv>
-                <TombstoneButton
-                  selectedPet={selectedPet}
-                  timeAlive={timeAlive}
-                  onMode={onMode}
-                  onDeletePet={onDeletePet}
-                />
-              </StyledDiv>
-            )}
-            <CurrentPetStats
-              isDead={isDead}
-              selectedPet={selectedPet}
-              onMode={onMode}
-            />
-          </StyledGrid>
+              )}
+              <CurrentPetStats
+                isDead={isDead}
+                selectedPet={selectedPet}
+                onMode={onMode}
+              />
+            </StyledGrid>
+          </StyledModeBackground>
         </>
       )}
 
@@ -158,4 +162,22 @@ const StyledLink = styled(Link)`
   border-bottom: 3px black solid;
   margin-left: 30%;
   background-color: lightgrey;
+`;
+
+const StyledModeBackground = styled.div`
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  width: 100vw;
+  min-height: 100vh;
+  ${(props) =>
+    props.$variant === "select" &&
+    `
+    background-image: url("/Images/Dump2.png")
+  `}
+  ${(props) =>
+    props.$variant === "livingroom" &&
+    `
+  background-image: url("/Images/Forrest4.png")`}
 `;
