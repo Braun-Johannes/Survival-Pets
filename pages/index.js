@@ -12,6 +12,7 @@ import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
 import { formatPetsAge } from "@/utils";
 import SVGIcon from "@/components/SVGIcon";
+import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function HomePage({
   selectedPet,
@@ -59,6 +60,7 @@ export default function HomePage({
                   <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
                 )}
               </div>
+
               {!isDead ? (
                 <StyledContainer>
                   <div>
@@ -72,14 +74,21 @@ export default function HomePage({
                   <InteractionMenu onIncreaseStats={onIncreaseStats} />
                 </StyledContainer>
               ) : (
-                <StyledDiv>
-                  <TombstoneButton
-                    selectedPet={selectedPet}
-                    timeAlive={timeAlive}
-                    onMode={onMode}
-                    onDeletePet={onDeletePet}
-                  />
-                </StyledDiv>
+                <StyledContainer>
+                  <div>
+                    <StyledLink href={"/graveyard"}>
+                      <SVGIcon variant="graveyard" />
+                    </StyledLink>
+                  </div>
+                  <StyledDiv>
+                    <TombstoneButton
+                      selectedPet={selectedPet}
+                      timeAlive={timeAlive}
+                      onMode={onMode}
+                      onDeletePet={onDeletePet}
+                    />
+                  </StyledDiv>
+                </StyledContainer>
               )}
               <CurrentPetStats
                 isDead={isDead}

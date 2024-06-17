@@ -7,7 +7,7 @@ const StyledForm = styled.form`
   flex-direction: column;
   min-height: 30%;
   margin: 10px;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgb(255, 255, 255);
 
   ${(props) =>
     props.$variant === "select" &&
