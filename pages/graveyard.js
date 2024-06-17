@@ -9,32 +9,35 @@ import styled from "styled-components";
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
     <>
-      <div>
-        <StyledLink href={"/"}> ←</StyledLink>
-        <StyledHeading>Graveyard</StyledHeading>
-      </div>
-      <StyledGrid>
-        {deceasedPets ? (
-          <StyledList $variant="graveyard">
-            {" "}
-            {deceasedPets.map((deceasedPet) => {
-              return (
-                <StyledListItem $variant="graveyard" key={deceasedPet.id}>
-                  <GraveyardCard deceasedPet={deceasedPet} />
-                </StyledListItem>
-              );
-            })}
-          </StyledList>
-        ) : (
-          <StyledHeading>
-            No animals in the graveyard yet. You are doing a great job!
-          </StyledHeading>
-        )}
-      </StyledGrid>
-      <GraveyardCurrentPetCard
-        selectedPet={selectedPet}
-        ageInSeconds={ageInSeconds}
-      ></GraveyardCurrentPetCard>
+      <StyledBackground>
+        <StyledGrid>
+          <div>
+            <StyledLink href={"/"}> ←</StyledLink>
+            <StyledHeading>Graveyard</StyledHeading>
+          </div>
+
+          {deceasedPets ? (
+            <StyledList $variant="graveyard">
+              {" "}
+              {deceasedPets.map((deceasedPet) => {
+                return (
+                  <StyledListItem $variant="graveyard" key={deceasedPet.id}>
+                    <GraveyardCard deceasedPet={deceasedPet} />
+                  </StyledListItem>
+                );
+              })}
+            </StyledList>
+          ) : (
+            <StyledH2>
+              No animals in the graveyard yet. You are doing a great job!
+            </StyledH2>
+          )}
+        </StyledGrid>
+        <GraveyardCurrentPetCard
+          selectedPet={selectedPet}
+          ageInSeconds={ageInSeconds}
+        ></GraveyardCurrentPetCard>
+      </StyledBackground>
     </>
   );
 }
@@ -51,4 +54,17 @@ const StyledLink = styled(Link)`
   color: black;
   font-size: 3rem;
   margin-left: 10px;
+`;
+
+const StyledBackground = styled.div`
+  background-image: url("/Images/Graveyard2.png");
+  background-size: cover;
+  background-position: center;
+  /* height: 100vh;
+  width: 100%; */
+  background-attachment: fixed;
+`;
+
+const StyledH2 = styled.h2`
+  text-align: center;
 `;

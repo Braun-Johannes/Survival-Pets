@@ -93,40 +93,44 @@ export default function HomePage({
 
       {mode === "edit" && (
         <>
-          <StyledGrid>
-            <div>
-              <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-            </div>
-            <StyledDiv>
-              <CurrentPet selectedPet={selectedPet} />
-            </StyledDiv>
-            <EditForm
-              selectedPet={selectedPet}
-              onSubmit={onSubmit}
-              onMode={onMode}
-              onAddSnackbar={onAddSnackbar}
-            />
-          </StyledGrid>
+          <StyledModeBackground $variant="livingroom">
+            <StyledGrid>
+              <div>
+                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+              </div>
+              <StyledDiv>
+                <CurrentPet selectedPet={selectedPet} />
+              </StyledDiv>
+              <EditForm
+                selectedPet={selectedPet}
+                onSubmit={onSubmit}
+                onMode={onMode}
+                onAddSnackbar={onAddSnackbar}
+              />
+            </StyledGrid>
+          </StyledModeBackground>
         </>
       )}
 
       {mode === "eliminate" && (
         <>
-          <StyledGrid>
-            <div>
-              <StyledHeading $variant="livingroom">Living Room</StyledHeading>
-              <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-            </div>
-            <StyledDiv>
-              <CurrentPet selectedPet={selectedPet} />
-            </StyledDiv>
-            <EliminateForm
-              selectedPet={selectedPet}
-              onMode={onMode}
-              onEliminate={onEliminate}
-            />
-          </StyledGrid>
+          <StyledModeBackground $variant="livingroom">
+            <StyledGrid>
+              <div>
+                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+              </div>
+              <StyledDiv>
+                <CurrentPet selectedPet={selectedPet} />
+              </StyledDiv>
+              <EliminateForm
+                selectedPet={selectedPet}
+                onMode={onMode}
+                onEliminate={onEliminate}
+              />
+            </StyledGrid>
+          </StyledModeBackground>
         </>
       )}
     </>

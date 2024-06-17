@@ -5,7 +5,7 @@ import SVGIcon from "@/components/SVGIcon";
 export default function CurrentPet({ selectedPet }) {
   return (
     <StyledList>
-      <StyledListItem $variant="select">
+      <StyledListItem $variant="livingroom">
         <SVGIcon variant={selectedPet.type} size={200} />
       </StyledListItem>
     </StyledList>
