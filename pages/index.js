@@ -12,7 +12,6 @@ import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
 import { formatPetsAge } from "@/utils";
 import SVGIcon from "@/components/SVGIcon";
-import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function HomePage({
   selectedPet,
