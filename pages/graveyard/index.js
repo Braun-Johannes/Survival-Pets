@@ -62,7 +62,6 @@ const StyledBackground = styled.div`
   background-image: url("/Images/Graveyard2.png");
   background-size: cover;
   background-position: center;
-
   background-attachment: fixed;
   height: ${(props) => (props.hasDeceasedPets ? "auto" : "100vh")};
 `;

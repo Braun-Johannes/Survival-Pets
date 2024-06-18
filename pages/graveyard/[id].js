@@ -21,36 +21,38 @@ export default function PetsDetail({ deceasedPets }) {
 
   return (
     <>
-      <StyledGrid>
-        <div>
-          <StyledLink href={"/graveyard"}> ←</StyledLink>
-          <StyledHeading>{detailsPet.name}</StyledHeading>
-        </div>
-        <StyledPetContainer>
-          <SVGIcon
-            variant={detailsPet.type}
-            size={100}
-            ariaLabel={detailsPet.type}
-          />
-        </StyledPetContainer>
-        <DeceasedPetContainer>
-          <StyledP>Name: </StyledP>
-          <StyledP>{detailsPet.name}</StyledP>
+      <StyledBackground>
+        <StyledGrid>
+          <div>
+            <StyledLink href={"/graveyard"}> ←</StyledLink>
+            <StyledHeading>{detailsPet.name}</StyledHeading>
+          </div>
+          <StyledPetContainer>
+            <SVGIcon
+              variant={detailsPet.type}
+              size={100}
+              ariaLabel={detailsPet.type}
+            />
+          </StyledPetContainer>
+          <DeceasedPetContainer>
+            <StyledP>Name: </StyledP>
+            <StyledP>{detailsPet.name}</StyledP>
 
-          <StyledP>Time Alive: </StyledP>
-          <StyledP>
-            {formatPetsAge(
-              Math.floor(detailsPet.lastUpdated - detailsPet.createdAt)
-            )}
-          </StyledP>
+            <StyledP>Time Alive: </StyledP>
+            <StyledP>
+              {formatPetsAge(
+                Math.floor(detailsPet.lastUpdated - detailsPet.createdAt)
+              )}
+            </StyledP>
 
-          <StyledP>Creation Date:</StyledP>
-          <StyledP>{detailsPet.birthday}</StyledP>
+            <StyledP>Creation Date:</StyledP>
+            <StyledP>{detailsPet.birthday}</StyledP>
 
-          <StyledP>Death Date: </StyledP>
-          <StyledP>{detailsPet.deathDate}</StyledP>
-        </DeceasedPetContainer>
-      </StyledGrid>
+            <StyledP>Death Date: </StyledP>
+            <StyledP>{detailsPet.deathDate}</StyledP>
+          </DeceasedPetContainer>
+        </StyledGrid>
+      </StyledBackground>
     </>
   );
 }
@@ -84,4 +86,11 @@ const StyledGrid = styled.div`
   grid-template-columns: 1fr;
   grid-template-rows: 10% auto 30%;
   height: calc(100vh - 1rem);
+`;
+
+const StyledBackground = styled.div`
+  background-image: url("/Images/Graveyard.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 `;
