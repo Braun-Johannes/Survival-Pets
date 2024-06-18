@@ -7,7 +7,7 @@ import PNGImage from "./PNGImage";
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
     <>
-      <StyledList>
+      <StyledList $variant="select">
         {pets.map((pet) => {
           return (
             <StyledListItem
@@ -22,7 +22,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
                   onSelectPet(pet);
                 }}
               >
-                <PNGImage variant={pet.type} size={60} ariaLabel={pet.type} />
+                <PNGImage variant={pet.type} size={100} ariaLabel={pet.type} />
               </PositionedButton>
             </StyledListItem>
           );

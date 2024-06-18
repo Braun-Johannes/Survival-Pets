@@ -7,6 +7,13 @@ const StyledList = styled.ul`
   padding: 0;
 
   ${(props) =>
+    props.$variant === "select" &&
+    `
+    flex-wrap: wrap;
+  justify-content: center;
+  `}
+
+  ${(props) =>
     props.$variant === "graveyard" &&
     `
     overflow: hidden;
