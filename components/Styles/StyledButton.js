@@ -73,8 +73,7 @@ ${(props) =>
     props.$variant === "tombstone" &&
     `
     background-color: transparent;
-    border: none;
-    padding: 0;
+    padding: 2px;
     display: inline-block;
     width: auto;
     height: auto;
