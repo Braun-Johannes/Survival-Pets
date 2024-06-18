@@ -5,6 +5,7 @@ import StyledToastContainer from "@/components/Styles/StyledToastContainer";
 import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
+import BackgroundAudio from "@/components/BackgroundAudio";
 
 export default function App({ Component, pageProps }) {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -255,6 +256,7 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
+      <BackgroundAudio />
       <GlobalStyle />
 
       <StyledToastContainer>
