@@ -1,53 +1,49 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import useLocalStorageState from "use-local-storage-state";
 import styled from "styled-components";
+import useSound from "use-sound";
 import SVGIcon from "./SVGIcon";
 
 export default function BackgroundAudio() {
-  const audioRef = useRef(null);
   const [volume, setVolume] = useLocalStorageState("audioVolume", {
     defaultValue: 0.3,
   }); // Lautstärke default 30%
   const [isPlaying, setIsPlaying] = useLocalStorageState("isPlaying", true);
+
+  const [play, { sound }] = useSound("/audio/BackgroundAudio.mp3", {
+    volume: volume,
+    loop: true,
+  });
+
   useEffect(() => {
-    const audio = audioRef.current;
-    if (audio) {
-      audio.volume = volume;
-      if (isPlaying) {
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((error) => {
-            console.error("Autoplay was prevented:", error);
-          });
-        }
-      }
+    if (isPlaying && sound) {
+      sound.play();
+    } else if (sound) {
+      sound.pause();
     }
-  }, [volume, isPlaying]);
+  }, [isPlaying, sound]);
+
+  useEffect(() => {
+    if (sound) {
+      sound.volume(volume);
+    }
+  }, [volume, sound]);
+
   const handleVolumeChange = (event) => {
     setVolume(Number(event.target.value));
   };
+
   const togglePlayPause = () => {
-    const audio = audioRef.current;
-    if (audio) {
-      if (isPlaying) {
-        audio.pause();
-      } else {
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((error) => {
-            console.error("Autoplay was prevented:", error);
-          });
-        }
-      }
-      setIsPlaying(!isPlaying);
+    if (isPlaying) {
+      sound.pause();
+    } else {
+      sound.play();
     }
+    setIsPlaying(!isPlaying);
   };
+
   return (
     <div>
-      <audio ref={audioRef} loop>
-        <source src="/audio/BackgroundAudio.mp3" type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
       <StyledVolumeInput>
         <label htmlFor="volume">Volume: </label>
         <input
