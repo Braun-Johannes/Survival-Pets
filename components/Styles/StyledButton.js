@@ -78,6 +78,7 @@ ${(props) =>
     display: inline-block;
     width: auto;
     height: auto;
+    font-size: 1rem;
     `}
 `;
 
