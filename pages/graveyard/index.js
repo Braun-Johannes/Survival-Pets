@@ -5,6 +5,7 @@ import StyledListItem from "@/components/Styles/StyledListItem";
 import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
 import Link from "next/link";
 import styled from "styled-components";
+import StyledLink from "@/components/Styles/StyledLink";
 
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
@@ -48,14 +49,6 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 1fr;
-`;
-
-const StyledLink = styled(Link)`
-  position: absolute;
-  text-decoration: none;
-  color: black;
-  font-size: 3rem;
-  margin-left: 10px;
 `;
 
 const StyledCardLink = styled(Link)`

@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 import SVGIcon from "@/components/SVGIcon";
+import { formatPetsAge } from "@/utils";
+import StyledLink from "@/components/Styles/StyledLink";
 
 export default function PetsDetail({ deceasedPets }) {
   const router = useRouter();
@@ -13,17 +15,27 @@ export default function PetsDetail({ deceasedPets }) {
 
   return (
     <>
+      <StyledLink href={"/graveyard"}> ←</StyledLink>
       <h1>{detailsPet.name}</h1>
       <br />
-      <SVGIcon variant={detailsPet.type} size={100} ariaLabel={pet.type} />
+      <SVGIcon
+        variant={detailsPet.type}
+        size={100}
+        ariaLabel={detailsPet.type}
+      />
       <br />
-      <p>{detailsPet.name}</p>
+      <p>Name: {detailsPet.name}</p>
       <br />
-      <p>{detailsPet.name}</p>
+      <p>
+        Time Alive:{" "}
+        {formatPetsAge(
+          Math.floor(detailsPet.lastUpdated - detailsPet.createdAt)
+        )}
+      </p>
       <br />
-      <p>{detailsPet.birthday}</p>
+      <p>Creation Date: {detailsPet.birthday}</p>
       <br />
-      <p>{detailsPet.deathDate}</p>
+      <p>Death Date: {detailsPet.deathDate}</p>
     </>
   );
 }
