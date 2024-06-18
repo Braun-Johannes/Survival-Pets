@@ -5,6 +5,7 @@ import StyledToastContainer from "@/components/Styles/StyledToastContainer";
 import useLocalStorageState from "use-local-storage-state";
 import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
+import { formatDate } from "@/utils";
 
 export default function App({ Component, pageProps }) {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -60,13 +61,19 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleDeletePet() {
+    const today = new Date();
+
     setMode("select");
     if (isDead && !deceasedPets) {
       setDeceasedPets([{ key: uid(), ...selectedPet }]);
     } else if (isDead && deceasedPets) {
-      setDeceasedPets([{ ...selectedPet, id: uid() }, ...deceasedPets]);
+      setDeceasedPets([
+        { ...selectedPet, id: uid(), deathDate: formatDate(today) },
+        ...deceasedPets,
+      ]);
     }
     setSelectedPet("");
+    console.log(deceasedPets);
   }
 
   function handleIncreaseStats(attribute, steps) {
