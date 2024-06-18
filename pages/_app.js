@@ -110,7 +110,6 @@ export default function App({ Component, pageProps }) {
       birthday: formatDate(new Date()),
     };
     setSelectedPet(updatedPet);
-    console.log(deceasedPets);
 
     setMode("livingroom");
   }
