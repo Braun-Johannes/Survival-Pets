@@ -13,6 +13,7 @@ export default function PetsDetail({ deceasedPets }) {
   return (
     <>
       <p>{detailsPet.name}</p>
+      <p></p>
     </>
   );
 }
