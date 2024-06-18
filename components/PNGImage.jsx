@@ -1,6 +1,5 @@
 import images from "@/lib/images";
 import Image from "next/image";
-import styled from "styled-components";
 
 export default function PNGImage({ variant, size = 50, ariaLabel }) {
   const image = images[variant];

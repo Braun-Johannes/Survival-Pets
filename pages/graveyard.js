@@ -9,7 +9,7 @@ import styled from "styled-components";
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
     <>
-      <StyledBackground hasDeceasedPets={deceasedPets}>
+      <StyledBackground $hasDeceasedPets={deceasedPets}>
         <StyledGrid>
           <div>
             <StyledLink href={"/"}> ←</StyledLink>
@@ -62,7 +62,7 @@ const StyledBackground = styled.div`
   background-position: center;
 
   background-attachment: fixed;
-  height: ${(props) => (props.hasDeceasedPets ? "auto" : "100vh")};
+  height: ${(props) => (props.$hasDeceasedPets ? "auto" : "100vh")};
 `;
 
 const StyledH2 = styled.h2`
