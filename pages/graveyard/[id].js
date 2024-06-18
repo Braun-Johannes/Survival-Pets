@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import SVGIcon from "@/components/SVGIcon";
 
 export default function PetsDetail({ deceasedPets }) {
   const router = useRouter();
@@ -12,8 +13,17 @@ export default function PetsDetail({ deceasedPets }) {
 
   return (
     <>
+      <h1>{detailsPet.name}</h1>
+      <br />
+      <SVGIcon variant={detailsPet.type} size={100} ariaLabel={pet.type} />
+      <br />
       <p>{detailsPet.name}</p>
-      <p></p>
+      <br />
+      <p>{detailsPet.name}</p>
+      <br />
+      <p>{detailsPet.birthday}</p>
+      <br />
+      <p>{detailsPet.deathDate}</p>
     </>
   );
 }
