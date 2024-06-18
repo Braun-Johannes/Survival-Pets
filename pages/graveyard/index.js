@@ -19,9 +19,14 @@ export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
             {" "}
             {deceasedPets.map((deceasedPet) => {
               return (
-                <StyledListItem $variant="graveyard" key={deceasedPet.id}>
-                  <GraveyardCard deceasedPet={deceasedPet} />
-                </StyledListItem>
+                <StyledCardLink
+                  key={deceasedPet.id}
+                  href={`/graveyard/${deceasedPet.id}`}
+                >
+                  <StyledListItem $variant="graveyard" key={deceasedPet.id}>
+                    <GraveyardCard deceasedPet={deceasedPet} />
+                  </StyledListItem>
+                </StyledCardLink>
               );
             })}
           </StyledList>
@@ -51,4 +56,9 @@ const StyledLink = styled(Link)`
   color: black;
   font-size: 3rem;
   margin-left: 10px;
+`;
+
+const StyledCardLink = styled(Link)`
+  text-decoration: none;
+  color: black;
 `;
