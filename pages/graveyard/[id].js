@@ -6,5 +6,13 @@ export default function PetsDetail({ deceasedPets }) {
 
   const detailsPet = deceasedPets.find((pet) => pet.id === id);
 
-  return <></>;
+  if (!detailsPet) {
+    return <div>...loading</div>;
+  }
+
+  return (
+    <>
+      <p>{detailsPet.name}</p>
+    </>
+  );
 }
