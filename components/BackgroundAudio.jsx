@@ -1,24 +1,43 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import useLocalStorageState from "use-local-storage-state";
+import styled from "styled-components";
+import SVGIcon from "./SVGIcon";
 
 export default function BackgroundAudio() {
   const audioRef = useRef(null);
-  const [volume, setVolume] = useState(0.5); // Standardlautstärke auf 50%
-  const [isPlaying, setIsPlaying] = useState(true); // Status der Wiedergabe
+  const [volume, setVolume] = useLocalStorageState("audioVolume", {
+    defaultValue: 0.3,
+  }); // Lautstärke default 30%
+  const [isPlaying, setIsPlaying] = useLocalStorageState("isPlaying", true);
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.play();
-      audioRef.current.volume = volume;
+    const audio = audioRef.current;
+    if (audio) {
+      audio.volume = volume;
+      if (isPlaying) {
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.error("Autoplay was prevented:", error);
+          });
+        }
+      }
     }
-  }, [volume]);
+  }, [volume, isPlaying]);
   const handleVolumeChange = (event) => {
-    setVolume(event.target.value);
+    setVolume(Number(event.target.value));
   };
   const togglePlayPause = () => {
-    if (audioRef.current) {
+    const audio = audioRef.current;
+    if (audio) {
       if (isPlaying) {
-        audioRef.current.pause();
+        audio.pause();
       } else {
-        audioRef.current.play();
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.error("Autoplay was prevented:", error);
+          });
+        }
       }
       setIsPlaying(!isPlaying);
     }
@@ -29,7 +48,7 @@ export default function BackgroundAudio() {
         <source src="/audio/BackgroundAudio.mp3" type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
-      <div>
+      <StyledVolumeInput>
         <label htmlFor="volume">Volume: </label>
         <input
           id="volume"
@@ -40,12 +59,28 @@ export default function BackgroundAudio() {
           value={volume}
           onChange={handleVolumeChange}
         />
-      </div>
-      <div>
-        <button onClick={togglePlayPause}>
-          {isPlaying ? "Pause" : "Play"}
-        </button>
-      </div>
+      </StyledVolumeInput>
+
+      <StyledPlayButton onClick={togglePlayPause}>
+        {isPlaying ? (
+          <SVGIcon variant={"pause"} size={30} />
+        ) : (
+          <SVGIcon variant={"play"} size={30} />
+        )}
+      </StyledPlayButton>
     </div>
   );
 }
+
+const StyledVolumeInput = styled.div`
+  position: absolute;
+  top: 2px;
+  right: 2px;
+`;
+
+const StyledPlayButton = styled.button`
+  all: unset;
+  position: absolute;
+  top: 20px;
+  right: 5px;
+`;
