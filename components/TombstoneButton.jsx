@@ -32,7 +32,7 @@ export default function TombstoneButton({
           >
             Press here
             <br />
-            <PNGImage variant={selectedPet.type} />
+            <PNGImage variant={selectedPet.type} ariaLabel={selectedPet.type} />
             <br />
             to create a new survival pet
           </PositionedButton>

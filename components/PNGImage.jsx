@@ -10,6 +10,12 @@ export default function PNGImage({ variant, size = 50, ariaLabel }) {
   }
 
   return (
-    <Image src={image.src} alt={ariaLabel} width={size} height={size}></Image>
+    <Image
+      src={image.src}
+      aria-label={ariaLabel}
+      alt={ariaLabel}
+      width={size}
+      height={size}
+    ></Image>
   );
 }
