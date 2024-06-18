@@ -61,19 +61,16 @@ export default function App({ Component, pageProps }) {
   }
 
   function handleDeletePet() {
-    const today = new Date();
-
     setMode("select");
     if (isDead && !deceasedPets) {
       setDeceasedPets([{ key: uid(), ...selectedPet }]);
     } else if (isDead && deceasedPets) {
       setDeceasedPets([
-        { ...selectedPet, id: uid(), deathDate: formatDate(today) },
+        { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },
         ...deceasedPets,
       ]);
     }
     setSelectedPet("");
-    console.log(deceasedPets);
   }
 
   function handleIncreaseStats(attribute, steps) {
@@ -108,8 +105,10 @@ export default function App({ Component, pageProps }) {
       name: data.nameInput,
       lastUpdated: Date.now() / 1000,
       createdAt: currentTime,
+      birthday: formatDate(new Date()),
     };
     setSelectedPet(updatedPet);
+    console.log(deceasedPets);
 
     setMode("livingroom");
   }
