@@ -7,6 +7,7 @@ const StyledListItem = styled.li`
     border-radius: 5px;
     min-width: 80px;
     text-align: center;
+    background: rgba(255, 255, 255, 0.8);
 
   `}
   ${(props) =>
@@ -26,8 +27,8 @@ const StyledListItem = styled.li`
     border: 3px orange solid;
     `}
     ${(props) =>
-      props.$variant === "graveyard" &&
-      `
+    props.$variant === "graveyard" &&
+    `
       border-radius: 5px;
       min-width: 90px;
       text-align: center;
