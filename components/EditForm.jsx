@@ -21,27 +21,26 @@ export default function EditForm({
           $variant="name"
           required
         />
-            </StyledForm>
         <PositionedButton
           $variant="confirm"
           $bottom="3rem"
           type="submit"
           onClick={() =>
-            onAddToast("You successfully changed your name", "warning")
-            }
-            >
+            onAddSnackbar("You successfully changed your name", "edit")
+          }
+        >
           Update Name
         </PositionedButton>
-      <PositionedButton
-        $variant="cancel"
-        $top="10px"
-        $right="10px"
-        type="button"
-        onClick={() => onMode("livingroom")}
+        <PositionedButton
+          $variant="cancel"
+          $top="10px"
+          $right="10px"
+          type="button"
+          onClick={() => onMode("livingroom")}
         >
-        Cancel
-      </PositionedButton>
-        </StyledSection>
+          Cancel
+        </PositionedButton>
+      </StyledForm>
+    </StyledSection>
   );
 }
-

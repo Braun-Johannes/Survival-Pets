@@ -28,7 +28,7 @@ const toastColors = {
 const StyledToastMessage = styled.li`
   transition: opacity 0.5s ease-in-out;
   list-style: none;
-  color: white;
+  color: black;
   margin-bottom: 10px;
   padding: 10px;
   border-radius: 5px;
