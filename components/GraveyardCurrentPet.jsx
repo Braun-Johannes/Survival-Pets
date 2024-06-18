@@ -5,7 +5,7 @@ import { formatPetsAge } from "@/utils";
 export default function GraveyardCurrentPetCard({ selectedPet, ageInSeconds }) {
   return (
     <StyledSection>
-      <StyledLabel>Current Pet:</StyledLabel>
+      <StyledLabel>Current Pet</StyledLabel>
       <CurrentPetContainer>
         <StyledP>Name:</StyledP> <StyledP>{selectedPet.name}</StyledP>
         <StyledP>Time Alive:</StyledP>{" "}
