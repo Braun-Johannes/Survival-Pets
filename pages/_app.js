@@ -63,7 +63,9 @@ export default function App({ Component, pageProps }) {
   function handleDeletePet() {
     setMode("select");
     if (isDead && !deceasedPets) {
-      setDeceasedPets([{ key: uid(), ...selectedPet }]);
+      setDeceasedPets([
+        { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },
+      ]);
     } else if (isDead && deceasedPets) {
       setDeceasedPets([
         { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },

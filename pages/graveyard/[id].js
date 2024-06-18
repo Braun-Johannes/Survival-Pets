@@ -25,7 +25,7 @@ export default function PetsDetail({ deceasedPets }) {
         <StyledPetContainer>
           <SVGIcon
             variant={detailsPet.type}
-            size={250}
+            size={100}
             ariaLabel={detailsPet.type}
           />
         </StyledPetContainer>
