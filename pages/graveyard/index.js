@@ -21,6 +21,12 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
     switch (filter) {
       case "timeAliveAsc":
         return a.timeAlive - b.timeAlive;
+      case "timeAliveDesc":
+        return b.timeAlive - a.timeAlive;
+      case "name":
+        return a.name.localeCompare(b.name);
+      case "type":
+        return a.type.localeCompare(b.type);
       case "createdAt":
       default:
         return new Date(a.createdAt) - new Date(b.createdAt);
@@ -38,6 +44,9 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
           <FilterDropdown onChange={handleFilterChange} value={filter}>
             <option value="createdAt">Created At</option>
             <option value="timeAliveAsc">Time Alive - Ascending</option>
+            <option value="timeAliveDesc">Time Alive - Descending</option>
+            <option value="name">Name</option>
+            <option value="type">Type</option>
           </FilterDropdown>
           {deceasedPets ? (
             <StyledList $variant="graveyard">
