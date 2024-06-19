@@ -4,10 +4,12 @@ const StyledListItem = styled.li`
   ${(props) =>
     props.$variant === "select" &&
     `
-    border-radius: 5px;
+    border: solid black 2px;
     min-width: 80px;
     text-align: center;
     background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    
 
   `}
   ${(props) =>

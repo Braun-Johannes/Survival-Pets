@@ -2,12 +2,12 @@ import pets from "@/lib/pets";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import PositionedButton from "@/components/Styles/StyledButton";
-import SVGIcon from "@/components/SVGIcon";
+import PNGImage from "./PNGImage";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (
     <>
-      <StyledList>
+      <StyledList $variant="select">
         {pets.map((pet) => {
           return (
             <StyledListItem
@@ -22,7 +22,7 @@ export default function PetList({ onSelectPet, selectedPet }) {
                   onSelectPet(pet);
                 }}
               >
-                <SVGIcon variant={pet.type} size={60} ariaLabel={pet.type} />
+                <PNGImage variant={pet.type} size={100} ariaLabel={pet.type} />
               </PositionedButton>
             </StyledListItem>
           );

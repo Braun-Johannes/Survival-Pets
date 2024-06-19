@@ -12,7 +12,6 @@ import Link from "next/link";
 import InteractionMenu from "@/components/InteractionMenu";
 import { formatPetsAge } from "@/utils";
 import SVGIcon from "@/components/SVGIcon";
-import PositionedButton from "@/components/Styles/StyledButton";
 
 export default function HomePage({
   selectedPet,
@@ -65,7 +64,7 @@ export default function HomePage({
                 <StyledContainer>
                   <div>
                     <StyledLink href={"/graveyard"}>
-                      <SVGIcon variant="graveyard" />
+                      <SVGIcon variant="graveyard" size={40} />
                     </StyledLink>
                   </div>
                   <StyledDiv>
@@ -77,7 +76,7 @@ export default function HomePage({
                 <StyledContainer>
                   <div>
                     <StyledLink href={"/graveyard"}>
-                      <SVGIcon variant="graveyard" />
+                      <SVGIcon variant="graveyard" size={40} />
                     </StyledLink>
                   </div>
                   <StyledDiv>
@@ -108,9 +107,12 @@ export default function HomePage({
                 <StyledHeading $variant="livingroom">Living Room</StyledHeading>
                 <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
               </div>
-              <StyledDiv>
-                <CurrentPet selectedPet={selectedPet} />
-              </StyledDiv>
+              <StyledContainer>
+                <div></div> {/* Placeholder for positioning */}
+                <StyledDiv>
+                  <CurrentPet selectedPet={selectedPet} />
+                </StyledDiv>
+              </StyledContainer>
               <EditForm
                 selectedPet={selectedPet}
                 onSubmit={onSubmit}
@@ -130,9 +132,12 @@ export default function HomePage({
                 <StyledHeading $variant="livingroom">Living Room</StyledHeading>
                 <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
               </div>
-              <StyledDiv>
-                <CurrentPet selectedPet={selectedPet} />
-              </StyledDiv>
+              <StyledContainer>
+                <div></div> {/* Placeholder for positioning */}
+                <StyledDiv>
+                  <CurrentPet selectedPet={selectedPet} />
+                </StyledDiv>
+              </StyledContainer>
               <EliminateForm
                 selectedPet={selectedPet}
                 onMode={onMode}

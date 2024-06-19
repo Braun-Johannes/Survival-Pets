@@ -1,5 +1,5 @@
 import { formatPetsAge } from "@/utils";
-import SVGIcon from "./SVGIcon";
+import PNGImage from "@/components/PNGImage";
 import styled from "styled-components";
 
 export default function GraveyardCard({ deceasedPet }) {
@@ -7,7 +7,8 @@ export default function GraveyardCard({ deceasedPet }) {
     <CardContainer>
       {deceasedPet.name}
       <br />
-      <SVGIcon variant={deceasedPet.type} ariaLabel={deceasedPet.type} /> <br />
+      <PNGImage variant={deceasedPet.type} ariaLabel={deceasedPet.type} />{" "}
+      <br />
       Time Alive: <br />{" "}
       {formatPetsAge(
         Math.floor(deceasedPet.lastUpdated - deceasedPet.createdAt)
