@@ -66,6 +66,7 @@ export default function HomePage({
                     <StyledLink href={"/graveyard"}>
                       <SVGIcon variant="graveyard" size={40} />
                     </StyledLink>
+                    <Link href={"/hallOfFame"}> HallOfFame</Link>
                   </div>
                   <StyledDiv>
                     <CurrentPet selectedPet={selectedPet} />
