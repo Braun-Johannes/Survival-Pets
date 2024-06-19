@@ -14,6 +14,24 @@ export default function HallOfFame() {
     return;
   }
 
+  const sortedPets = data.sort((a, b) => {
+    return;
+  });
+
+  function sortedDeceasedPets(data) {
+    let arrayCopy = [...data];
+    arrayCopy.sort(
+      (a, b) => b.lastUpdated - b.createdAt - (a.lastUpdated - a.createdAt)
+    );
+    return arrayCopy.slice(0, 100);
+  }
+
+  const top100 = sortedDeceasedPets(data);
+  const top100Index = top100.map((item, index) => ({
+    ...item,
+    originalIndex: index,
+  }));
+
   return (
     <>
       <div>
@@ -21,11 +39,19 @@ export default function HallOfFame() {
         <StyledHeading>Hall of Fame</StyledHeading>
       </div>
       <StyledList>
-        {data.map((pet) => (
+        {top100Index.map((pet) => (
           <StyledListItems key={pet._id}>
-            {pet.name}
-            <PNGImage variant={pet.type} size={50} ariaLabel={pet.type} />
-            {formatPetsAge(Math.floor(pet.lastUpdated - pet.createdAt))}
+            <p></p>
+            <StyledName>
+              #{pet.originalIndex + 1} {pet.name}
+            </StyledName>
+            <PNGImage variant={pet.type} size={100} ariaLabel={pet.type} />
+            <StyledContainer>
+              <StyledP>Time Alive:</StyledP>
+              <StyledP>
+                {formatPetsAge(Math.floor(pet.lastUpdated - pet.createdAt))}
+              </StyledP>
+            </StyledContainer>
           </StyledListItems>
         ))}
       </StyledList>
@@ -37,7 +63,8 @@ const StyledListItems = styled.li`
   display: flex;
   flex-direction: column;
   border: 2px solid black;
-  background: white;
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.8);
   margin: 10px;
   justify-content: center;
   align-items: center;
@@ -48,4 +75,19 @@ const StyledList = styled.ul`
   flex-direction: column;
   list-style: none;
   padding: 0;
+`;
+
+const StyledContainer = styled.div`
+  display: grid;
+  grid-template-columns: auto auto;
+  width: 100%;
+`;
+
+const StyledP = styled.p`
+  font-size: 2rem;
+  text-align: center;
+`;
+
+const StyledName = styled.p`
+  font-size: 2.5rem;
 `;
