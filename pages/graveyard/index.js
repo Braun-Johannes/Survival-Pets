@@ -3,6 +3,7 @@ import StyledHeading from "@/components/Styles/StyledHeading";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
+import DropdownMenu from "@/components/DropdownMenu";
 import StyledLink from "@/components/Styles/StyledLink";
 import Link from "next/link";
 import styled from "styled-components";
@@ -13,22 +14,22 @@ const FilterDropdown = styled.select``;
 export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   const [filter, setFilter] = useState("createdAt");
 
-  function handleFilterChange(event) {
-    setFilter(event.target.value);
+  function handleFilterChange(selectedOption) {
+    setFilter(selectedOption);
   }
 
   if (deceasedPets) {
-    const sortedDeceasedPets = deceasedPets.sort((a, b) => {
+    const sortedDeceasedPets = [...deceasedPets].sort((a, b) => {
       switch (filter) {
-        case "timeAliveAsc":
+        case "Time Alive - Descending":
           return a.timeAlive - b.timeAlive;
-        case "timeAliveDesc":
+        case "Time Alive - Ascending":
           return b.timeAlive - a.timeAlive;
-        case "name":
+        case "Name":
           return a.name.localeCompare(b.name);
-        case "type":
+        case "Type":
           return a.type.localeCompare(b.type);
-        case "createdAt":
+        case "Currywurst":
         default:
           return new Date(a.createdAt) - new Date(b.createdAt);
       }
@@ -43,13 +44,18 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
             <StyledLink href={"/"}> ←</StyledLink>
             <StyledHeading>Graveyard</StyledHeading>
           </div>
-          <FilterDropdown onChange={handleFilterChange} value={filter}>
-            <option value="createdAt">Created At</option>
-            <option value="timeAliveAsc">Time Alive - Ascending</option>
-            <option value="timeAliveDesc">Time Alive - Descending</option>
-            <option value="name">Name</option>
-            <option value="type">Type</option>
-          </FilterDropdown>
+          <DropdownMenu
+            options={[
+              "Created At",
+              "Time Alive - Ascending",
+              "Time Alive - Descending",
+              "Name",
+              "Type",
+            ]}
+            selectedOption={filter}
+            onOptionSelect={handleFilterChange}
+          />
+
           {deceasedPets ? (
             <StyledList $variant="graveyard">
               {" "}
