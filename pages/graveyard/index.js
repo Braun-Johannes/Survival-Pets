@@ -5,6 +5,7 @@ import StyledListItem from "@/components/Styles/StyledListItem";
 import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
 import Link from "next/link";
 import styled from "styled-components";
+import StyledLink from "@/components/Styles/StyledLink";
 
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
@@ -15,15 +16,19 @@ export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
             <StyledLink href={"/"}> ←</StyledLink>
             <StyledHeading>Graveyard</StyledHeading>
           </div>
-
           {deceasedPets ? (
             <StyledList $variant="graveyard">
               {" "}
               {deceasedPets.map((deceasedPet) => {
                 return (
-                  <StyledListItem $variant="graveyard" key={deceasedPet.id}>
-                    <GraveyardCard deceasedPet={deceasedPet} />
-                  </StyledListItem>
+                  <StyledCardLink
+                    key={deceasedPet.id}
+                    href={`/graveyard/${deceasedPet.id}`}
+                  >
+                    <StyledListItem $variant="graveyard" key={deceasedPet.id}>
+                      <GraveyardCard deceasedPet={deceasedPet} />
+                    </StyledListItem>
+                  </StyledCardLink>
                 );
               })}
             </StyledList>
@@ -48,19 +53,15 @@ const StyledGrid = styled.div`
   grid-template-columns: 1fr;
 `;
 
-const StyledLink = styled(Link)`
-  position: absolute;
+const StyledCardLink = styled(Link)`
   text-decoration: none;
   color: black;
-  font-size: 3rem;
-  margin-left: 10px;
 `;
 
 const StyledBackground = styled.div`
   background-image: url("/Images/Graveyard2.png");
   background-size: cover;
   background-position: center;
-
   background-attachment: fixed;
   height: ${(props) => (props.hasDeceasedPets ? "auto" : "100vh")};
 `;
