@@ -2,7 +2,7 @@ import StyledHeading from "@/components/Styles/StyledHeading";
 import StyledLink from "@/components/Styles/StyledLink";
 import useSWR from "swr";
 
-export default function HallOfFame() {
+export default function HallOfFame({ deceasedPets }) {
   const { data, isLoading } = useSWR("/api/pets");
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -10,7 +10,6 @@ export default function HallOfFame() {
   if (!data) {
     return;
   }
-  //   console.log(data);
 
   return (
     <>

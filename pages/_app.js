@@ -7,11 +7,13 @@ import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
 import BackgroundAudio from "@/components/BackgroundAudio";
 import { formatDate } from "@/utils";
-import { SWRConfig } from "swr";
+import useSWR, { SWRConfig } from "swr";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
+  const { mutate } = useSWR("/api/pets");
+
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
     defaultValue: {},
   });
@@ -87,6 +89,19 @@ export default function App({ Component, pageProps }) {
         [attribute]: newValue,
       };
     });
+  }
+
+  async function handlePetsData() {
+    const response = await fetch("/api/pets", {
+      method: "POST",
+      body: JSON.stringify(selectedPet),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      mutate();
+    }
   }
   // __________________________________________________________________
 
@@ -294,6 +309,7 @@ export default function App({ Component, pageProps }) {
           deceasedPets={deceasedPets}
           onAddSnackbar={handleAddSnackbar}
           timeAlive={timeAlive}
+          onPetsData={handlePetsData}
         />
       </SWRConfig>
     </>

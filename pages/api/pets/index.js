@@ -13,4 +13,15 @@ export default async function handler(request, response) {
       response.status(400).json({ error: error.message });
     }
   }
+
+  if (request.method === "POST") {
+    try {
+      const petData = request.body;
+      await Pet.create(petData);
+      response.status(201).json({ status: "Pet Created!" });
+    } catch (error) {
+      console.error(error);
+      response.status(400).json({ error: error.message });
+    }
+  }
 }

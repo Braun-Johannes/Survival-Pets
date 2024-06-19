@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const petSchema = new Schema({
   birthday: { type: String, required: true },
   createdAt: { type: Number, required: true },
-  deathDate: { type: String, required: true },
+  deathDate: { type: String, required: false },
   energy: { type: Number, required: true },
   happiness: { type: Number, required: true },
   health: { type: Number, required: true },
