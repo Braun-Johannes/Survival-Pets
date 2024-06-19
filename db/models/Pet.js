@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const { Schema } = mongoose;
 
-const petsSchema = new Schema({
+const petSchema = new Schema({
   birthday: { type: String, required: true },
   createdAt: { type: Number, required: true },
   deathDate: { type: String, required: true },
@@ -15,6 +15,6 @@ const petsSchema = new Schema({
   type: { type: String, required: true },
 });
 
-const Pets = mongoose.models.Pets || mongoose.model("Pets", petsSchema);
+const Pet = mongoose.models.Pet || mongoose.model("Pet", petSchema);
 
-export default Pets;
+export default Pet;

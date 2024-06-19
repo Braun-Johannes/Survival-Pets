@@ -7,6 +7,9 @@ import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
 import BackgroundAudio from "@/components/BackgroundAudio";
 import { formatDate } from "@/utils";
+import { SWRConfig } from "swr";
+
+const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -275,23 +278,24 @@ export default function App({ Component, pageProps }) {
           />
         ))}
       </StyledToastContainer>
-
-      <Component
-        {...pageProps}
-        onSelectPet={handleSelectPet}
-        selectedPet={selectedPet}
-        onSubmit={handleSubmit}
-        onIncreaseStats={handleIncreaseStats}
-        onMode={handleMode}
-        onDeletePet={handleDeletePet}
-        isDead={isDead}
-        mode={mode}
-        onEliminate={handleEliminate}
-        ageInSeconds={ageInSeconds}
-        deceasedPets={deceasedPets}
-        onAddSnackbar={handleAddSnackbar}
-        timeAlive={timeAlive}
-      />
+      <SWRConfig value={{ fetcher }}>
+        <Component
+          {...pageProps}
+          onSelectPet={handleSelectPet}
+          selectedPet={selectedPet}
+          onSubmit={handleSubmit}
+          onIncreaseStats={handleIncreaseStats}
+          onMode={handleMode}
+          onDeletePet={handleDeletePet}
+          isDead={isDead}
+          mode={mode}
+          onEliminate={handleEliminate}
+          ageInSeconds={ageInSeconds}
+          deceasedPets={deceasedPets}
+          onAddSnackbar={handleAddSnackbar}
+          timeAlive={timeAlive}
+        />
+      </SWRConfig>
     </>
   );
 }
