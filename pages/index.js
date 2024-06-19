@@ -26,7 +26,6 @@ export default function HomePage({
   ageInSeconds,
   onAddSnackbar,
   timeAlive,
-  onPetsData,
 }) {
   return (
     <>
@@ -87,7 +86,6 @@ export default function HomePage({
                       timeAlive={timeAlive}
                       onMode={onMode}
                       onDeletePet={onDeletePet}
-                      onPetsData={onPetsData}
                     />
                   </StyledDiv>
                 </StyledContainer>

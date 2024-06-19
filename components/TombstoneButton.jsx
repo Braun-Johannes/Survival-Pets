@@ -2,13 +2,28 @@ import styled from "styled-components";
 import PositionedButton from "@/components/Styles/StyledButton";
 import PNGImage from "@/components/PNGImage";
 import { formatPetsAge } from "@/utils";
+import useSWR from "swr";
 
 export default function TombstoneButton({
   selectedPet,
   onDeletePet,
   timeAlive,
-  onPetsData,
 }) {
+  const { mutate } = useSWR("/api/pets");
+
+  async function handlePetsData() {
+    const response = await fetch("/api/pets", {
+      method: "POST",
+      body: JSON.stringify(selectedPet),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      mutate();
+    }
+  }
+
   return (
     <>
       <StyledTombstone>
@@ -27,7 +42,10 @@ export default function TombstoneButton({
             </p>
           </Name>
           <PositionedButton
-            onClick={onDeletePet}
+            onClick={() => {
+              onDeletePet();
+              handlePetsData();
+            }}
             $variant="tombstone"
             $position="relative"
           >

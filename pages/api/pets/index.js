@@ -18,6 +18,8 @@ export default async function handler(request, response) {
     try {
       const petData = request.body;
       await Pet.create(petData);
+      // const pet = new Pet(petData);
+      // await pet.save();
       response.status(201).json({ status: "Pet Created!" });
     } catch (error) {
       console.error(error);
