@@ -17,21 +17,23 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
     setFilter(event.target.value);
   }
 
-  const sortedDeceasedPets = deceasedPets.sort((a, b) => {
-    switch (filter) {
-      case "timeAliveAsc":
-        return a.timeAlive - b.timeAlive;
-      case "timeAliveDesc":
-        return b.timeAlive - a.timeAlive;
-      case "name":
-        return a.name.localeCompare(b.name);
-      case "type":
-        return a.type.localeCompare(b.type);
-      case "createdAt":
-      default:
-        return new Date(a.createdAt) - new Date(b.createdAt);
-    }
-  });
+  if (deceasedPets) {
+    const sortedDeceasedPets = deceasedPets.sort((a, b) => {
+      switch (filter) {
+        case "timeAliveAsc":
+          return a.timeAlive - b.timeAlive;
+        case "timeAliveDesc":
+          return b.timeAlive - a.timeAlive;
+        case "name":
+          return a.name.localeCompare(b.name);
+        case "type":
+          return a.type.localeCompare(b.type);
+        case "createdAt":
+        default:
+          return new Date(a.createdAt) - new Date(b.createdAt);
+      }
+    });
+  }
 
   return (
     <>
