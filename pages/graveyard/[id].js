@@ -39,11 +39,7 @@ export default function PetsDetail({ deceasedPets }) {
             <StyledP>{detailsPet.name}</StyledP>
 
             <StyledP>Time Alive: </StyledP>
-            <StyledP>
-              {formatPetsAge(
-                Math.floor(detailsPet.lastUpdated - detailsPet.createdAt)
-              )}
-            </StyledP>
+            <StyledP>{formatPetsAge(detailsPet.timeAlive)}</StyledP>
 
             <StyledP>Creation Date:</StyledP>
             <StyledP>{detailsPet.birthday}</StyledP>

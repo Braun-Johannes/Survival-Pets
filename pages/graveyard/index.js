@@ -3,11 +3,11 @@ import StyledHeading from "@/components/Styles/StyledHeading";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
+import StyledLink from "@/components/Styles/StyledLink";
 import Link from "next/link";
 import styled from "styled-components";
-import StyledLink from "@/components/Styles/StyledLink";
 
-export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
+export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
     <>
       <StyledBackground $hasDeceasedPets={deceasedPets}>
@@ -16,6 +16,7 @@ export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
             <StyledLink href={"/"}> ←</StyledLink>
             <StyledHeading>Graveyard</StyledHeading>
           </div>
+
           {deceasedPets ? (
             <StyledList $variant="graveyard">
               {" "}

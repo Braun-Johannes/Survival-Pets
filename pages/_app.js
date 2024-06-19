@@ -65,11 +65,21 @@ export default function App({ Component, pageProps }) {
     setMode("select");
     if (isDead && !deceasedPets) {
       setDeceasedPets([
-        { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },
+        {
+          ...selectedPet,
+          id: uid(),
+          deathDate: formatDate(new Date()),
+          timeAlive,
+        },
       ]);
     } else if (isDead && deceasedPets) {
       setDeceasedPets([
-        { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },
+        {
+          ...selectedPet,
+          id: uid(),
+          deathDate: formatDate(new Date()),
+          timeAlive,
+        },
         ...deceasedPets,
       ]);
     }
