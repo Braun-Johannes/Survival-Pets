@@ -6,8 +6,27 @@ import GraveyardCurrentPetCard from "@/components/GraveyardCurrentPet";
 import StyledLink from "@/components/Styles/StyledLink";
 import Link from "next/link";
 import styled from "styled-components";
+import { useState } from "react";
+
+const FilterDropdown = styled.select``;
 
 export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
+  const [filter, setFilter] = useState("createdAt");
+
+  function handleFilterChange(event) {
+    setFilter(event.target.value);
+  }
+
+  const sortedDeceasedPets = deceasedPets.sort((a, b) => {
+    switch (filter) {
+      case "timeAliveAsc":
+        return a.timeAlive - b.timeAlive;
+      case "createdAt":
+      default:
+        return new Date(a.createdAt) - new Date(b.createdAt);
+    }
+  });
+
   return (
     <>
       <StyledBackground $hasDeceasedPets={deceasedPets}>
@@ -16,7 +35,10 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
             <StyledLink href={"/"}> ←</StyledLink>
             <StyledHeading>Graveyard</StyledHeading>
           </div>
-
+          <FilterDropdown onChange={handleFilterChange} value={filter}>
+            <option value="createdAt">Created At</option>
+            <option value="timeAliveAsc">Time Alive - Ascending</option>
+          </FilterDropdown>
           {deceasedPets ? (
             <StyledList $variant="graveyard">
               {" "}
