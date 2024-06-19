@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import PositionedButton from "@/components/Styles/StyledButton";
-import SVGIcon from "@/components/SVGIcon";
+import PNGImage from "@/components/PNGImage";
 import { formatPetsAge } from "@/utils";
 
 export default function TombstoneButton({
@@ -30,16 +30,11 @@ export default function TombstoneButton({
             $variant="tombstone"
             $position="relative"
           >
-            <p>
-              Press here
-              <br />
-              <SVGIcon variant="sloth" />
-              <SVGIcon variant="cheetah" />
-              <SVGIcon variant="racoon" />
-              <SVGIcon variant="dragon" />
-              <br />
-              to create a new survival pet
-            </p>
+            Press here
+            <br />
+            <PNGImage variant={selectedPet.type} ariaLabel={selectedPet.type} />
+            <br />
+            to create a new survival pet
           </PositionedButton>
         </LowerTombstone>
       </StyledTombstone>
@@ -63,8 +58,6 @@ const UpperTombstone = styled.div`
   margin: 0 auto;
   position: relative;
   top: 65px;
-  font-size: 1rem;
-  box-shadow: 1px 1px 1px #000000;
 `;
 
 const LowerTombstone = styled.div`
@@ -74,7 +67,7 @@ const LowerTombstone = styled.div`
   overflow: hidden;
   position: relative;
   font-size: 1rem;
-  padding: 5px 0px 95px 0px;
+  padding: 5px 0px 50px 0px;
   box-shadow: 1px 1px 1px #000000;
 `;
 
