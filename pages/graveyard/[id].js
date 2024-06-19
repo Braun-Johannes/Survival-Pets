@@ -1,9 +1,9 @@
 import { useRouter } from "next/router";
-import SVGIcon from "@/components/SVGIcon";
 import { formatPetsAge } from "@/utils";
 import StyledLink from "@/components/Styles/StyledLink";
 import StyledHeading from "@/components/Styles/StyledHeading";
 import styled from "styled-components";
+import PNGImage from "@/components/PNGImage";
 
 export default function PetsDetail({ deceasedPets }) {
   const router = useRouter();
@@ -28,9 +28,9 @@ export default function PetsDetail({ deceasedPets }) {
             <StyledHeading>{detailsPet.name}</StyledHeading>
           </div>
           <StyledPetContainer>
-            <SVGIcon
+            <PNGImage
               variant={detailsPet.type}
-              size={100}
+              size={200}
               ariaLabel={detailsPet.type}
             />
           </StyledPetContainer>
