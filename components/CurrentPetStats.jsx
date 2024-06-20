@@ -1,6 +1,5 @@
 import StyledStatsContainer from "@/components/Styles/StyledStatsContainer";
 import StyledListItem from "@/components/Styles/StyledListItem";
-import StyledSection from "@/components/Styles/StyledSection";
 import PositionedButton from "@/components/Styles/StyledButton";
 import SVGIcon from "@/components/SVGIcon";
 import StatBar from "@/components/StatBar";
@@ -17,7 +16,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           </StyledListItem>
           <StyledListItem $variant="livingroom">
             <StatBar
-              color={"#7CFC00"}
+              color={"#fce671"}
               value={selectedPet.satiety}
               icon={"food"}
             />
@@ -29,7 +28,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
           </StyledListItem>
           <StyledListItem $variant="livingroom">
             <StatBar
-              color={"#40E0D0"}
+              color={"#ffb628"}
               value={selectedPet.energy}
               icon={"thunder"}
             />
@@ -38,14 +37,14 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
         <CurrentPetContainer>
           <StyledListItem $variant="livingroom">
             <StatBar
-              color={"#FF7F7F"}
+              color={"#ff2e2e"}
               value={selectedPet.health}
               icon={"heart"}
             />
           </StyledListItem>
           <StyledListItem $variant="livingroom">
             <StatBar
-              color={"orange"}
+              color={"#ff8660"}
               value={selectedPet.happiness}
               icon={"smiley"}
             />

@@ -4,7 +4,9 @@ export default function PetInfo({ label, value }) {
   return (
     <>
       <Container>
-        <LabelWrapper>{label}</LabelWrapper>
+        <LabelWrapper>
+          <StyledP>{label}</StyledP>
+        </LabelWrapper>
         <ValueWrapper>{value}</ValueWrapper>
       </Container>
     </>
@@ -15,7 +17,7 @@ const LabelWrapper = styled.div`
   height: 35px;
   border-radius: 10px;
   border: 1px solid black;
-  background-color: #add8e6;
+  background-color: #424242;
   margin-right: -12px;
   display: flex;
   align-items: center;
@@ -41,4 +43,8 @@ const ValueWrapper = styled.div`
 const Container = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const StyledP = styled.p`
+  color: white;
 `;

@@ -6,7 +6,7 @@ export default function StatBar({ icon, value, color }) {
     <>
       <Container>
         <IconWrapper>
-          <SVGIcon variant={icon} size={30} />
+          <SVGIcon variant={icon} size={30} color="white" />
         </IconWrapper>
         <BarContainer>
           <ParameterBar color={color} value={value} />
@@ -24,7 +24,7 @@ const IconWrapper = styled.div`
   height: 40px;
   border: 1px solid black;
   border-radius: 50%;
-  background-color: #add8e6;
+  background-color: #424242;
   margin-right: -15px;
   z-index: 1;
 `;

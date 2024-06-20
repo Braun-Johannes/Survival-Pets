@@ -62,9 +62,6 @@ export default function HomePage({
                     </StyledH2>
                   )}
                 </StyledHeading>
-                {/* {!isDead && (
-                  <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-                )} */}
               </div>
 
               {!isDead ? (
@@ -178,10 +175,10 @@ const StyledContainer = styled.section`
 
 const StyledH2 = styled.h2`
   text-align: start;
-  margin-right: 20px;
+  margin-left: 20px;
   font-size: 1.2rem;
-  color: white;
-  text-shadow: 2px 2px 2px black;
+  color: #424242;
+  text-shadow: 2px 2px 2px white;
 `;
 
 const StyledLink = styled(Link)`
