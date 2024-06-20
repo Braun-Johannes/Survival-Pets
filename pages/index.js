@@ -62,12 +62,14 @@ export default function HomePage({
 
               {!isDead ? (
                 <StyledContainer>
-                  <div>
-                    <StyledLink href={"/graveyard"}>
+                  <StyledButtonContainer>
+                    <StyledLink $variant="graveyard" href={"/graveyard"}>
                       <SVGIcon variant="graveyard" size={40} />
                     </StyledLink>
-                    <Link href={"/HallOfFame"}> HallOfFame</Link>
-                  </div>
+                    <StyledLink $variant="hallOfFame" href={"/HallOfFame"}>
+                      <SVGIcon variant="hallOfFame" size={40} />
+                    </StyledLink>
+                  </StyledButtonContainer>
                   <StyledDiv>
                     <CurrentPet selectedPet={selectedPet} />
                   </StyledDiv>
@@ -75,11 +77,14 @@ export default function HomePage({
                 </StyledContainer>
               ) : (
                 <StyledContainer>
-                  <div>
-                    <StyledLink href={"/graveyard"}>
+                  <StyledButtonContainer>
+                    <StyledLink $variant="graveyard" href={"/graveyard"}>
                       <SVGIcon variant="graveyard" size={40} />
                     </StyledLink>
-                  </div>
+                    <StyledLink $variant="hallOfFame" href={"/HallOfFame"}>
+                      <SVGIcon variant="hallOfFame" size={40}></SVGIcon>
+                    </StyledLink>
+                  </StyledButtonContainer>
                   <StyledDiv>
                     <TombstoneButton
                       selectedPet={selectedPet}
@@ -172,15 +177,25 @@ const StyledH2 = styled.h2`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: black;
   align-items: flex;
   padding: 5px;
+  text-align: center;
   border-radius: 40%;
-  border-right: 3px black solid;
-  border-left: 3px black solid;
-  border-bottom: 3px black solid;
+  border: 2px black solid;
   margin-left: 30%;
-  background-color: lightgrey;
+  box-shadow: 2px 2px 2px black;
+  min-width: 70px;
+
+  ${(props) =>
+    props.$variant === "graveyard" &&
+    `
+    background-color: lightgrey;
+  `}
+  ${(props) =>
+    props.$variant === "hallOfFame" &&
+    `
+    background-color: lightgreen;
+  `}
 `;
 
 const StyledModeBackground = styled.div`
@@ -199,4 +214,11 @@ const StyledModeBackground = styled.div`
     props.$variant === "livingroom" &&
     `
   background-image: url("/Images/Forrest4.png")`}
+`;
+
+const StyledButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 `;

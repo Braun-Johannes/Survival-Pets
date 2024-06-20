@@ -9,41 +9,39 @@ import StyledLink from "@/components/Styles/StyledLink";
 
 export default function graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   return (
-    <>
-      <StyledBackground $hasDeceasedPets={deceasedPets}>
-        <StyledGrid>
-          <div>
-            <StyledLink href={"/"}> ←</StyledLink>
-            <StyledHeading>Graveyard</StyledHeading>
-          </div>
-          {deceasedPets ? (
-            <StyledList $variant="graveyard">
-              {" "}
-              {deceasedPets.map((deceasedPet) => {
-                return (
-                  <StyledCardLink
-                    key={deceasedPet.id}
-                    href={`/graveyard/${deceasedPet.id}`}
-                  >
-                    <StyledListItem $variant="graveyard" key={deceasedPet.id}>
-                      <GraveyardCard deceasedPet={deceasedPet} />
-                    </StyledListItem>
-                  </StyledCardLink>
-                );
-              })}
-            </StyledList>
-          ) : (
-            <StyledH2>
-              No animals in the graveyard yet. You are doing a great job!
-            </StyledH2>
-          )}
-        </StyledGrid>
-        <GraveyardCurrentPetCard
-          selectedPet={selectedPet}
-          ageInSeconds={ageInSeconds}
-        ></GraveyardCurrentPetCard>
-      </StyledBackground>
-    </>
+    <StyledBackground $hasDeceasedPets={deceasedPets}>
+      <StyledGrid>
+        <div>
+          <StyledLink href={"/"}> ←</StyledLink>
+          <StyledHeading>Graveyard</StyledHeading>
+        </div>
+        {deceasedPets ? (
+          <StyledList $variant="graveyard">
+            {" "}
+            {deceasedPets.map((deceasedPet) => {
+              return (
+                <StyledCardLink
+                  key={deceasedPet.id}
+                  href={`/graveyard/${deceasedPet.id}`}
+                >
+                  <StyledListItem $variant="graveyard" key={deceasedPet.id}>
+                    <GraveyardCard deceasedPet={deceasedPet} />
+                  </StyledListItem>
+                </StyledCardLink>
+              );
+            })}
+          </StyledList>
+        ) : (
+          <StyledH2>
+            No animals in the graveyard yet. You are doing a great job!
+          </StyledH2>
+        )}
+      </StyledGrid>
+      <GraveyardCurrentPetCard
+        selectedPet={selectedPet}
+        ageInSeconds={ageInSeconds}
+      ></GraveyardCurrentPetCard>
+    </StyledBackground>
   );
 }
 
@@ -63,6 +61,7 @@ const StyledBackground = styled.div`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  min-height: 100vh;
   height: ${(props) => (props.$hasDeceasedPets ? "auto" : "100vh")};
 `;
 

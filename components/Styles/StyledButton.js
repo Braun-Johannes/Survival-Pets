@@ -16,8 +16,10 @@ const StyledButton = styled.button`
   ${(props) =>
     props.$variant === "interaction" &&
     `
+    border: 2px black solid;
     border-radius: 50%;
     padding: 10px;
+    box-shadow: 2px 2px 2px black;
     background-color: ${props.color || "white"}
   `}
 

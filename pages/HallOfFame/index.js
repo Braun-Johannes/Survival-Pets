@@ -14,10 +14,6 @@ export default function HallOfFame() {
     return;
   }
 
-  const sortedPets = data.sort((a, b) => {
-    return;
-  });
-
   function sortedDeceasedPets(data) {
     let arrayCopy = [...data];
     arrayCopy.sort(
@@ -33,7 +29,7 @@ export default function HallOfFame() {
   }));
 
   return (
-    <>
+    <StyledBackground>
       <div>
         <StyledLink href={"/"}> ←</StyledLink>
         <StyledHeading>Hall of Fame</StyledHeading>
@@ -45,7 +41,7 @@ export default function HallOfFame() {
             <StyledName>
               #{pet.originalIndex + 1} {pet.name}
             </StyledName>
-            <PNGImage variant={pet.type} size={100} ariaLabel={pet.type} />
+            <PNGImage variant={pet.type} size={200} ariaLabel={pet.type} />
             <StyledContainer>
               <StyledP>Time Alive:</StyledP>
               <StyledP>
@@ -55,7 +51,7 @@ export default function HallOfFame() {
           </StyledListItems>
         ))}
       </StyledList>
-    </>
+    </StyledBackground>
   );
 }
 
@@ -64,7 +60,7 @@ const StyledListItems = styled.li`
   flex-direction: column;
   border: 2px solid black;
   border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.89);
   margin: 10px;
   justify-content: center;
   align-items: center;
@@ -90,4 +86,13 @@ const StyledP = styled.p`
 
 const StyledName = styled.p`
   font-size: 2.5rem;
+`;
+
+const StyledBackground = styled.div`
+  background-image: url("/Images/HallOfFame.webp");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: auto;
+  border: 4px solid transparent;
 `;
