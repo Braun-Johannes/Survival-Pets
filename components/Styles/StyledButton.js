@@ -95,6 +95,8 @@ ${(props) =>
     width: auto;
     height: auto;
     font-size: 1rem;
+    color: black;
+    
     `}
 `;
 

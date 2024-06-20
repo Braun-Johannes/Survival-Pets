@@ -31,7 +31,7 @@ export default function HomePage({
     <>
       {mode === "select" && (
         <>
-          <StyledModeBackground $variant="select">
+          <StyledModeBackground $backgroundImage="/Images/Dump2.png">
             <StyledGrid>
               <StyledHeading $variant="select">
                 Select a Survival Pet
@@ -51,10 +51,10 @@ export default function HomePage({
 
       {mode === "livingroom" && (
         <>
-          <StyledModeBackground $variant="livingroom">
+          <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
-                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                <StyledHeading $variant="livingroom">Home</StyledHeading>
                 {!isDead && (
                   <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
                 )}
@@ -107,7 +107,7 @@ export default function HomePage({
 
       {mode === "edit" && (
         <>
-          <StyledModeBackground $variant="livingroom">
+          <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
                 <StyledHeading $variant="livingroom">Living Room</StyledHeading>
@@ -132,7 +132,7 @@ export default function HomePage({
 
       {mode === "eliminate" && (
         <>
-          <StyledModeBackground $variant="livingroom">
+          <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
                 <StyledHeading $variant="livingroom">Living Room</StyledHeading>
@@ -173,6 +173,8 @@ const StyledH2 = styled.h2`
   text-align: end;
   margin-right: 20px;
   font-size: 1.2rem;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 `;
 
 const StyledLink = styled(Link)`
@@ -205,15 +207,7 @@ const StyledModeBackground = styled.div`
   background-attachment: fixed;
   width: 100vw;
   min-height: 100vh;
-  ${(props) =>
-    props.$variant === "select" &&
-    `
-    background-image: url("/Images/Dump2.png")
-  `}
-  ${(props) =>
-    props.$variant === "livingroom" &&
-    `
-  background-image: url("/Images/Forrest4.png")`}
+  background-image: url(${(props) => props.$backgroundImage});
 `;
 
 const StyledButtonContainer = styled.div`
