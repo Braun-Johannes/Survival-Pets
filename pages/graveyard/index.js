@@ -40,7 +40,10 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
 
   return (
     <>
-      <StyledBackground $hasDeceasedPets={deceasedPets}>
+      <StyledBackground
+        $hasDeceasedPets={deceasedPets}
+        $backgroundImage="/Images/Graveyard2.png"
+      >
         <StyledGrid>
           <div>
             <StyledLink href={"/"}> ←</StyledLink>
@@ -101,11 +104,11 @@ const StyledCardLink = styled(Link)`
 `;
 
 const StyledBackground = styled.div`
-  background-image: url("/Images/Graveyard2.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
   height: ${(props) => (props.$hasDeceasedPets ? "auto" : "100vh")};
+  background-image: url(${(props) => props.$backgroundImage});
 `;
 
 const StyledH2 = styled.h2`
