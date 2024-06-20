@@ -77,6 +77,7 @@ const CurrentPetContainer = styled.div`
   display: flex;
   @media (max-width: 600px) {
     margin-left: -40px;
+    justify-content: space-around;
   }
   justify-content: space-around;
   list-style: none;

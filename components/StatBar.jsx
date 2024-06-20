@@ -1,18 +1,20 @@
 import styled from "styled-components";
 import SVGIcon from "./SVGIcon";
 
-export default function StatBar({ icon, value, color }) {
+export default function StatBar({ icon, value, color, inLivingRoom }) {
   return (
-    <>
-      <Container>
-        <IconWrapper>
-          <SVGIcon variant={icon} size={30} color="white" />
-        </IconWrapper>
-        <BarContainer>
+    <Container>
+      <IconWrapper>
+        <SVGIcon variant={icon} size={30} color="white" />
+      </IconWrapper>
+      <BarContainer>
+        {inLivingRoom ? (
+          <ParameterBar $variant="livingroom" color={color} value={value} />
+        ) : (
           <ParameterBar color={color} value={value} />
-        </BarContainer>
-      </Container>
-    </>
+        )}
+      </BarContainer>
+    </Container>
   );
 }
 
@@ -30,15 +32,15 @@ const IconWrapper = styled.div`
 `;
 
 const BarContainer = styled.div`
-  @media (max-width: 600px) {
-    width: 105px;
-  }
   width: 150px;
   height: 35px;
   background-color: lightgray;
   border: 1px solid black;
   border-radius: 10px;
   overflow: hidden;
+  @media (max-width: 500px) {
+    width: 105px;
+  }
 `;
 
 const ParameterBar = styled.div`
