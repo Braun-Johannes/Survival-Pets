@@ -270,7 +270,15 @@ export default function App({ Component, pageProps }) {
       }
     }
   }, [selectedPet, isDead, snackbarShown, handleAddSnackbar]);
+  //_____________________Prevents drag and drop_________________________
+  useEffect(() => {
+    function preventDragHandler(event) {
+      event.preventDefault();
+    }
 
+    document.addEventListener("dragstart", preventDragHandler);
+  }, []);
+  //____________________________________________________________________
   return (
     <>
       <BackgroundAudio />
