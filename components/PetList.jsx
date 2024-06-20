@@ -2,7 +2,7 @@ import pets from "@/lib/pets";
 import StyledList from "@/components/Styles/StyledList";
 import StyledListItem from "@/components/Styles/StyledListItem";
 import PositionedButton from "@/components/Styles/StyledButton";
-import PNGImage from "./PNGImage";
+import PNGImage from "@/components/PNGImage";
 
 export default function PetList({ onSelectPet, selectedPet }) {
   return (

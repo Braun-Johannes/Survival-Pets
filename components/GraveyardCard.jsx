@@ -9,10 +9,7 @@ export default function GraveyardCard({ deceasedPet }) {
       <br />
       <PNGImage variant={deceasedPet.type} ariaLabel={deceasedPet.type} />{" "}
       <br />
-      Time Alive: <br />{" "}
-      {formatPetsAge(
-        Math.floor(deceasedPet.lastUpdated - deceasedPet.createdAt)
-      )}
+      Time Alive: <br /> {formatPetsAge(deceasedPet.timeAlive)}
     </CardContainer>
   );
 }

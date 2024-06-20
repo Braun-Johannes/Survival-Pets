@@ -65,11 +65,21 @@ export default function App({ Component, pageProps }) {
     setMode("select");
     if (isDead && !deceasedPets) {
       setDeceasedPets([
-        { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },
+        {
+          ...selectedPet,
+          id: uid(),
+          deathDate: formatDate(new Date()),
+          timeAlive,
+        },
       ]);
     } else if (isDead && deceasedPets) {
       setDeceasedPets([
-        { ...selectedPet, id: uid(), deathDate: formatDate(new Date()) },
+        {
+          ...selectedPet,
+          id: uid(),
+          deathDate: formatDate(new Date()),
+          timeAlive,
+        },
         ...deceasedPets,
       ]);
     }
@@ -260,7 +270,19 @@ export default function App({ Component, pageProps }) {
       }
     }
   }, [selectedPet, isDead, snackbarShown, handleAddSnackbar]);
+  //_____________________Prevents drag and drop_________________________
+  useEffect(() => {
+    function preventDragHandler(event) {
+      event.preventDefault();
+    }
 
+    document.addEventListener("dragstart", preventDragHandler);
+
+    return () => {
+      document.removeEventListener("dragstart", preventDragHandler);
+    };
+  }, []);
+  //____________________________________________________________________
   return (
     <>
       <BackgroundAudio />

@@ -31,6 +31,7 @@ const StyledToastMessage = styled.li`
   color: black;
   margin-bottom: 10px;
   padding: 10px;
+  border: 1px solid black;
   border-radius: 5px;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   background: ${({ $variant }) => toastColors[$variant]};
