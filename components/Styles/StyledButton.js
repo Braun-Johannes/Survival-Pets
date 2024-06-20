@@ -16,8 +16,10 @@ const StyledButton = styled.button`
   ${(props) =>
     props.$variant === "interaction" &&
     `
+    border: 2px black solid;
     border-radius: 50%;
     padding: 10px;
+    box-shadow: 2px 2px 2px black;
     background-color: ${props.color || "white"}
   `}
 
@@ -44,11 +46,26 @@ const StyledButton = styled.button`
     line-height: 1.75;
     letter-spacing: 0.02857em;
     text-transform: uppercase;
-    min-width: 64px;
+    min-width: 30px;
     padding: 6px 8px;
-    border-radius: 4px;
-    color: rgb(104, 32, 69);
+    border-radius: 30px;
+    background: rgba(104, 32, 69, 0.6);
     `}
+
+    ${(props) =>
+    props.$variant === "eliminate" &&
+    `
+      background-color: transparent;
+      font-size: 0.875rem;
+      line-height: 1.75;
+      letter-spacing: 0.02857em;
+      text-transform: uppercase;
+      min-width: 30px;
+      padding: 6px 8px;
+      border-radius: 50px;
+      border: 1px solid rgba(244, 67, 54, 0.5);
+      background: rgba(244, 67, 54, 0.6);
+      `}
     
   
 

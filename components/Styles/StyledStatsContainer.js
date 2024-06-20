@@ -2,10 +2,14 @@ import styled from "styled-components";
 
 const StyledStatsContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: auto 15%;
   list-style: none;
-  width: 100%;
+  position: fixed;
+  bottom: -15px;
+  width: 100vw;
+  border: solid black;
+  border-radius: 10px;
+  background: white;
 `;
 
 export default StyledStatsContainer;

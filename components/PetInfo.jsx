@@ -16,7 +16,7 @@ const LabelWrapper = styled.div`
   border-radius: 10px;
   border: 1px solid black;
   background-color: #add8e6;
-  margin-right: -15px;
+  margin-right: -12px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,8 +24,12 @@ const LabelWrapper = styled.div`
 `;
 
 const ValueWrapper = styled.div`
+  @media (max-width: 600px) {
+    max-width: 100px;
+  }
   width: 145px;
   height: 35px;
+  padding-left: 7px;
   background-color: lightgrey;
   border-radius: 10px;
   border: 1px solid black;

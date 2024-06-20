@@ -107,6 +107,7 @@ const StyledBackground = styled.div`
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+  min-height: 100vh;
   height: ${(props) => (props.$hasDeceasedPets ? "auto" : "100vh")};
   background-image: url(${(props) => props.$backgroundImage});
 `;

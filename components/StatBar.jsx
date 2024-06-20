@@ -30,6 +30,9 @@ const IconWrapper = styled.div`
 `;
 
 const BarContainer = styled.div`
+  @media (max-width: 600px) {
+    width: 105px;
+  }
   width: 150px;
   height: 35px;
   background-color: lightgray;

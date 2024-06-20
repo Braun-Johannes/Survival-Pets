@@ -17,7 +17,6 @@ const StyledListItem = styled.li`
     `
     text-align: center;
   padding: 8px;
-  width: 50%;
   margin: 1%;
   box-sizing: border-box;
   height: 23%;

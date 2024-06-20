@@ -7,6 +7,9 @@ import { useEffect, useState, useCallback } from "react";
 import { uid } from "uid";
 import BackgroundAudio from "@/components/BackgroundAudio";
 import { formatDate } from "@/utils";
+import { SWRConfig } from "swr";
+
+const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({ Component, pageProps }) {
   const [selectedPet, setSelectedPet] = useLocalStorageState("selectedPet", {
@@ -138,7 +141,7 @@ export default function App({ Component, pageProps }) {
           const currentTime = Math.floor(Date.now() / 1000);
           const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
-          const decreaseRate = 2; // value to change stat ticks
+          const decreaseRate = 0.00001; // value to change stat ticks
           let health = prevPet.health;
           let satiety = prevPet.satiety;
           let energy = prevPet.energy;
@@ -297,23 +300,24 @@ export default function App({ Component, pageProps }) {
           />
         ))}
       </StyledToastContainer>
-
-      <Component
-        {...pageProps}
-        onSelectPet={handleSelectPet}
-        selectedPet={selectedPet}
-        onSubmit={handleSubmit}
-        onIncreaseStats={handleIncreaseStats}
-        onMode={handleMode}
-        onDeletePet={handleDeletePet}
-        isDead={isDead}
-        mode={mode}
-        onEliminate={handleEliminate}
-        ageInSeconds={ageInSeconds}
-        deceasedPets={deceasedPets}
-        onAddSnackbar={handleAddSnackbar}
-        timeAlive={timeAlive}
-      />
+      <SWRConfig value={{ fetcher }}>
+        <Component
+          {...pageProps}
+          onSelectPet={handleSelectPet}
+          selectedPet={selectedPet}
+          onSubmit={handleSubmit}
+          onIncreaseStats={handleIncreaseStats}
+          onMode={handleMode}
+          onDeletePet={handleDeletePet}
+          isDead={isDead}
+          mode={mode}
+          onEliminate={handleEliminate}
+          ageInSeconds={ageInSeconds}
+          deceasedPets={deceasedPets}
+          onAddSnackbar={handleAddSnackbar}
+          timeAlive={timeAlive}
+        />
+      </SWRConfig>
     </>
   );
 }
