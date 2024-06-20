@@ -73,7 +73,6 @@ const DropdownMenuContainer = styled.ul`
   margin-top: 5px;
   list-style-type: none;
   padding: 0;
-  z-index: 1000;
 `;
 
 const DropdownMenuItem = styled.li`

@@ -9,17 +9,16 @@ import Link from "next/link";
 import styled from "styled-components";
 import { useState } from "react";
 
-const FilterDropdown = styled.select``;
-
 export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
-  const [filter, setFilter] = useState("createdAt");
+  const [filter, setFilter] = useState("Created At");
 
   function handleFilterChange(selectedOption) {
+    sortedDeceasedPets(selectedOption);
     setFilter(selectedOption);
   }
 
-  if (deceasedPets) {
-    const sortedDeceasedPets = [...deceasedPets].sort((a, b) => {
+  function sortedDeceasedPets(filter) {
+    deceasedPets.sort((a, b) => {
       switch (filter) {
         case "Time Alive - Descending":
           return a.timeAlive - b.timeAlive;
@@ -29,7 +28,7 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
           return a.name.localeCompare(b.name);
         case "Type":
           return a.type.localeCompare(b.type);
-        case "Currywurst":
+        case "Created At":
         default:
           return new Date(a.createdAt) - new Date(b.createdAt);
       }
