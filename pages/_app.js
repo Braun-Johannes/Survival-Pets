@@ -277,6 +277,10 @@ export default function App({ Component, pageProps }) {
     }
 
     document.addEventListener("dragstart", preventDragHandler);
+
+    return () => {
+      document.removeEventListener("dragstart", preventDragHandler);
+    };
   }, []);
   //____________________________________________________________________
   return (

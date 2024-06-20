@@ -54,7 +54,7 @@ export default function HomePage({
           <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
-                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                <StyledHeading $variant="livingroom">Home</StyledHeading>
                 {!isDead && (
                   <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
                 )}
@@ -167,6 +167,8 @@ const StyledH2 = styled.h2`
   text-align: end;
   margin-right: 20px;
   font-size: 1.2rem;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 `;
 
 const StyledLink = styled(Link)`
