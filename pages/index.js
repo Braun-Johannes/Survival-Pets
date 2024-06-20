@@ -54,10 +54,17 @@ export default function HomePage({
           <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
-                <StyledHeading $variant="livingroom">Home</StyledHeading>
-                {!isDead && (
+                <StyledHeading $variant="livingroom">
+                  Home{" "}
+                  {!isDead && (
+                    <StyledH2>
+                      Time Alive: {formatPetsAge(ageInSeconds)}
+                    </StyledH2>
+                  )}
+                </StyledHeading>
+                {/* {!isDead && (
                   <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
-                )}
+                )} */}
               </div>
 
               {!isDead ? (
@@ -170,7 +177,7 @@ const StyledContainer = styled.section`
 `;
 
 const StyledH2 = styled.h2`
-  text-align: end;
+  text-align: start;
   margin-right: 20px;
   font-size: 1.2rem;
   color: white;
