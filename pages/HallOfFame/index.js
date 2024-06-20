@@ -94,5 +94,5 @@ const StyledBackground = styled.div`
   background-position: center;
   background-attachment: fixed;
   height: auto;
-  border: 4px solid transparent;
+  border: 1px solid transparent;
 `;

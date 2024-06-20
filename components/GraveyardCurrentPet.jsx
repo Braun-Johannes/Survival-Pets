@@ -31,7 +31,7 @@ const StyledP = styled.p`
 
 const StyledSection = styled.section`
   width: 100vw;
-  background: linear-gradient(315deg, #6681ea 0%, #7e43aa 74%);
+  background: white;
   border: 3px solid black;
   border-radius: 10px;
   position: fixed;
