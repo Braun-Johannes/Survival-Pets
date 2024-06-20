@@ -51,7 +51,9 @@ export default function DropdownMenu({
 }
 
 const DropdownContainer = styled.div`
-  position: relative;
+  position: absolute;
+  right: 5px;
+  top: 55px;
   width: 200px;
 `;
 const DropdownButton = styled.div`

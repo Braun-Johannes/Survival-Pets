@@ -10,7 +10,7 @@ import styled from "styled-components";
 import { useState } from "react";
 
 export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
-  const [filter, setFilter] = useState("Created At");
+  const [filter, setFilter] = useState("Created At ");
 
   function handleFilterChange(selectedOption) {
     sortedDeceasedPets(selectedOption);
@@ -18,6 +18,9 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
   }
 
   function sortedDeceasedPets(filter) {
+    if (!deceasedPets) {
+      return;
+    }
     deceasedPets.sort((a, b) => {
       switch (filter) {
         case "Time Alive - Descending":
