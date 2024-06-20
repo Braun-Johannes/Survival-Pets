@@ -174,8 +174,7 @@ const StyledContainer = styled.section`
 `;
 
 const StyledH2 = styled.h2`
-  text-align: start;
-  margin-left: 20px;
+  text-align: center;
   font-size: 1.2rem;
   color: #424242;
   text-shadow: 2px 2px 2px white;
