@@ -5,14 +5,13 @@ const StyledSection = styled.section`
   flex-direction: column;
   position: fixed;
   bottom: 0;
-  width: calc(100vw - 1rem);
+  width: 100vw;
   align-items: center;
   justify-content: center;
   border: solid black;
   border-radius: 10px;
-  margin: 10px;
-  max-height: 30%;
-  min-height: 30%;
+  max-height: 31.8%;
+  min-height: 31.8%;
   background: white;
   ${(props) =>
     props.$variant === "tombstone" &&
