@@ -113,4 +113,6 @@ const StyledBackground = styled.div`
 
 const StyledH2 = styled.h2`
   text-align: center;
+  color: white;
+  text-shadow: 2px 2px 2px black;
 `;
