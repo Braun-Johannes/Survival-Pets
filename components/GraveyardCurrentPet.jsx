@@ -15,7 +15,7 @@ export default function GraveyardCurrentPetCard({ selectedPet, ageInSeconds }) {
       </CurrentPetContainer>
       <CurrentPetContainer>
         <StyledP>Health:</StyledP>{" "}
-        <StatBar color={"#FF7F7F"} value={selectedPet.health} icon={"heart"} />
+        <StatBar color={"#BE0000"} value={selectedPet.health} icon={"heart"} />
       </CurrentPetContainer>
     </StyledSection>
   );

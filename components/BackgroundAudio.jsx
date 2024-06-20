@@ -78,13 +78,15 @@ const StyledPlayButton = styled.button`
   position: absolute;
   top: 1px;
   right: 1px;
+  background: #007bff;
+  border-radius: 50px;
 `;
 
 const VolumeInput = styled.input`
   width: 100%;
   margin: 10px 0;
   -webkit-appearance: none;
-  background: linear-gradient(90deg, #007bff, #00ff88);
+  background: linear-gradient(90deg, white, #007bff);
   height: 8px;
   border-radius: 5px;
   outline: none;

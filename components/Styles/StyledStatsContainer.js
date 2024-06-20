@@ -9,7 +9,7 @@ const StyledStatsContainer = styled.ul`
   width: 100vw;
   border: solid black;
   border-radius: 10px;
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
 `;
 
 export default StyledStatsContainer;

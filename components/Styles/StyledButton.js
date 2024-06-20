@@ -17,10 +17,15 @@ const StyledButton = styled.button`
     props.$variant === "interaction" &&
     `
     border: 2px black solid;
+    &:hover {
+    border: 2px yellow solid;
+    box-shadow: 2px 2px 2px yellow;}
     border-radius: 50%;
     padding: 10px;
     box-shadow: 2px 2px 2px black;
-    background-color: ${props.color || "white"}
+    background-color: ${props.color || "white"};
+    transition: border 0.5s ease, box-shadow 0.5s ease;
+    
   `}
 
   ${(props) =>
@@ -41,7 +46,7 @@ const StyledButton = styled.button`
     props.$variant === "edit" &&
     `
     background-color: transparent;
-    border: 1px solid rgb(104, 32, 69);
+    border: 1px solid black;
     font-size: 0.875rem;
     line-height: 1.75;
     letter-spacing: 0.02857em;
@@ -63,7 +68,7 @@ const StyledButton = styled.button`
       min-width: 30px;
       padding: 6px 8px;
       border-radius: 50px;
-      border: 1px solid rgba(244, 67, 54, 0.5);
+      border: 1px solid black;
       background: rgba(244, 67, 54, 0.6);
       `}
     
@@ -93,6 +98,8 @@ ${(props) =>
     padding: 2px;
     display: inline-block;
     width: auto;
+    @media (max-width: 500px) {
+    width: 150px;}
     height: auto;
     font-size: 1rem;
     color: black;

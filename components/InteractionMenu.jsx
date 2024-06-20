@@ -9,10 +9,8 @@ export default function InteractionMenu({ onIncreaseStats }) {
         $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("satiety", 5)}
-
         $position="static"
-        color="#7CFC00"
-
+        color="#fce671"
       >
         <SVGIcon variant="food" ariaLabel="feed" />
       </PositionedButton>
@@ -20,11 +18,8 @@ export default function InteractionMenu({ onIncreaseStats }) {
         $variant="interaction"
         type="button"
         onClick={() => onIncreaseStats("energy", 5)}
-
         $position="static"
-
-        color="#40E0D0"
-
+        color="#ffb628"
       >
         <SVGIcon variant="sleep" ariaLabel="sleep" />
       </PositionedButton>
@@ -33,7 +28,7 @@ export default function InteractionMenu({ onIncreaseStats }) {
         type="button"
         onClick={() => onIncreaseStats("happiness", 5)}
         $position="static"
-        color="orange"
+        color="#ff8660"
       >
         <SVGIcon variant="ball" ariaLabel="play" />
       </PositionedButton>

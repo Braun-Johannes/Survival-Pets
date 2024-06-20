@@ -19,9 +19,9 @@ export default function Toast({ snackbar, onSnackbarClose }) {
 const toastColors = {
   success: "rgba(0,128,0,0.8)",
   edit: "rgba(104, 32, 69,0.8)",
-  feed: "rgba(144,238,144, 0.8)",
-  sleep: "rgba(173,216,230, 0.8)",
-  play: "rgba(255,165,0, 0.8)",
+  feed: "rgba(252, 230, 113, 0.8)",
+  sleep: "rgba(255, 182, 40, 0.8)",
+  play: "rgba(255, 134, 96, 0.8)",
   health: "rgba(255,127,127, 0.8)",
 };
 
