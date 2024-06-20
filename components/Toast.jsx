@@ -22,7 +22,7 @@ const toastColors = {
   feed: "rgba(252, 230, 113, 0.8)",
   sleep: "rgba(255, 182, 40, 0.8)",
   play: "rgba(255, 134, 96, 0.8)",
-  health: "rgba(255, 46, 46, 0.8)",
+  health: "rgba(255,127,127, 0.8)",
 };
 
 const StyledToastMessage = styled.li`
