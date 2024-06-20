@@ -64,14 +64,18 @@ const StyledTombstone = styled.div`
   display: inline-block;
   text-align: center;
   font-size: 0;
-  bottom: 150px;
   margin-top: -80px;
-  left: calc(50% - 100px);
+  @media (max-width: 500px) {
+    margin-top: -70px;
+  }
 `;
 
 const UpperTombstone = styled.div`
   border-radius: 50%;
   width: 200px;
+  @media (max-width: 500px) {
+    width: 150px;
+  }
   height: 90px;
   background: grey;
   margin: 0 auto;
@@ -81,6 +85,10 @@ const UpperTombstone = styled.div`
 
 const LowerTombstone = styled.div`
   width: 250px;
+  @media (max-width: 500px) {
+    width: 200px;
+    padding: 5px 0px 30px 0px;
+  }
   background: grey;
   border-radius: 5px 5px 0px 0px;
   overflow: hidden;
@@ -94,6 +102,9 @@ const Name = styled.div`
   border: 2px solid black;
   display: inline-block;
   padding: 3px 50px;
+  @media (max-width: 500px) {
+    padding: 3px 25px;
+  }
   margin-top: 20px;
   overflow: hidden;
   color: black;

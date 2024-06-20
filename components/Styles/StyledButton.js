@@ -93,6 +93,8 @@ ${(props) =>
     padding: 2px;
     display: inline-block;
     width: auto;
+    @media (max-width: 500px) {
+    width: 150px;}
     height: auto;
     font-size: 1rem;
     color: black;
