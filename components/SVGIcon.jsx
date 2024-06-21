@@ -5,7 +5,6 @@ export default function SVGIcon({
   color = "black",
   size = 50,
   ariaLabel,
-  text,
 }) {
   return (
     <svg
@@ -15,7 +14,7 @@ export default function SVGIcon({
       width={size}
       aria-label={ariaLabel}
     >
-      <title>{icons[variant].title}</title>
+      <title>{ariaLabel}</title>
       <path d={icons[variant].path} />
     </svg>
   );

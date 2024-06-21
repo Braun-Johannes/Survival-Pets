@@ -110,7 +110,7 @@ export default function HomePage({
           <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
-                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                <StyledHeading $variant="livingroom">Home</StyledHeading>
                 <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
               </div>
               <StyledContainer>
@@ -135,7 +135,7 @@ export default function HomePage({
           <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
-                <StyledHeading $variant="livingroom">Living Room</StyledHeading>
+                <StyledHeading $variant="livingroom">Home</StyledHeading>
                 <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
               </div>
               <StyledContainer>
