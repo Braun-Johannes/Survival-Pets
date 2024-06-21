@@ -116,17 +116,25 @@ export default function App({ Component, pageProps }) {
     const currentTime =
       mode === "select" ? Date.now() / 1000 : selectedPet.createdAt;
 
-    const updatedPet = {
+    let updatedPet = {
       ...selectedPet,
       name: data.nameInput,
       lastUpdated: Date.now() / 1000,
       createdAt: currentTime,
       birthday: formatDate(new Date()),
     };
+    if (mode === "select" && data.nameInput.trim() === "Doemser") {
+      updatedPet = {
+        ...updatedPet,
+        type: "broccoli",
+      };
+      handleAddSnackbar("You magically discovered the Doemser!", "special");
+    }
     setSelectedPet(updatedPet);
 
     setMode("livingroom");
   }
+
   // ___________________________________________________________________
 
   // __________________________TIME LOGIC_______________________________
