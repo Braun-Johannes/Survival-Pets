@@ -1,18 +1,14 @@
 import styled from "styled-components";
 import SVGIcon from "./SVGIcon";
 
-export default function StatBar({ icon, value, color, inLivingRoom }) {
+export default function StatBar({ icon, value, color }) {
   return (
     <Container>
       <IconWrapper>
         <SVGIcon variant={icon} size={30} color="white" />
       </IconWrapper>
       <BarContainer>
-        {inLivingRoom ? (
-          <ParameterBar $variant="livingroom" color={color} value={value} />
-        ) : (
-          <ParameterBar color={color} value={value} />
-        )}
+        <ParameterBar $variant="livingroom" color={color} value={value} />
       </BarContainer>
     </Container>
   );

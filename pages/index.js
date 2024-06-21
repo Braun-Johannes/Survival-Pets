@@ -54,14 +54,10 @@ export default function HomePage({
           <StyledModeBackground $backgroundImage="/Images/Forrest4.png">
             <StyledGrid>
               <div>
-                <StyledHeading $variant="livingroom">
-                  Home{" "}
-                  {!isDead && (
-                    <StyledH2>
-                      Time Alive: {formatPetsAge(ageInSeconds)}
-                    </StyledH2>
-                  )}
-                </StyledHeading>
+                <StyledHeading $variant="livingroom">Home </StyledHeading>
+                {!isDead && (
+                  <StyledH2>Time Alive: {formatPetsAge(ageInSeconds)}</StyledH2>
+                )}
               </div>
 
               {!isDead ? (
