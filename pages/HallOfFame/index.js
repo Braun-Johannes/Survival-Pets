@@ -5,7 +5,7 @@ import { formatPetsAge } from "@/utils";
 import PNGImage from "@/components/PNGImage";
 import styled from "styled-components";
 
-export default function HallOfFame() {
+export default function HallOfFame(timeAlive) {
   const { data, isLoading } = useSWR("/api/pets");
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -44,9 +44,7 @@ export default function HallOfFame() {
             <PNGImage variant={pet.type} size={200} ariaLabel={pet.type} />
             <StyledContainer>
               <StyledP>Time Alive:</StyledP>
-              <StyledP>
-                {formatPetsAge(Math.floor(pet.lastUpdated - pet.createdAt))}
-              </StyledP>
+              <StyledP>{formatPetsAge(timeAlive)}</StyledP>
             </StyledContainer>
           </StyledListItems>
         ))}
