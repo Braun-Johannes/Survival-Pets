@@ -5,7 +5,7 @@ import { formatPetsAge } from "@/utils";
 import PNGImage from "@/components/PNGImage";
 import styled from "styled-components";
 
-export default function HallOfFame(timeAlive) {
+export default function HallOfFame({ timeAlive }) {
   const { data, isLoading } = useSWR("/api/pets");
   if (isLoading) {
     return <h1>Loading...</h1>;
