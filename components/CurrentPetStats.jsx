@@ -7,6 +7,17 @@ import PetInfo from "./PetInfo";
 import styled from "styled-components";
 
 export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
+  function getMaxValue(type, attribute) {
+    const maxValues = {
+      sloth: { satiety: 120, energy: 60, happiness: 120, health: 100 },
+      cheetah: { satiety: 60, energy: 120, happiness: 120, health: 100 },
+      racoon: { satiety: 120, energy: 120, happiness: 60, health: 100 },
+      dragon: { satiety: 50, energy: 125, happiness: 125, health: 100 },
+      broccoli: { satiety: 100, energy: 100, happiness: 100, health: 100 },
+    };
+    return maxValues[type][attribute];
+  }
+
   return (
     <StyledStatsContainer>
       <div>
@@ -18,6 +29,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
             <StatBar
               color={"#fce671"}
               value={selectedPet.satiety}
+              maxValue={getMaxValue(selectedPet.type, "satiety")}
               icon={"food"}
             />
           </StyledListItem>
@@ -30,6 +42,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
             <StatBar
               color={"#ffb628"}
               value={selectedPet.energy}
+              maxValue={getMaxValue(selectedPet.type, "energy")}
               icon={"thunder"}
             />
           </StyledListItem>
@@ -39,6 +52,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
             <StatBar
               color={"#ff2e2e"}
               value={selectedPet.health}
+              maxValue={getMaxValue(selectedPet.type, "health")}
               icon={"heart"}
             />
           </StyledListItem>
@@ -46,6 +60,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
             <StatBar
               color={"#ff8660"}
               value={selectedPet.happiness}
+              maxValue={getMaxValue(selectedPet.type, "happiness")}
               icon={"smiley"}
             />
           </StyledListItem>
