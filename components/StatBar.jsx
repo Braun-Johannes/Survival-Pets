@@ -5,7 +5,12 @@ export default function StatBar({ icon, value, color }) {
   return (
     <Container>
       <IconWrapper>
-        <SVGIcon variant={icon} size={30} color="white" />
+        <SVGIcon
+          variant={icon}
+          size={30}
+          color="white"
+          ariaLabel={icon.title}
+        />
       </IconWrapper>
       <BarContainer>
         <ParameterBar $variant="livingroom" color={color} value={value} />

@@ -24,9 +24,9 @@ export default function Graveyard({ deceasedPets, selectedPet, ageInSeconds }) {
     deceasedPets.sort((a, b) => {
       switch (filter) {
         case "Time Alive - Descending":
-          return a.timeAlive - b.timeAlive;
-        case "Time Alive - Ascending":
           return b.timeAlive - a.timeAlive;
+        case "Time Alive - Ascending":
+          return a.timeAlive - b.timeAlive;
         case "Name":
           return a.name.localeCompare(b.name);
         case "Type":
