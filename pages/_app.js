@@ -141,7 +141,7 @@ export default function App({ Component, pageProps }) {
 
   useEffect(() => {
     let interval;
-    if (mode !== "select") {
+    if (mode !== "select" && selectedPet.health > 0) {
       interval = setInterval(() => {
         setSelectedPet((prevPet) => {
           // calculate reduction based on elapsed time
