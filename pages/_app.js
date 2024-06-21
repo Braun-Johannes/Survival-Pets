@@ -116,24 +116,32 @@ export default function App({ Component, pageProps }) {
     const currentTime =
       mode === "select" ? Date.now() / 1000 : selectedPet.createdAt;
 
-    const updatedPet = {
+    let updatedPet = {
       ...selectedPet,
       name: data.nameInput,
       lastUpdated: Date.now() / 1000,
       createdAt: currentTime,
       birthday: formatDate(new Date()),
     };
+    if (mode === "select" && data.nameInput.trim() === "Doemser") {
+      updatedPet = {
+        ...updatedPet,
+        type: "broccoli",
+      };
+      handleAddSnackbar("You magically discovered the Doemser!", "special");
+    }
     setSelectedPet(updatedPet);
 
     setMode("livingroom");
   }
+
   // ___________________________________________________________________
 
   // __________________________TIME LOGIC_______________________________
 
   useEffect(() => {
     let interval;
-    if (mode !== "select") {
+    if (mode !== "select" && selectedPet.health > 0) {
       interval = setInterval(() => {
         setSelectedPet((prevPet) => {
           // calculate reduction based on elapsed time
@@ -141,7 +149,7 @@ export default function App({ Component, pageProps }) {
           const currentTime = Math.floor(Date.now() / 1000);
           const elapsedTime = currentTime - Math.floor(prevPet.lastUpdated);
 
-          const decreaseRate = 2; // value to change stat ticks
+          const decreaseRate = 1; // value to change stat ticks
           let health = prevPet.health;
           let satiety = prevPet.satiety;
           let energy = prevPet.energy;

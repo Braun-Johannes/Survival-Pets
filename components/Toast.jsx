@@ -23,6 +23,7 @@ const toastColors = {
   sleep: "rgba(255, 182, 40, 0.8)",
   play: "rgba(255, 134, 96, 0.8)",
   health: "rgba(255,127,127, 0.8)",
+  special: "rgba(173,216,230, 0.8)",
 };
 
 const StyledToastMessage = styled.li`
@@ -35,4 +36,7 @@ const StyledToastMessage = styled.li`
   border-radius: 5px;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   background: ${({ $variant }) => toastColors[$variant]};
+  @media (max-width: 500px) {
+    padding: 5px;
+  }
 `;

@@ -5,10 +5,11 @@ import PositionedButton from "@/components/Styles/StyledButton";
 import PNGImage from "@/components/PNGImage";
 
 export default function PetList({ onSelectPet, selectedPet }) {
+  const filteredPets = pets.filter((pet) => pet.name !== "Doemser");
   return (
     <>
       <StyledList $variant="select">
-        {pets.map((pet) => {
+        {filteredPets.map((pet) => {
           return (
             <StyledListItem
               $selected={selectedPet.id === pet.id}

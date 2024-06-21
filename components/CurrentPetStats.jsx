@@ -75,7 +75,7 @@ export default function CurrentPetStats({ selectedPet, onMode, isDead }) {
 
 const CurrentPetContainer = styled.div`
   display: flex;
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     margin-left: -40px;
     justify-content: space-around;
   }

@@ -26,7 +26,7 @@ const LabelWrapper = styled.div`
 `;
 
 const ValueWrapper = styled.div`
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     max-width: 100px;
   }
   width: 145px;
