@@ -36,4 +36,7 @@ const StyledToastMessage = styled.li`
   border-radius: 5px;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};
   background: ${({ $variant }) => toastColors[$variant]};
+  @media (max-width: 500px) {
+    padding: 5px;
+  }
 `;
