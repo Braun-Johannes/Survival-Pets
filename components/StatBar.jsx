@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import SVGIcon from "./SVGIcon";
 
-export default function StatBar({ icon, value, color }) {
+export default function StatBar({ icon, value, color, maxValue = 100 }) {
   return (
     <Container>
       <IconWrapper>
@@ -13,7 +13,12 @@ export default function StatBar({ icon, value, color }) {
         />
       </IconWrapper>
       <BarContainer>
-        <ParameterBar $variant="livingroom" color={color} value={value} />
+        <ParameterBar
+          $variant="livingroom"
+          color={color}
+          value={value}
+          maxValue={maxValue}
+        />
       </BarContainer>
     </Container>
   );
@@ -45,7 +50,7 @@ const BarContainer = styled.div`
 `;
 
 const ParameterBar = styled.div`
-  width: ${({ value }) => value}%;
+  width: ${({ value, maxValue }) => (value / maxValue) * 100}%;
   height: 100%;
   background-color: ${({ color }) => color};
   transition: width 0.5s ease;

@@ -91,11 +91,57 @@ export default function App({ Component, pageProps }) {
 
   function handleIncreaseStats(attribute, steps) {
     setSelectedPet((prevPet) => {
-      const newValue = Math.min(prevPet[attribute] + steps, 100);
-      return {
-        ...prevPet,
-        [attribute]: newValue,
-      };
+      if (prevPet.type === "sloth") {
+        const newSatietyValue = Math.min(prevPet.satiety + steps, 120);
+        const newEnergyValue = Math.min(prevPet.energy + steps, 60);
+        const newHappinessValue = Math.min(prevPet.happiness + steps, 120);
+        return {
+          ...prevPet,
+          satiety: newSatietyValue,
+          energy: newEnergyValue,
+          happiness: newHappinessValue,
+        };
+      }
+      if (prevPet.type === "cheetah") {
+        const newSatietyValue = Math.min(prevPet.satiety + steps, 60);
+        const newEnergyValue = Math.min(prevPet.energy + steps, 120);
+        const newHappinessValue = Math.min(prevPet.happiness + steps, 120);
+        return {
+          ...prevPet,
+          satiety: newSatietyValue,
+          energy: newEnergyValue,
+          happiness: newHappinessValue,
+        };
+      }
+      if (prevPet.type === "racoon") {
+        const newSatietyValue = Math.min(prevPet.satiety + steps, 120);
+        const newEnergyValue = Math.min(prevPet.energy + steps, 120);
+        const newHappinessValue = Math.min(prevPet.happiness + steps, 60);
+        return {
+          ...prevPet,
+          satiety: newSatietyValue,
+          energy: newEnergyValue,
+          happiness: newHappinessValue,
+        };
+      }
+      if (prevPet.type === "dragon") {
+        const newSatietyValue = Math.min(prevPet.satiety + steps, 50);
+        const newEnergyValue = Math.min(prevPet.energy + steps, 125);
+        const newHappinessValue = Math.min(prevPet.happiness + steps, 125);
+        return {
+          ...prevPet,
+          satiety: newSatietyValue,
+          energy: newEnergyValue,
+          happiness: newHappinessValue,
+        };
+      }
+      if (prevPet.type === "broccoli") {
+        const newValue = Math.min(prevPet[attribute] + steps, 100);
+        return {
+          ...prevPet,
+          [attribute]: newValue,
+        };
+      }
     });
   }
   // __________________________________________________________________
@@ -127,6 +173,10 @@ export default function App({ Component, pageProps }) {
       updatedPet = {
         ...updatedPet,
         type: "broccoli",
+        health: 100,
+        satiety: 100,
+        happiness: 100,
+        energy: 100,
       };
       handleAddSnackbar("You magically discovered the Doemser!", "special");
     }
